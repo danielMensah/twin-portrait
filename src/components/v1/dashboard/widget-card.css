@@ -1,0 +1,10 @@
+.card {
+  width: 100%;
+  border-color: #cfdbe2;
+  height: auto;
+  border-radius: 0;
+}
+
+.card .panel-heading {
+  font-size: 16px;
+}

@@ -1,0 +1,29 @@
+.accessibilities {
+  float: right;
+  margin: 15px;
+}
+
+.zoomIn {
+  border-radius: 0;
+}
+
+.zoomOut {
+  border-radius: 0;
+}
+
+.icon {
+  padding: 5px;
+}
+
+.zoomReset {
+  border-radius: 50%;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+.resetIcon {
+  position: absolute;
+  top: 27px;
+  right: 23px;
+}

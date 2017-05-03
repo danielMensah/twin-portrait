@@ -1,0 +1,6 @@
+.conversationList {
+  position: fixed;
+  bottom: 0;
+  right: 300px;
+  display: flex;
+}

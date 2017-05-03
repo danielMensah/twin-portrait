@@ -1,0 +1,34 @@
+.contactListItem {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.contactListItem:last-child {
+  padding-bottom: 50px;
+}
+
+.contactListItem:hover {
+  background-color: #d9edf7;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.user {
+  color: #5d9cec;
+  font-weight: 700;
+}
+
+.module {
+  font-size: 12px;
+  color: #929292;
+}
+
+.status {
+  margin-top: 7px;
+  margin-left: auto;
+}

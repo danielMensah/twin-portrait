@@ -1,0 +1,16 @@
+.title {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.subTitle {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.content {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.56);
+}

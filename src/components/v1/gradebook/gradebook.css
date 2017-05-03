@@ -1,0 +1,11 @@
+.content {
+  padding: 0 4%;
+  height: 100%;
+}
+
+@media ( max-width: 769px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+}

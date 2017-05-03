@@ -1,0 +1,51 @@
+.panel {
+  width: 67%;
+  border-radius: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.panel > div:not(:first-child) {
+  display: flex;
+  flex-direction: column;
+}
+
+.col {
+  padding-left: 0;
+}
+
+.col input{
+  padding: 6px 22px 6px 12px;
+}
+
+.btnGroup {
+  float: right;
+}
+
+.clearSearch {
+  color: #a9a9a9;
+  float: right;
+  margin-top: -24px;
+  padding-right: 6px;
+  cursor: pointer;
+}
+
+.search {
+  color: #a9a9a9;
+  float: right;
+  margin-top: -24px;
+  padding-right: 6px;
+}
+
+@media ( max-width: 1005px) {
+  .panel {
+    width: 100%;
+  }
+}
+
+@media ( max-width: 770px) {
+  .btnGroup {
+    margin-top: 15px;
+    float: left;
+  }
+}

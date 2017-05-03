@@ -1,0 +1,37 @@
+.content {
+  padding: 0 4%;
+}
+
+.activityContent {
+  width: 65%;
+  display: inline-block;
+}
+
+.filters {
+  display: flex;
+}
+
+.filterHeader {
+  display: flex;
+}
+
+.activityWidget {
+  float: right;
+  display: inline-block;
+  width: 30%;
+}
+
+@media ( max-width: 769px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .activityContent {
+    width: 100%;
+  }
+
+  .activityWidget {
+    width: 100%;
+  }
+}

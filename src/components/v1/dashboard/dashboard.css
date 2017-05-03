@@ -1,0 +1,28 @@
+@media ( max-width: 769px) {
+  .panelContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .widgetPanel,
+  .activityPanel {
+    width: 100% !important;
+  }
+}
+
+.panelContent {
+  padding: 0 4%;
+  display: inline-block;
+  width: 100%;
+}
+
+.activityPanel {
+  width: 57%;
+  display: inline-block;
+}
+
+.widgetPanel {
+  float: right;
+  width: 40%;
+  display: inline-block;
+}

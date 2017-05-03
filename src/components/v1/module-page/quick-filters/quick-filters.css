@@ -1,0 +1,52 @@
+.filterContainer {
+  display: inline-block;
+}
+
+.filterContainer > div {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+}
+
+.quickFiltersLabel {
+  color: #707070;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 32px;
+  margin-right: 4.5px;
+  letter-spacing: 2px;
+}
+
+.button,
+.button:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+  outline: none !important;
+  color: #5d9cec !important;
+}
+
+.button:not(:first-child) {
+  margin-left: 10px;
+}
+
+.button:hover {
+  color: #1b72e2 !important;
+}
+
+.button.active {
+  background-color: #5d9cec !important;
+  color: #fff !important;
+  outline: none !important;
+}
+
+/*.button.active:hover {*/
+  /*background-color: #ccd9ea !important;*/
+  /*border-color: #3572b0 !important;*/
+  /*color: #3b73af !important;*/
+  /*outline: none !important;*/
+/*}*/
+
+.filters {
+  z-index: 1;
+}

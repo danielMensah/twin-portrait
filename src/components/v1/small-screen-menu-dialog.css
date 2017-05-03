@@ -1,0 +1,27 @@
+.alertBadge {
+  float: right;
+  background-color: #f05050 !important;
+  font-size: 75% !important;
+  padding: 3px 4px !important;
+  margin-top: 2px;
+  left: 23px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.item {
+  padding-bottom: 8px;
+}
+
+.main {
+  border-bottom: 1px solid #ccc;
+}
+
+.main > div:last-child {
+  padding-bottom: 15px;
+}
+
+.footer {
+  padding-top: 8px;
+}

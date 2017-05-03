@@ -1,0 +1,19 @@
+.sortBy {
+  display: flex;
+  align-items: center;
+  margin: 0 65px 22px auto;
+}
+
+.label {
+  margin-left: auto;
+}
+
+.sortBy > div:first-child {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .sortBy {
+    display: none;
+  }
+}
