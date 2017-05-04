@@ -6,16 +6,16 @@ export function loginAction(username, password) {
   const log_info = { username, password };
 
   return (dispatch) => {
-    var request = ajax(ApiRoutes.FETCH_USER, 'POST', log_info);
+    var request = ajax(ApiRoutes.LOGIN, 'POST', log_info);
 
     dispatch({
-      type: ActionTypes.FETCH_USER,
+      type: ActionTypes.LOGIN,
       payload: {username: username, password: password}
     });
 
     request
       .then((response) => dispatch ({
-        type: ActionTypes.FETCH_USER_SUCCESS,
+        type: ActionTypes.LOGIN_SUCCESS,
         payload: response
       }));
 

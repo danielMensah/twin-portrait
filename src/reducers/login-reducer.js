@@ -8,7 +8,7 @@ const initialState = {
 
 export default function(state = initialState, action = {}) {
   switch(action.type) {
-    case ActionTypes.FETCH_USER_SUCCESS:
+    case ActionTypes.LOGIN_SUCCESS:
       return { ...state, ...action.payload };
 
     default:

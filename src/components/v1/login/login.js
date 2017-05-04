@@ -17,12 +17,14 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      access: true
+      access: true,
+      busy: false
     }
   }
 
   render() {
     const Logo = <Image className={styles.logo} src={logo} />;
+    const { busy, access } = this.state;
 
     return (
       <div className={styles.container}>
@@ -41,9 +43,11 @@ class Login extends Component {
                   <FormControl onChange={this.setPassword} className={styles.input} type="password" placeholder="Password" />
                 </Col>
               </FormGroup>
-              {!this.state.access ? <div className={styles.error}>Wrong username or password. Try again.</div> : null}
+              {!access ? <div className={styles.error}>Wrong username or password. Try again.</div> : null}
               <ForgotPassword />
-              <Button type="submit" onClick={this.handleLogin} className={styles.loginButton} bsStyle="primary" bsSize="large" block>Login</Button>
+              <Button type="submit" onClick={this.handleLogin} className={styles.loginButton} bsStyle="primary" bsSize="large" block disabled={busy}>
+                {busy ? 'Logging in...' : 'Login'}
+              </Button>
             </Form>
           </Panel>
         </div>
@@ -53,6 +57,7 @@ class Login extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
+    this.setState({ busy: true});
     this.props.loginAction(this.state.username, this.state.password)
       .then((response) => {
         const u_token = response.u_token;

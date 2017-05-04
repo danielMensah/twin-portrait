@@ -1,6 +1,6 @@
 export default {
-  FETCH_USER: 'fetch_user',
-  FETCH_USER_SUCCESS: 'fetch_user_success',
+  LOGIN: 'login',
+  LOGIN_SUCCESS: 'login_success',
 
   QUICK_FILTER: {
     ENABLE_FILTER: 'enable_filter',
@@ -13,7 +13,7 @@ export default {
 
   CHAT: {
     FETCH_MESSENGER_INFO: 'fetch_messenger_info',
-    FETCH_CONTACTS: 'fetch_contacts',
+    FETCH_CONTACTS: 'fetch_contacts'
   },
 
   FETCH_WIDGETS: 'fetch_widgets',
