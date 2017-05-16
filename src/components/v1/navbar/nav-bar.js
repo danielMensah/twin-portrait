@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ReactDOM from 'react-dom';
 import { Navbar, Nav, NavItem, Button, OverlayTrigger, Popover } from 'react-bootstrap/lib';
 import logo from '../../../images/Olep_white_.png';
@@ -8,6 +10,7 @@ import FontAwesome from 'react-fontawesome';
 import Notification from './notification';
 import SmallScreenMenuDialog from '../small-screen-menu-dialog';
 import { blue_celestial } from '../../../util/color-scheme';
+import { logoutAction } from '../../../actions/login-actions';
 
 class NavBar extends Component {
 
@@ -54,9 +57,11 @@ class NavBar extends Component {
     )
   }
 
-  signOut() {
-    browserHistory.push('/');
-  }
+  signOut = () => {
+    this.props.logoutAction(this.props.token).then(() => {
+      browserHistory.push('/');
+    })
+  };
 
   adjustPopoverWidthPosition = () => {
     setTimeout(() => {
@@ -67,4 +72,10 @@ class NavBar extends Component {
   }
 }
 
-export default (NavBar);
+const mapStateProps = ({login}) => ({
+  token: login.u_token
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ logoutAction }, dispatch);
+
+export default connect(mapStateProps, mapDispatchToProps)(NavBar);

@@ -1,9 +1,18 @@
+global.logger = require('logger');
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Navbar from '../../components/v1/navbar/nav-bar';
 import Sidebar from '../../components/v1/sidebar/side-bar';
 import styles from './app.css';
 import Chat from '../../components/v1/chat';
 import FontAwesome from 'react-fontawesome';
+import { checkSessionState } from '../../actions/check-session-action';
+import LocalStorage from '../../util/local-storage';
+import Login from '../../components/v1/login/login';
+import Constants from '../../constants/general-constants';
+import { browserHistory } from 'react-router';
 
 class App extends Component {
 
@@ -16,18 +25,18 @@ class App extends Component {
   }
 
   componentWillMount() {
-    window.onload = () => {
-      this.setState({ loading: false })
-    }
-
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       this.setState({ showChat: false })
     }
+
+    this.props.checkSessionState(LocalStorage.getItem(Constants.TOKEN_KEY)).then(() => {
+      this.setState({ loading: false });
+    })
   }
 
   render() {
-    const currentPage = this.props.children.props.location.pathname;
     const { loading, showChat } = this.state;
+    const { sessionState } = this.props;
 
     if (loading) {
       return (
@@ -35,8 +44,10 @@ class App extends Component {
           <FontAwesome className={styles.loadingIcon} size="4x" name='spinner' pulse />
         </div>
       )
-    } else if (currentPage === "/") {
-      return this.props.children;
+    }
+
+    if (!sessionState) {
+      return <Login />
     }
 
     return (
@@ -45,13 +56,24 @@ class App extends Component {
         <div className={styles.subContainer}>
           <Sidebar />
           <div className={styles.container}>
-            {this.props.children}
+            {this.routeToChildren()}
           </div>
         </div>
         {showChat ? <Chat /> : null}
       </div>
     )
   }
+
+  routeToChildren = () => {
+    const isLoginPage = this.props.children.props.location.pathname  === "/";
+    return isLoginPage ? browserHistory.push('/dashboard') : this.props.children;
+  };
 }
 
-export default (App)
+const mapStateProps = ({ checkSession }) => ({
+  sessionState: +checkSession.state
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ checkSessionState }, dispatch);
+
+export default connect(mapStateProps, mapDispatchToProps)(App);

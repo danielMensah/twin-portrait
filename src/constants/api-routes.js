@@ -1,3 +1,6 @@
 export default {
-  LOGIN: 'api.olep.co.uk/auth/login'
+  LOGIN: '/auth/login',
+  LOGOUT: '/auth/logout',
+
+  CHECK_SESSION: '/session/check'
 };

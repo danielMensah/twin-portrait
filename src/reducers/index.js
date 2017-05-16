@@ -7,6 +7,7 @@ import dashboardWidgets from './dashboard-reducer'
 import activities from './activity-reducer'
 import contacts from './contacts-reducer'
 import messenger from './messenger-reducer';
+import checkSession from './check-session-reducer';
 
 export default combineReducers({
   routing,
@@ -16,5 +17,6 @@ export default combineReducers({
   dashboardWidgets,
   activities,
   contacts,
-  messenger
+  messenger,
+  checkSession
 })

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { PieChart, Pie } from 'recharts';
 import styles from './grade-total-widget.css';
 import { Panel } from 'react-bootstrap/lib';
+import { blue_celestial } from '../../../util/color-scheme';
 const MAX_GRADE = 100;
 
 class GradeTotalWidget extends Component {
@@ -12,7 +13,7 @@ class GradeTotalWidget extends Component {
     const remain = MAX_GRADE - grade;
 
     const chartData = [
-      {name: 'grades', value: grade, fill: '#23b7e5'},
+      {name: 'grades', value: grade, fill: blue_celestial()},
       {name: 'remain', value: remain, fill: '#eee'}
     ];
 

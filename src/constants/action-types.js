@@ -2,6 +2,10 @@ export default {
   LOGIN: 'login',
   LOGIN_SUCCESS: 'login_success',
 
+  CHECK_SESSION: 'check_session',
+
+  LOGOUT_SUCCESS: 'logout_success',
+
   QUICK_FILTER: {
     ENABLE_FILTER: 'enable_filter',
     DISABLE_FILTER: 'disable_filter'

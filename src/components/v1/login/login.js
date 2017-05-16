@@ -5,7 +5,6 @@ import { browserHistory } from 'react-router';
 import { Panel, Image, Button, Form, FormControl, FormGroup, Col } from 'react-bootstrap/lib';
 import logo from '../../../images/Olep_white_.png';
 import styles from './login.css';
-// import FontAwesome from 'react-fontawesome';
 import ForgotPassword from '../modals/forgot-password';
 import Accessibilities from '../extras/accessibilities/accessibilities';
 import { loginAction } from '../../../actions/login-actions';
@@ -17,14 +16,14 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      access: true,
+      error: false,
       busy: false
     }
   }
 
   render() {
     const Logo = <Image className={styles.logo} src={logo} />;
-    const { busy, access } = this.state;
+    const { busy, error } = this.state;
 
     return (
       <div className={styles.container}>
@@ -43,10 +42,10 @@ class Login extends Component {
                   <FormControl onChange={this.setPassword} className={styles.input} type="password" placeholder="Password" />
                 </Col>
               </FormGroup>
-              {!access ? <div className={styles.error}>Wrong username or password. Try again.</div> : null}
+              {error ? <div className={styles.error}>Wrong username or password. Try again.</div> : null}
               <ForgotPassword />
               <Button type="submit" onClick={this.handleLogin} className={styles.loginButton} bsStyle="primary" bsSize="large" block disabled={busy}>
-                {busy ? 'Logging in...' : 'Login'}
+                {busy ? 'Please wait...' : 'Login'}
               </Button>
             </Form>
           </Panel>
@@ -57,16 +56,14 @@ class Login extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    this.setState({ busy: true});
-    this.props.loginAction(this.state.username, this.state.password)
-      .then((response) => {
-        const u_token = response.u_token;
-        if (u_token) {
-          browserHistory.push('/dashboard')
-        } else {
-          this.setState({ access: false })
-        }
+    const { loginAction } = this.props;
+    const { username, password } = this.state;
+
+    this.setState({ busy: true}, () => {
+      loginAction(username, password).then((response) => {
+        response.u_token ? browserHistory.push('/dashboard') : this.setState({ error: true, busy: false })
       });
+    });
   };
 
   setUsername = (event) => {

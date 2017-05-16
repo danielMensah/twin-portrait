@@ -9,12 +9,13 @@ class Conversation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openChat: false
+      openChat: false,
+      convoText: ''
     }
   }
 
   render() {
-    const { openChat } = this.state;
+    const { openChat, convoText } = this.state;
     const conversationClassName = `${styles.conversationContainer} ${openChat ? styles.active : ''}`;
     const headerClassName = `${styles.header} ${openChat ? styles.active : ''}`;
     const leftSideClassName = `${styles.leftSide} ${openChat ? styles.active : ''}`;
@@ -32,11 +33,21 @@ class Conversation extends Component {
         </div>
         <div className={styles.main}>
           <div className={styles.conversation}>Conversation</div>
-          <FormControl componentClass="textarea" className={styles.input} type="text" placeholder="Type a message..." />
+          <FormControl onKeyPress={this.handleKeyPress} onChange={this.handleOnChange} value={convoText} componentClass="textarea" className={styles.input} type="text" placeholder="Type a message..." />
         </div>
       </div>
     )
   }
+
+  handleOnChange = (event) => {
+    this.setState({ convoText: event.target.value || '' });
+  };
+
+  handleKeyPress = (event) => {
+    if (event.charCode === 13) {
+      this.setState({ convoText: '' });
+    }
+  };
 
   handleConversation = () => {
     this.setState({ openChat: !this.state.openChat })
