@@ -23,13 +23,19 @@ class App extends Component {
   }
 
   componentWillMount() {
+    const token = LocalStorage.getItem(Constants.TOKEN_KEY);
+
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       this.setState({ showChat: false })
     }
 
-    this.props.checkSessionState(LocalStorage.getItem(Constants.TOKEN_KEY)).then(() => {
+    if (token) {
+      this.props.checkSessionState(token).then(() => {
+        this.setState({ loading: false });
+      })
+    } else {
       this.setState({ loading: false });
-    })
+    }
   }
 
   render() {

@@ -8,6 +8,7 @@ import styles from './login.css';
 import ForgotPassword from '../modals/forgot-password';
 import Accessibilities from '../extras/accessibilities/accessibilities';
 import { loginAction } from '../../../actions/login-actions';
+import Constants from '../../../constants/general-constants';
 
 class Login extends Component {
 
@@ -61,7 +62,7 @@ class Login extends Component {
 
     this.setState({ busy: true}, () => {
       loginAction(username, password).then((response) => {
-        response.u_token ? browserHistory.push('/dashboard') : this.setState({ error: true, busy: false })
+        response[Constants.TOKEN_KEY] ? browserHistory.push('/dashboard') : this.setState({ error: true, busy: false })
       });
     });
   };

@@ -2,8 +2,7 @@ import { Promise } from 'es6-promise'
 import $ from 'jquery'
 
 function generateUrl(url) {
-  const isProd = process.env.NODE_ENV === "production";
-  return `${isProd ? 'https' : 'http'}://api.olep.co.uk${url}`;
+  return `http://api.olep.co.uk${url}`;
 }
 
 export default function(url, type, options = {}) {

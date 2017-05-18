@@ -24,12 +24,8 @@ export function loginAction(username, password) {
       .then((response) => {
         dispatch ({
             type: ActionTypes.LOGIN,
-            payload: response
-        });
-
-        dispatch({
-          type: ActionTypes.LOGIN_SUCCESS,
-          payload: {state: response.u_token ? 1 : 0}
+            payload: response,
+            session: {state: response.u_token ? 1 : 0}
         });
 
         cacheToken(response.u_token);
