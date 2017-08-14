@@ -1,9 +1,9 @@
-# OLEP - Open Learning Environment Platform
+# React-OvoBoilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Setup:
-* Clone project `git clone git@github.com:danielMensah/olep.git`.
+* Clone project `git clone git@github.com:danielMensah/React-OvoBoilerplate.git`.
 * Install dependencies `npm install`.
 * Start application `npm start`.
 
@@ -11,6 +11,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Start app `npm start`.
 * Build app `npm run build`.
 * Test app `npm run test`.
-
-## Deployment
-This project is deployed using [Heroku](https://olep.herokuapp.com).
