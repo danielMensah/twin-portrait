@@ -1,0 +1,14 @@
+.landmarkHeader {
+    clear: both;
+    text-align: center;
+    font-size: 19px;
+    color: #333333;
+    font-weight: normal;
+    border-bottom: 1px solid;
+    height: 13px;
+}
+
+.landmarkHeader span {
+    padding: 0 15px;
+    background: #fff;
+}

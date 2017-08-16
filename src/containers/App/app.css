@@ -2,25 +2,18 @@
   display: flex;
   flex-direction: column;
   font-family: Source Sans Pro,sans-serif;
-  background: #e9ebee;
-}
-
-.subContainer {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
-.loadingIcon {
-  color: #23b7e5;
-  margin-top: 135px;
-}
-
-.loadingContainer {
-  text-align: center;
-  height: 100%;
 }
 
 .container {
-  width: 100%;
+  display: flex;
+  margin: 20px;
+}
+
+.portraits {
+
+}
+
+.landmarks {
+  margin-left: 5%;
+  width: 60%;
 }
