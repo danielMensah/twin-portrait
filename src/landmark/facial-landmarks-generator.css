@@ -1,0 +1,25 @@
+.facesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.face:not(:first-child) {
+    margin-left: 30px;
+}
+
+.faceImg {
+    margin-top: 10px;
+}
+
+.faceName {
+    margin-bottom: 10px;
+}
+
+.box {
+    background: #f3f3f3;
+    width: 150px;
+    text-align: center;
+    border-radius: 15px !important;
+    margin: 10px 20px 10px 0;
+}

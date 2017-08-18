@@ -9,11 +9,26 @@
   margin: 20px;
 }
 
-.portraits {
+.helper {
+  display: flex;
+  flex-direction: column;
+}
 
+.portraits, .helper img {
+  z-index: 10;
 }
 
 .landmarks {
   margin-left: 5%;
   width: 60%;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons button, .submit {
+  margin-top: 15px;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './landmarks-field.css';
-import Faces from './faces';
+import FacialLandmarksGenerator from './facial-landmarks-generator';
 // import Image from 'react-bootstrap/lib/Image';
 
 class LandmarksField extends Component {
@@ -12,27 +12,27 @@ class LandmarksField extends Component {
       {
         text: 'Select Face Shape',
         className: `${styles.faces}`,
-        feature: <Faces />
+        feature: <FacialLandmarksGenerator landmark="face"/>
       },
       {
         text: 'Select Eyebrows Shape',
         className: `${styles.eyeBrows}`,
-        feature: ''
+        feature: <FacialLandmarksGenerator landmark="eyebrows"/>
       },
       {
         text: 'Select Eyes Shape',
         className: `${styles.eyes}`,
-        feature: ''
+        feature: <FacialLandmarksGenerator landmark="eyes"/>
       },
       {
         text: 'Select Nose Shape',
         className: `${styles.noses}`,
-        feature: ''
+        feature: <FacialLandmarksGenerator landmark="noses"/>
       },
       {
         text: 'Select Lips Shape',
         className: `${styles.lips}`,
-        feature: ''
+        feature: <FacialLandmarksGenerator landmark="lips"/>
       }
     ];
 
