@@ -32,3 +32,25 @@
 .buttons button, .submit {
   margin-top: 15px;
 }
+
+.modalBody {
+  text-align: center;
+}
+
+.modalBody h2, .modalBody p {
+  color: rgb(147, 147, 147);
+}
+
+.tickImg {
+  height: 100px;
+}
+
+.submitButton {
+  background: #82c915;
+  color: white;
+}
+
+.loadingContainer {
+  height: 100%;
+  text-align: center;
+}

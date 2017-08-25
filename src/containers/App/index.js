@@ -1,51 +1,69 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styles from './app.css';
-import {Image, Button} from 'react-bootstrap/lib';
-import avatar from '../../images/portraits/test.jpg'
-import avatar2 from '../../images/portraits/test2.jpg'
-import avatar3 from '../../images/portraits/test3.jpg'
-import avatar4 from '../../images/portraits/test4.jpg'
-import avatar5 from '../../images/portraits/test5.jpg'
-import avatar6 from '../../images/portraits/test6.jpg'
-import avatar7 from '../../images/portraits/test7.jpg'
-import avatar8 from '../../images/portraits/test8.jpg'
-import avatar9 from '../../images/portraits/test9.jpg'
-import avatar10 from '../../images/portraits/test10.jpg'
-import LandmarksField from '../../landmark/landmarks-field';
-
-const images = [avatar, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8, avatar9, avatar10];
+import {Image, Button, Modal, FormGroup, FormControl} from 'react-bootstrap/lib';
+import tickImg from '../../images/tick.png';
+import loadingGif from '../../images/loading.gif';
+import LandmarksField from '../../components/landmark/landmarks-field';
+import { fetchPortrait } from '../../actions/portrait-actions';
 
 class App extends Component {
 
   constructor(prop) {
     super(prop);
     this.state = {
-      page: 0
+      page: 0,
+      showModal: false,
+      loading: true
     }
   }
 
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
+  open = () => {
+    this.setState({ showModal: true });
+  };
+
   componentDidMount() {
-
-    // setTimeout(() => {
-    //   const width = document.getElementById('avatar').clientWidth;
-    //   document.getElementById('portraits').style.width= `${width+50}px`;
-    // }, 100);
-
+    this.nextPortrait();
   }
 
   render() {
-    const {page} = this.state;
+    const {page, loading} = this.state;
+    const { portrait } = this.props;
+
+    if (loading) {
+      return (
+        <div className={styles.loadingContainer}>
+          <Image src={loadingGif} />
+        </div>
+      )
+    }
+
     const currentPage = page+1;
 
+    const formInstance = (
+      <form>
+        <FormGroup>
+          <FormControl type="email" placeholder="Email..." />
+        </FormGroup>
+
+        <Button className={styles.submitButton} type="submit">
+          Submit
+        </Button>
+      </form>
+    );
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
-              <Image id="avatar" src={images[page]}/>
+              <Image id="avatar" src={portrait} />
               { page > 8 ?
-                <Button className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
+                <Button onClick={this.done} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
                 <div className={styles.buttons}>
                   <Button bsSize="large" bsStyle="primary" onClick={this.movePage}>Next ({currentPage}/10)</Button>
                   <Button bsSize="large" bsStyle="danger" onClick={this.movePage}>Not Applicable</Button>
@@ -56,15 +74,45 @@ class App extends Component {
             <LandmarksField/>
           </div>
         </div>
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton />
+          <Modal.Body className={styles.modalBody}>
+            <Image src={tickImg} className={styles.tickImg}/>
+            <h2>Awesome!</h2>
+            <br/>
+            <br/>
+            <p>Enter your email below and you will be sent a promo code to use TwinPortrait for free once completed</p>
+            {formInstance}
+          </Modal.Body>
+        </Modal>
       </div>
     )
   }
 
   movePage = () => {
     this.setState({page: this.state.page+1});
-    console.log(this.state.page)
-  }
+    this.nextPortrait();
+    console.log('hello', this.props.selected);
+  };
 
+  done = () => {
+    console.log('hello', this.props.selected);
+    this.open();
+  };
+
+  nextPortrait = () => {
+    this.setState({loading: true});
+    this.props.fetchPortrait().then(() => {
+      this.setState({loading: false})
+    });
+  }
 }
 
-export default connect()(App);
+const mapStateProps = ({landmarkSelect, portrait}) => ({
+  selected: landmarkSelect,
+  portrait: portrait.portraitURL
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait }, dispatch);
+
+export default connect(mapStateProps, mapDispatchToProps)(App);

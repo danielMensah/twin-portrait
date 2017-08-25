@@ -2,7 +2,7 @@ import { Promise } from 'es6-promise'
 import $ from 'jquery'
 
 function generateUrl(url) {
-  return `https://olep-api.herokuapp.com${url}`;
+  return `https://twinportrait-server.herokuapp.com${url}`;
 }
 
 export default function(url, type, options = {}) {

@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styles from './facial-landmarks-generator.css';
 import Image from 'react-bootstrap/lib/Image';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap/lib';
-import { FACES, EYES, EYEBROWS, LIPS, NOSES } from '../images/index';
+import { FACES, EYES, EYEBROWS, LIPS, NOSES } from '../../images/index';
+import { selectLandmark } from '../../actions/landmark-select-actions';
+
+let newArr = [];
 
 class Faces extends Component {
+
+  constructor(prop) {
+    super(prop);
+    this.state = {
+      objArr: []
+    }
+  }
 
   render() {
     const obj = {
@@ -35,7 +46,7 @@ class Faces extends Component {
     const landmarkObj = obj[landmark];
 
     return (
-      <ToggleButtonGroup type="radio" name="options" defaultValue={1} className={styles.facesContainer}>
+      <ToggleButtonGroup onChange={(e) => this.handleSelection(landmarkObj.prop[e-1])} type="radio" name="options" className={styles.facesContainer}>
         {landmarkObj.prop.map((face, index) => {
           index++;
           return (
@@ -48,6 +59,24 @@ class Faces extends Component {
       </ToggleButtonGroup>
     )
   }
+
+  handleSelection = (obj) => {
+    const { selectLandmark, landmark } = this.props;
+    let newObj = {...obj, landmark};
+
+    newArr.forEach((e, index) => {
+      if (e.landmark === landmark) {
+        newArr.splice(index, 1);
+      }
+    });
+
+    newArr.push(newObj);
+
+    this.setState({ objArr: newArr}, () => selectLandmark(this.state.objArr));
+
+  }
 }
 
-export default connect()(Faces);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ selectLandmark }, dispatch);
+
+export default connect(null, mapDispatchToProps)(Faces);
