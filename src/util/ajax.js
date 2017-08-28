@@ -1,18 +1,13 @@
 import { Promise } from 'es6-promise'
 import $ from 'jquery'
 
-function generateUrl(url) {
-  return `https://twinportrait-server.herokuapp.com${url}`;
-}
-
-export default function(url, type, options = {}) {
+export default function(url, type, options = {}, shouldStringify = true) {
   return new Promise((resolved, rejected) => {
     $.ajax({
       type: type,
-      url: generateUrl(url),
-      data: options,
+      url: `https://twinportrait-server.herokuapp.com${url}`,
+      data: shouldStringify ? JSON.stringify(options) : options,
       success: (data) => {
-        console.log('data ', data);
         resolved(JSON.parse(data))},
       error: (data) => {
         rejected(data)

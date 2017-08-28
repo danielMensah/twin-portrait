@@ -29,9 +29,17 @@ class App extends Component {
     this.setState({ showModal: true });
   };
 
+  startLoading = () => {
+    this.setState({loading: true});
+  };
+
+  stopLoading = () => {
+    this.setState({loading: false});
+  };
+
   componentDidMount() {
     this.props.fetchPortrait().then(() => {
-      this.setState({loading: false});
+      this.stopLoading();
     });
   }
 
@@ -97,8 +105,6 @@ class App extends Component {
     const { selected, portrait,updatePortrait } = this.props;
 
     if (this.objectSize(selected) > 4) {
-      this.setState({page: this.state.page+1});
-
       let obj = { portraitUrl: portrait };
 
       for (let key in selected) {
@@ -106,9 +112,16 @@ class App extends Component {
         obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
       }
 
-      updatePortrait(obj);
-
-      this.nextPortrait();
+      this.startLoading();
+      updatePortrait(obj).then((r) => {
+        if ( r.response === 'error' ) {
+          this.stopLoading();
+          alert('there was an error when submitting, please try to resubmit the form again')
+        } else  {
+          this.setState({page: this.state.page+1});
+          this.nextPortrait();
+        }
+      });
     } else {
       alert('Please a style from each facial feature');
     }
@@ -126,9 +139,9 @@ class App extends Component {
   nextPortrait = () => {
     const { resetSelect, fetchPortrait } = this.props;
 
-    this.setState({loading: true});
+    this.startLoading();
     fetchPortrait().then(() => {
-      this.setState({loading: false});
+      this.stopLoading();
       resetSelect();
     });
   };
