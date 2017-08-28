@@ -18,15 +18,19 @@ class Faces extends Component {
     }
   }
 
+  componentDidMount() {
+    if (!this.props.selected.length) newArr = [];
+  }
+
   render() {
     const obj = {
       face: {
         prop: FACES,
         className: styles.face
       },
-      eyes: {
+      eye: {
         prop: EYES,
-        className: styles.eyes
+        className: styles.eye
       },
       eyebrows: {
         prop: EYEBROWS,
@@ -36,9 +40,9 @@ class Faces extends Component {
         prop: LIPS,
         className: styles.lips
       },
-      noses: {
+      nose: {
         prop: NOSES,
-        className: styles.noses
+        className: styles.nose
       }
     };
 
@@ -62,6 +66,7 @@ class Faces extends Component {
 
   handleSelection = (obj) => {
     const { selectLandmark, landmark } = this.props;
+
     let newObj = {...obj, landmark};
 
     newArr.forEach((e, index) => {
@@ -72,11 +77,15 @@ class Faces extends Component {
 
     newArr.push(newObj);
 
-    this.setState({ objArr: newArr}, () => selectLandmark(this.state.objArr));
+    this.setState({ objArr: newArr }, () => selectLandmark(newArr));
 
-  }
+  };
 }
+
+const mapStateProps = ({landmarkSelect}) => ({
+  selected: landmarkSelect
+});
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ selectLandmark }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Faces);
+export default connect(mapStateProps, mapDispatchToProps)(Faces);

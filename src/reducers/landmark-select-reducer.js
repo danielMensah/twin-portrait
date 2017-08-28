@@ -7,6 +7,9 @@ export default function(state = initialState, action = {}) {
     case ActionTypes.SELECT_LANDMARK:
       return { ...state, ...action.payload };
 
+    case ActionTypes.RESET_SELECT:
+      return [];
+
     default:
       return state;
   }

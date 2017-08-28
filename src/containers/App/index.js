@@ -7,6 +7,8 @@ import tickImg from '../../images/tick.png';
 import loadingGif from '../../images/loading.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
 import { fetchPortrait } from '../../actions/portrait-actions';
+import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
+import KeyGenerator from '../../util/landmark-key-generator';
 
 class App extends Component {
 
@@ -28,7 +30,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.nextPortrait();
+    this.props.fetchPortrait().then(() => {
+      this.setState({loading: false});
+    });
   }
 
   render() {
@@ -66,7 +70,7 @@ class App extends Component {
                 <Button onClick={this.done} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
                 <div className={styles.buttons}>
                   <Button bsSize="large" bsStyle="primary" onClick={this.movePage}>Next ({currentPage}/10)</Button>
-                  <Button bsSize="large" bsStyle="danger" onClick={this.movePage}>Not Applicable</Button>
+                  <Button bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
                 </div>}
             </span>
           </div>
@@ -90,9 +94,27 @@ class App extends Component {
   }
 
   movePage = () => {
-    this.setState({page: this.state.page+1});
-    this.nextPortrait();
-    console.log('hello', this.props.selected);
+    const { selected, portrait } = this.props;
+
+    if (this.objectSize(selected) > 4) {
+      this.setState({page: this.state.page+1});
+      this.nextPortrait();
+    } else {
+      alert('Please a style from each facial feature');
+    }
+
+    console.log(selected);
+
+    let arr = [{ portraitUrl: portrait }];
+
+    for (var key in selected) {
+      const item = selected[key];
+      const obj = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
+      arr.push(obj);
+    }
+
+    console.log('arr', arr);
+
   };
 
   done = () => {
@@ -100,12 +122,28 @@ class App extends Component {
     this.open();
   };
 
+  notApplicable = () => {
+    this.nextPortrait();
+  };
+
   nextPortrait = () => {
+    const { resetSelect, fetchPortrait } = this.props;
+
     this.setState({loading: true});
-    this.props.fetchPortrait().then(() => {
-      this.setState({loading: false})
+    fetchPortrait().then(() => {
+      this.setState({loading: false});
+      resetSelect();
     });
-  }
+  };
+
+  objectSize = (obj) => {
+    let size = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) size++;
+    }
+
+    return size;
+  };
 }
 
 const mapStateProps = ({landmarkSelect, portrait}) => ({
@@ -113,6 +151,6 @@ const mapStateProps = ({landmarkSelect, portrait}) => ({
   portrait: portrait.portraitURL
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect }, dispatch);
 
 export default connect(mapStateProps, mapDispatchToProps)(App);
