@@ -6,7 +6,7 @@ import {Image, Button, Modal, FormGroup, FormControl} from 'react-bootstrap/lib'
 import tickImg from '../../images/tick.png';
 import loadingGif from '../../images/loading.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
-import { fetchPortrait } from '../../actions/portrait-actions';
+import { fetchPortrait, updatePortrait } from '../../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
 
@@ -94,27 +94,24 @@ class App extends Component {
   }
 
   movePage = () => {
-    const { selected, portrait } = this.props;
+    const { selected, portrait,updatePortrait } = this.props;
 
     if (this.objectSize(selected) > 4) {
       this.setState({page: this.state.page+1});
+
+      let obj = { portraitUrl: portrait };
+
+      for (let key in selected) {
+        const item = selected[key];
+        obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
+      }
+
+      updatePortrait(obj);
+
       this.nextPortrait();
     } else {
       alert('Please a style from each facial feature');
     }
-
-    console.log(selected);
-
-    let arr = [{ portraitUrl: portrait }];
-
-    for (var key in selected) {
-      const item = selected[key];
-      const obj = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
-      arr.push(obj);
-    }
-
-    console.log('arr', arr);
-
   };
 
   done = () => {
@@ -151,6 +148,6 @@ const mapStateProps = ({landmarkSelect, portrait}) => ({
   portrait: portrait.portraitURL
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait }, dispatch);
 
 export default connect(mapStateProps, mapDispatchToProps)(App);

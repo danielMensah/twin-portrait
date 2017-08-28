@@ -1,3 +1,4 @@
 export default {
-  PORTRAIT: '/getPortrait'
+  PORTRAIT: '/getPortrait',
+  UPDATE_PORTRAIT: '/updatePortrait'
 }

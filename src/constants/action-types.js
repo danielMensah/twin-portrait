@@ -3,6 +3,7 @@ export default {
   RESET_SELECT: 'reset_select',
 
   PORTRAIT: {
-    FETCH_PORTRAIT: 'fetch_portrait'
+    FETCH_PORTRAIT: 'fetch_portrait',
+    UPDATE_PORTRAIT: 'update_portrait'
   }
 }

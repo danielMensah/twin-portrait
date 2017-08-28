@@ -11,8 +11,12 @@ export default function(url, type, options = {}) {
       type: type,
       url: generateUrl(url),
       data: options,
-      success: (data) => resolved(JSON.parse(data)),
-      error: (data) => rejected(data)
+      success: (data) => {
+        console.log('data ', data);
+        resolved(JSON.parse(data))},
+      error: (data) => {
+        rejected(data)
+      }
     });
   });
 }
