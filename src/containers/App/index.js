@@ -6,7 +6,7 @@ import {Image, Button, Modal, FormGroup, FormControl} from 'react-bootstrap/lib'
 import tickImg from '../../images/tick.png';
 import loadingGif from '../../images/loading.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
-import { fetchPortrait, updatePortrait } from '../../actions/portrait-actions';
+import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
 
@@ -133,7 +133,14 @@ class App extends Component {
   };
 
   notApplicable = () => {
-    this.nextPortrait();
+    const { setNotApplicable, portrait } = this.props;
+    const obj = { portraitUrl: portrait };
+
+    this.startLoading();
+    setNotApplicable(obj).then(() => {
+      this.nextPortrait();
+    })
+
   };
 
   nextPortrait = () => {
@@ -161,6 +168,6 @@ const mapStateProps = ({landmarkSelect, portrait}) => ({
   portrait: portrait.portraitURL
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait, setNotApplicable }, dispatch);
 
 export default connect(mapStateProps, mapDispatchToProps)(App);

@@ -35,3 +35,20 @@ export function updatePortrait(obj) {
 
   }
 }
+
+export function setNotApplicable(portraitUrl) {
+
+  return (dispatch) => {
+    let request = ajax(ApiRoutes.SET_NOT_APPLICABLE, 'POST', portraitUrl);
+
+    request.then((response) => {
+      dispatch({
+        type: ActionTypes.PORTRAIT.SET_NOT_APPLICABLE,
+        payload: response
+      })
+    });
+
+    return request;
+
+  }
+}
