@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import App from './containers/App'
+import Home from './components/home'
 import configure from './store'
 
 const store = configure();
@@ -14,6 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}/>
+      <Route path="/matchPortrait" component={Home}/>
     </Router>
   </Provider>,
   document.getElementById('root')

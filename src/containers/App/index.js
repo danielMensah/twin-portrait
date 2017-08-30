@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import styles from './app.css';
-import {Image, Button, Modal, FormGroup, FormControl} from 'react-bootstrap/lib';
-import tickImg from '../../images/tick.png';
+import {Image, Button} from 'react-bootstrap/lib';
 import loadingGif from '../../images/loading.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
+import RegistrationModal from '../../components/modals/registration-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
@@ -22,7 +23,9 @@ class App extends Component {
   }
 
   close = () => {
-    this.setState({ showModal: false });
+    this.setState({ showModal: false }, () => {
+      browserHistory.push('/')
+    });
   };
 
   open = () => {
@@ -44,8 +47,9 @@ class App extends Component {
   }
 
   render() {
-    const {page, loading} = this.state;
+    const {page, loading, showModal} = this.state;
     const { portrait } = this.props;
+    const currentPage = page+1;
 
     if (loading) {
       return (
@@ -55,19 +59,6 @@ class App extends Component {
       )
     }
 
-    const currentPage = page+1;
-
-    const formInstance = (
-      <form>
-        <FormGroup>
-          <FormControl type="email" placeholder="Email..." />
-        </FormGroup>
-
-        <Button className={styles.submitButton} type="submit">
-          Submit
-        </Button>
-      </form>
-    );
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.container}>
@@ -80,26 +71,21 @@ class App extends Component {
                   <Button bsSize="large" bsStyle="primary" onClick={this.movePage}>Next ({currentPage}/10)</Button>
                   <Button bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
                 </div>}
+              <Button onClick={this.testModel}>Testing</Button>
             </span>
           </div>
           <div className={styles.landmarks}>
             <LandmarksField/>
           </div>
         </div>
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton />
-          <Modal.Body className={styles.modalBody}>
-            <Image src={tickImg} className={styles.tickImg}/>
-            <h2>Awesome!</h2>
-            <br/>
-            <br/>
-            <p>Enter your email below and you will be sent a promo code to use TwinPortrait for free once completed</p>
-            {formInstance}
-          </Modal.Body>
-        </Modal>
+        { showModal ? <RegistrationModal show={showModal} onHide={this.close} /> : null}
       </div>
     )
   }
+
+  testModel = () => {
+    this.open();
+  };
 
   movePage = () => {
     const { selected, portrait,updatePortrait } = this.props;

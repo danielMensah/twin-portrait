@@ -1,0 +1,29 @@
+.modalBody {
+    text-align: center;
+}
+
+.modalBody h2, .modalBody p {
+    color: rgb(147, 147, 147);
+}
+
+.tickImg {
+    height: 100px;
+}
+
+.submitButton {
+    background: #82c915;
+    color: white;
+}
+
+.promoCode {
+    border: 1px solid rgba(128, 128, 128, 0.34);
+    padding: 10px 0;
+    font-size: xx-large;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.34);
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #ff2d2b;
+}

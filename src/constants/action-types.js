@@ -6,5 +6,9 @@ export default {
     FETCH_PORTRAIT: 'fetch_portrait',
     UPDATE_PORTRAIT: 'update_portrait',
     SET_NOT_APPLICABLE: 'set_not_applicable'
+  },
+
+  USER: {
+    REGISTER_USER: '/registerUser'
   }
 }
