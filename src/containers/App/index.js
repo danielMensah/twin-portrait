@@ -59,18 +59,18 @@ class App extends Component {
       )
     }
 
+    const submitNextButton = page > 8 ?
+      <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
+      <Button onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">Next ({currentPage}/10)</Button>;
+
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
               <Image id="avatar" src={portrait} />
-              { page > 8 ?
-                <Button onClick={this.done} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
-                <div className={styles.buttons}>
-                  <Button bsSize="large" bsStyle="primary" onClick={this.movePage}>Next ({currentPage}/10)</Button>
-                  <Button bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
-                </div>}
+              {submitNextButton}
+              <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
               <Button onClick={this.testModel}>Testing</Button>
             </span>
           </div>
@@ -87,8 +87,9 @@ class App extends Component {
     this.open();
   };
 
-  movePage = () => {
-    const { selected, portrait,updatePortrait } = this.props;
+  updatePortrait = () => {
+    const { selected, portrait, updatePortrait } = this.props;
+    const { page } = this.state;
 
     if (this.objectSize(selected) > 4) {
       let obj = { portraitUrl: portrait };
@@ -104,18 +105,19 @@ class App extends Component {
           this.stopLoading();
           alert('there was an error when submitting, please try to resubmit the form again')
         } else  {
-          this.setState({page: this.state.page+1});
-          this.nextPortrait();
+          if (page > 8) {
+            this.stopLoading();
+            console.log('hello', this.props.selected);
+            this.open();
+          } else {
+            this.setState({page: this.state.page+1});
+            this.nextPortrait();
+          }
         }
       });
     } else {
       alert('Please a style from each facial feature');
     }
-  };
-
-  done = () => {
-    console.log('hello', this.props.selected);
-    this.open();
   };
 
   notApplicable = () => {

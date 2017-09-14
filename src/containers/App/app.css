@@ -29,7 +29,7 @@
   flex-direction: column;
 }
 
-.buttons button, .submit {
+.next, .submit, .notApplicable {
   margin-top: 15px;
 }
 
