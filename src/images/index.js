@@ -8,12 +8,12 @@ import almond from './eyes/EYE_ALMOND.png';
 import deepSet from './eyes/EYE_DEEP_SET.png';
 import downturned from './eyes/EYE_DOWNTURNED.png';
 import hooded from './eyes/EYE_HOODED.png';
-import sleepy from './eyes/EYE_SLEEPY.png';
+// import sleepy from './eyes/EYE_SLEEPY.png';
 import flatShaped from './eye-brows/EB_FLAT_SHAPED.png';
 import hardAngled from './eye-brows/EB_HARD_ANGLED.png';
 import rounded from './eye-brows/EB_ROUNDED.png';
-import sShaped from './eye-brows/EB_S_SHAPED.png';
-import softAngled from './eye-brows/EB_SOFT_ANGLED.png';
+// import sShaped from './eye-brows/EB_S_SHAPED.png';
+// import softAngled from './eye-brows/EB_SOFT_ANGLED.png';
 import beestung from './lips/LIPS_BEESTUNG.png';
 import cupidBow from './lips/LIPS_CUPID_BOW.png';
 import glamour from './lips/LIPS_GLAMOUR.png';
@@ -23,47 +23,47 @@ import smear from './lips/LIPS_SMEAR.png';
 import thin from './lips/LIPS_THIN.png';
 import uniLip from './lips/LIPS_UNI-LIP.png';
 import aquiline from './noses/NOSE_AQUILINE.png';
-import button from './noses/NOSE_BUTTON.png';
+// import button from './noses/NOSE_BUTTON.png';
 import flat from './noses/NOSE_FLAT.png';
-import grecian from './noses/NOSE_GRECIAN.png';
+// import grecian from './noses/NOSE_GRECIAN.png';
 import hooked from './noses/NOSE_HOOKED.png';
-import roman from './noses/NOSE_ROMAN.png';
+// import roman from './noses/NOSE_ROMAN.png';
 import snub from './noses/NOSE_SNUB.png';
-import upturned from './noses/NOSE_UPTURNED.png';
+// import upturned from './noses/NOSE_UPTURNED.png';
 
 export const NOSES = [
   {
     img: aquiline,
     name: 'Aquiline'
   },
-  {
-    img: button,
-    name: 'Button'
-  },
+  // {
+  //   img: button,
+  //   name: 'Button'
+  // },
   {
     img: flat,
     name: 'Flat'
   },
-  {
-    img: grecian,
-    name: 'Grecian'
-  },
+  // {
+  //   img: grecian,
+  //   name: 'Grecian'
+  // },
   {
     img: hooked,
-    name: 'Hooked'
+    name: 'Roman/Hooked'
   },
-  {
-    img: roman,
-    name: 'Roman'
-  },
+  // {
+  //   img: roman,
+  //   name: 'Roman'
+  // },
   {
     img: snub,
     name: 'Snub'
-  },
-  {
-    img: upturned,
-    name: 'Upturned'
   }
+  // {
+  //   img: upturned,
+  //   name: 'Upturned'
+  // }
 ];
 
 export const LIPS = [
@@ -108,20 +108,20 @@ export const EYEBROWS = [
   },
   {
     img: hardAngled,
-    name: 'Hard Angled'
+    name: 'Angled'
   },
   {
     img: rounded,
     name: 'Rounded'
-  },
-  {
-    img: sShaped,
-    name: 'S Shaped'
-  },
-  {
-    img: softAngled,
-    name: 'Soft Angled'
   }
+  // {
+  //   img: sShaped,
+  //   name: 'S Shaped'
+  // },
+  // {
+  //   img: softAngled,
+  //   name: 'Soft Angled'
+  // }
 ];
 
 export const FACES = [
@@ -154,7 +154,7 @@ export const FACES = [
 export const EYES = [
   {
     img: almond,
-    name: 'Almond'
+    name: 'Monolid/Almond'
   },
   {
     img: deepSet,
@@ -167,9 +167,9 @@ export const EYES = [
   {
     img: hooded,
     name: 'Hooded'
-  },
-  {
-    img: sleepy,
-    name: 'Sleepy'
   }
+  // {
+  //   img: sleepy,
+  //   name: 'Sleepy'
+  // }
 ];

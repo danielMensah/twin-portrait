@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
+import ReactDOM from 'react-dom';
 import styles from './app.css';
-import {Image, Button} from 'react-bootstrap/lib';
+import { Image, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
 import loadingGif from '../../images/loading.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
 import RegistrationModal from '../../components/modals/registration-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
+import ReactImageMagnify from 'react-image-magnify';
 
 class App extends Component {
 
@@ -48,7 +50,7 @@ class App extends Component {
 
   render() {
     const {page, loading, showModal} = this.state;
-    const { portrait } = this.props;
+    const { portraitUrl } = this.props;
     const currentPage = page+1;
 
     if (loading) {
@@ -59,6 +61,21 @@ class App extends Component {
       )
     }
 
+    const testImage = <ReactImageMagnify {...{
+      smallImage: {
+        alt: 'Wristwatch by Ted Baker London',
+        isFluidWidth: true,
+        src: portraitUrl,
+        sizes: '(min-width: 480px) 30vw, 80vw'
+      },
+      largeImage: {
+        alt: '',
+        src: portraitUrl,
+        width: 1400,
+        height: 1800
+      }
+    }} />;
+
     const submitNextButton = page > 8 ?
       <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
       <Button onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">Next ({currentPage}/10)</Button>;
@@ -68,13 +85,38 @@ class App extends Component {
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
-              <Image id="avatar" src={portrait} />
+              {testImage}
               {submitNextButton}
               <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
               <Button onClick={this.testModel}>Testing</Button>
             </span>
           </div>
           <div className={styles.landmarks}>
+            <div className={styles.extraInfo}>
+              <FormGroup className={styles.form} controlId="formControlsSelect">
+                <div>
+                  <ControlLabel>Select gender</ControlLabel>
+                  <FormControl ref={(gender) => this.gender = gender} componentClass="select" placeholder="select">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </FormControl>
+                </div>
+                <div>
+                  <ControlLabel>Does the portrait have a mustache?</ControlLabel>
+                  <FormControl ref={(mustache) => this.mustache = mustache} componentClass="select" placeholder="select">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                  </FormControl>
+                </div>
+                <div>
+                  <ControlLabel>Does the portrait have a beard?</ControlLabel>
+                  <FormControl ref={(beard) => this.beard = beard} componentClass="select" placeholder="select">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                  </FormControl>
+                </div>
+              </FormGroup>
+            </div>
             <LandmarksField/>
           </div>
         </div>
@@ -88,11 +130,20 @@ class App extends Component {
   };
 
   updatePortrait = () => {
-    const { selected, portrait, updatePortrait } = this.props;
+    const { selected, portraitUrl, updatePortrait } = this.props;
     const { page } = this.state;
 
-    if (this.objectSize(selected) > 4) {
-      let obj = { portraitUrl: portrait };
+    let gender = ReactDOM.findDOMNode(this.gender);
+    gender = gender.options[gender.selectedIndex].value;
+
+    let mustache = ReactDOM.findDOMNode(this.mustache);
+    mustache = mustache.options[mustache.selectedIndex].value;
+
+    let beard = ReactDOM.findDOMNode(this.beard);
+    beard = beard.options[beard.selectedIndex].value;
+
+    if (this.objectSize(selected) > 2) {
+      let obj = { portraitUrl, gender, mustache, beard };
 
       for (let key in selected) {
         const item = selected[key];
@@ -107,7 +158,6 @@ class App extends Component {
         } else  {
           if (page > 8) {
             this.stopLoading();
-            console.log('hello', this.props.selected);
             this.open();
           } else {
             this.setState({page: this.state.page+1});
@@ -121,8 +171,8 @@ class App extends Component {
   };
 
   notApplicable = () => {
-    const { setNotApplicable, portrait } = this.props;
-    const obj = { portraitUrl: portrait };
+    const { setNotApplicable, portraitUrl } = this.props;
+    const obj = { portraitUrl };
 
     this.startLoading();
     setNotApplicable(obj).then(() => {
@@ -153,7 +203,7 @@ class App extends Component {
 
 const mapStateProps = ({landmarkSelect, portrait}) => ({
   selected: landmarkSelect,
-  portrait: portrait.portraitURL
+  portraitUrl: portrait.portraitURL
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait, setNotApplicable }, dispatch);

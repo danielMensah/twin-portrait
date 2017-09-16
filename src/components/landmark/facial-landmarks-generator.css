@@ -23,3 +23,9 @@
     border-radius: 15px !important;
     margin: 10px 20px 10px 0;
 }
+
+.help {
+    margin: auto 30px auto auto;
+    height: 55px;
+    cursor: pointer;
+}

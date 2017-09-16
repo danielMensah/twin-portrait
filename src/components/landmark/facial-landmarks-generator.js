@@ -7,6 +7,8 @@ import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap/lib';
 import { FACES, EYES, EYEBROWS, LIPS, NOSES } from '../../images/index';
 import { selectLandmark } from '../../actions/landmark-select-actions';
 import FontAwesome from 'react-fontawesome';
+import HelpImg from '../../images/help.png';
+import HelpModal from '../modals/help-modal';
 
 let newArr = [];
 
@@ -16,7 +18,8 @@ class Faces extends Component {
     super(prop);
     this.state = {
       objArr: [],
-      sectionOpen: false
+      sectionOpen: false,
+      showModalHelp: false
     }
   }
 
@@ -50,6 +53,7 @@ class Faces extends Component {
     };
 
     const { landmark } = this.props;
+    const { showModalHelp } = this.state;
     const landmarkObj = obj[landmark];
 
     return (
@@ -64,9 +68,19 @@ class Faces extends Component {
             </ToggleButton>
           )
         })}
+        <Image onClick={this.openHelpModal} className={styles.help} src={HelpImg}/>
+        { showModalHelp ? <HelpModal show={showModalHelp} onHide={this.closeHelpModal} landmark={landmark}/> : null}
       </ToggleButtonGroup>
     )
   }
+
+  openHelpModal = () => {
+    this.setState({ showModalHelp: true })
+  };
+
+  closeHelpModal = () => {
+    this.setState({ showModalHelp: false });
+  };
 
   handleSectionOpen = () => {
     const { sectionOpen } = this.state;

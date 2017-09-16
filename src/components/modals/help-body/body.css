@@ -1,0 +1,36 @@
+.eyebrows {
+    height: 265px;
+    width: 465px;
+}
+
+.eye {
+    height: 340px;
+    width: 350px;
+}
+
+.nose {
+    height: 400px;
+    width: 350px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+}
+
+.block:not(:first-child) {
+    margin-top: 30px;
+}
+
+.block2 {
+    display: flex;
+}
+
+.block2 p {
+    width: 320px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 50px;
+    font-size: 19px;
+}

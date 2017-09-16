@@ -6,7 +6,7 @@
 
 .container {
   display: flex;
-  margin: 20px;
+  margin: 40px;
 }
 
 .helper {
@@ -16,11 +16,13 @@
 
 .portraits, .helper img {
   z-index: 10;
+  margin-right: 5%;
 }
 
 .landmarks {
-  margin-left: 5%;
+  margin-left: auto;
   width: 60%;
+  margin-top: 30px;
 }
 
 .buttons {
@@ -36,4 +38,16 @@
 .loadingContainer {
   height: 100%;
   text-align: center;
+}
+
+.form {
+  display: flex;
+}
+
+.form div:not(:first-child) {
+  margin-left: 50px;
+}
+
+.form div select {
+  width: 100px;
 }
