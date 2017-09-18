@@ -54,9 +54,13 @@ export function setNotApplicable(portraitUrl) {
 }
 
 export function fetchPortraitInfo(id) {
-
+let head = {
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
+};
   return (dispatch) => {
-    let request = ajax(`${ApiRoutes.FETCH_PORTRAIT_INFO}${id}`, 'GET');
+    let request = ajax(`${ApiRoutes.FETCH_PORTRAIT_INFO}${id}`, 'GET', {}, true, head);
 
     request.then((response) => {
       console.log(response);
