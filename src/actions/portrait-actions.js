@@ -52,3 +52,22 @@ export function setNotApplicable(portraitUrl) {
 
   }
 }
+
+export function fetchPortraitInfo(id) {
+
+  return (dispatch) => {
+    let request = ajax(`${ApiRoutes.FETCH_PORTRAIT_INFO}${id}`, 'GET');
+
+    request.then((response) => {
+      console.log(response);
+      dispatch({
+        type: ActionTypes.PORTRAIT.FETCH_PORTRAIT_INFO,
+        payload: response
+      })
+    });
+
+    return request;
+
+  }
+
+}

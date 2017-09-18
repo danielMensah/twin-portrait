@@ -9,6 +9,7 @@ import loadingGif from '../../images/loading.gif';
 import rotateLandscape from '../../images/rotate_landscape.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
 import RegistrationModal from '../../components/modals/registration-modal';
+import PortraitInfoModal from '../../components/modals/portrait-info/portrait-info-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
@@ -21,7 +22,8 @@ class App extends Component {
     this.state = {
       page: 0,
       showModal: false,
-      loading: true
+      loading: true,
+      showInfoModal: false
     }
   }
 
@@ -31,8 +33,16 @@ class App extends Component {
     });
   };
 
+  closeInfoModal = () => {
+    this.setState({ showInfoModal: false });
+  };
+
   open = () => {
     this.setState({ showModal: true });
+  };
+
+  openInfoModal = () => {
+    this.setState({ showInfoModal: true });
   };
 
   startLoading = () => {
@@ -50,8 +60,8 @@ class App extends Component {
   }
 
   render() {
-    const {page, loading, showModal} = this.state;
-    const { portraitUrl } = this.props;
+    const {page, loading, showModal, showInfoModal} = this.state;
+    const { portraitUrl, portraitId } = this.props;
     const currentPage = page+1;
 
     if (loading) {
@@ -93,7 +103,7 @@ class App extends Component {
               {imagePortrait}
               {submitNextButton}
               <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
-              <Button onClick={this.testModel}>Testing</Button>
+              <Button onClick={this.openInfoModal}>Testing</Button>
             </span>
           </div>
           <div className={styles.landmarks}>
@@ -126,6 +136,7 @@ class App extends Component {
           </div>
         </div>
         { showModal ? <RegistrationModal show={showModal} onHide={this.close} /> : null}
+        { showInfoModal ? <PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} /> : null}
       </div>
     )
   }
@@ -208,7 +219,8 @@ class App extends Component {
 
 const mapStateProps = ({landmarkSelect, portrait}) => ({
   selected: landmarkSelect,
-  portraitUrl: portrait.portraitURL
+  portraitUrl: portrait.portraitURL,
+  portraitId: portrait.id
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait, setNotApplicable }, dispatch);
