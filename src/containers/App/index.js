@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import styles from './app.css';
 import { Image, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
 import loadingGif from '../../images/loading.gif';
+import rotateLandscape from '../../images/rotate_landscape.gif';
 import LandmarksField from '../../components/landmark/landmarks-field';
 import RegistrationModal from '../../components/modals/registration-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
@@ -61,7 +62,7 @@ class App extends Component {
       )
     }
 
-    const testImage = <ReactImageMagnify {...{
+    const imagePortrait = <ReactImageMagnify {...{
       smallImage: {
         alt: 'Wristwatch by Ted Baker London',
         isFluidWidth: true,
@@ -82,10 +83,14 @@ class App extends Component {
 
     return (
       <div id="app-container" className={styles.appContainer}>
+        <div className={styles.turnLandscape}>
+          <Image className={styles.rotateLandscape} src={rotateLandscape}/>
+          <span>Rotate your device to landscape</span>
+        </div>
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
-              {testImage}
+              {imagePortrait}
               {submitNextButton}
               <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
               <Button onClick={this.testModel}>Testing</Button>
