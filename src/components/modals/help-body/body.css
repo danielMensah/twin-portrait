@@ -28,9 +28,6 @@
 
 .block2 p {
     width: 320px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: 50px;
+    margin: auto auto auto 50px;
     font-size: 19px;
 }

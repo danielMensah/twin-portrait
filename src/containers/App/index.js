@@ -94,21 +94,21 @@ class App extends Component {
           <div className={styles.landmarks}>
             <div className={styles.extraInfo}>
               <FormGroup className={styles.form} controlId="formControlsSelect">
-                <div>
+                <div className={styles.gender}>
                   <ControlLabel>Select gender</ControlLabel>
                   <FormControl ref={(gender) => this.gender = gender} componentClass="select" placeholder="select">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </FormControl>
                 </div>
-                <div>
+                <div className={styles.mustache}>
                   <ControlLabel>Does the portrait have a mustache?</ControlLabel>
                   <FormControl ref={(mustache) => this.mustache = mustache} componentClass="select" placeholder="select">
                     <option value="false">No</option>
                     <option value="true">Yes</option>
                   </FormControl>
                 </div>
-                <div>
+                <div className={styles.beard}>
                   <ControlLabel>Does the portrait have a beard?</ControlLabel>
                   <FormControl ref={(beard) => this.beard = beard} componentClass="select" placeholder="select">
                     <option value="false">No</option>

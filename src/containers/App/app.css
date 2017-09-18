@@ -9,6 +9,16 @@
   margin: 40px;
 }
 
+@media screen and (orientation: landscape) {
+  .container {
+    margin: 40px 0 40px 40px;
+  }
+
+  .beard {
+    margin-right: 20px;
+  }
+}
+
 .helper {
   display: flex;
   flex-direction: column;
@@ -42,6 +52,7 @@
 
 .form {
   display: flex;
+  width: 115%;
 }
 
 .form div:not(:first-child) {
