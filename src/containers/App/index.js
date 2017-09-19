@@ -14,6 +14,7 @@ import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/p
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
 import ReactImageMagnify from 'react-image-magnify';
+import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
 
@@ -101,6 +102,9 @@ class App extends Component {
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
               {imagePortrait}
+              <div onClick={this.openInfoModal} className={styles.more}>
+                <FontAwesome className={styles.moreIcon} name="info-circle" size='2x' />
+              </div>
               {submitNextButton}
               <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
               <Button onClick={this.openInfoModal}>Testing</Button>

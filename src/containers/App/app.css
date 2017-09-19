@@ -101,3 +101,20 @@
     margin-right: 80px;
   }
 }
+
+.more {
+  width: 50px;
+  height: 50px;
+  background-color: #2196F3;
+  border-radius: 50%;
+  box-shadow: 0 6px 8px #888888;
+  margin: -30px auto 0 auto;
+  z-index: 10;
+  text-align: center;
+  cursor: pointer;
+}
+
+.moreIcon {
+  color: #ffffff;
+  margin-top: 11px;
+}
