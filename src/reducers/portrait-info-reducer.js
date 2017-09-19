@@ -5,7 +5,7 @@ const initialState = {};
 export default function(state = initialState, action = {}) {
   switch(action.type) {
 
-    case ActionTypes.PORTRAIT.FETCH_PORTRAIT:
+    case ActionTypes.PORTRAIT.FETCH_PORTRAIT_INFO:
       return { ...state, ...action.payload };
 
     default:

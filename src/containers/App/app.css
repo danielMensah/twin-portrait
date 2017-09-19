@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
 .appContainer {
   display: flex;
   flex-direction: column;
-  font-family: Source Sans Pro,sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 .container {

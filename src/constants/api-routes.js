@@ -1,8 +1,8 @@
 export default {
-  PORTRAIT: 'https://twinportrait-server.herokuapp.com/getPortrait',
-  UPDATE_PORTRAIT: 'https://twinportrait-server.herokuapp.com/updatePortrait',
-  SET_NOT_APPLICABLE: 'https://twinportrait-server.herokuapp.com/setNotApplicable',
-  FETCH_PORTRAIT_INFO: 'https://artsexperiments.withgoogle.com/tags/api/og/search/',
+  PORTRAIT: 'getPortrait',
+  UPDATE_PORTRAIT: 'updatePortrait',
+  SET_NOT_APPLICABLE: 'setNotApplicable',
+  FETCH_PORTRAIT_INFO: 'getPortraitInfo',
 
-  REGISTER_USER: 'https://twinportrait-server.herokuapp.com/registerUser'
+  REGISTER_USER: 'registerUser'
 }
