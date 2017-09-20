@@ -4,6 +4,7 @@ import styles from './home.css';
 import { Image, Button } from 'react-bootstrap/lib';
 import Compare from '../images/comparison.jpg';
 import { browserHistory } from 'react-router';
+import rotateLandscape from '../images/rotate_landscape.gif';
 
 class Home extends Component {
 
@@ -11,6 +12,10 @@ class Home extends Component {
 
     return (
       <div>
+        <div className={styles.turnLandscape}>
+          <Image className={styles.rotateLandscape} src={rotateLandscape}/>
+          <span>Rotate your device to landscape</span>
+        </div>
         <div className={styles.firstHalf}>
           <div className={styles.header}>
             <div className={styles.tptext}>Twin Portrait</div>
