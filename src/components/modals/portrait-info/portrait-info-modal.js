@@ -32,7 +32,7 @@ class PortraitInfoModal extends Component {
   }
 
   render() {
-    const { show, onHide, portraitInfo, portraitUrl } = this.props;
+    const { show, onHide, portraitInfo, portraitUrl, portraitId } = this.props;
     const { title, creator, date_created, physical_dimensions, external_link, external_link_text } = portraitInfo;
     const { loading } = this.state;
 
@@ -67,12 +67,11 @@ class PortraitInfoModal extends Component {
                   <ControlLabel>Physical Dimensions: </ControlLabel>
                   <span> {physical_dimensions}</span>
                 </div>
-                { external_link === 'Unknown' ? null :
-                  <div className={styles.externalLink}>
-                    <ControlLabel>Link: </ControlLabel>
-                    <a target="blank" href={external_link}> {external_link_text}</a>
-                  </div>
-                }
+                <div className={styles.externalLink}>
+                  <ControlLabel>Link: </ControlLabel>
+                  <a target="blank" href={external_link === "Unknown" ? `https://www.google.com/culturalinstitute/beta/asset/${portraitId}` : external_link}>
+                    {external_link_text === "Unknown" ? 'Click here for more information' : external_link_text}</a>
+                </div>
               </div>
             </div>
           }
@@ -85,7 +84,8 @@ class PortraitInfoModal extends Component {
 
 const mapStateProps = ({portrait, portraitInfo}) => ({
   portraitInfo: portraitInfo,
-  portraitUrl: portrait.portraitURL
+  portraitUrl: portrait.portraitURL,
+  portraitId: portrait.id
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortraitInfo }, dispatch);
