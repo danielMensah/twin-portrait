@@ -20,7 +20,7 @@ class JoyrideTour extends Component {
         steps={Steps}
         locale={{last: 'Start now'}}
         autoStart={true}
-        run={!LocalStorage.getItem('tourCompleted')} // or some other boolean for when you want to start it
+        run={LocalStorage.getItem('tourCompleted')} // or some other boolean for when you want to start it
         showStepsProgress={true}
         type="continuous"
         callback={(callback) => callback.type === 'finished' ? this.tourCompleted : null}
