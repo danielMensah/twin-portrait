@@ -48,29 +48,31 @@ class PortraitInfoModal extends Component {
                 <div className={styles.more}>
                   <a href={portraitUrl} target="blank"><Fab size="2x" icon="external-link"/></a>
                 </div>
-                <Image src={portraitUrl}/>
+                <Image src={portraitUrl} responsive/>
               </div>
               <div className={styles.details}>
-                <div className={styles.title}>
-                  <ControlLabel>Title: </ControlLabel>
-                  <span> {title}</span>
-                </div>
-                <div className={styles.creator}>
-                  <ControlLabel>Creator: </ControlLabel>
-                  <span> {creator}</span>
-                </div>
-                <div className={styles.date}>
-                  <ControlLabel>Date Created: </ControlLabel>
-                  <span> {date_created}</span>
-                </div>
-                <div className={styles.dimensions}>
-                  <ControlLabel>Physical Dimensions: </ControlLabel>
-                  <span> {physical_dimensions}</span>
-                </div>
-                <div className={styles.externalLink}>
-                  <ControlLabel>Link: </ControlLabel>
-                  <a target="blank" href={external_link === "Unknown" ? `https://www.google.com/culturalinstitute/beta/asset/${portraitId}` : external_link}>
-                    {external_link_text === "Unknown" ? 'Click here for more information' : external_link_text}</a>
+                <div className={styles.subDetails}>
+                  <div className={styles.title}>
+                    <ControlLabel>Title: </ControlLabel>
+                    <span> {title}</span>
+                  </div>
+                  <div className={styles.creator}>
+                    <ControlLabel>Creator: </ControlLabel>
+                    <span> {creator}</span>
+                  </div>
+                  <div className={styles.date}>
+                    <ControlLabel>Date Created: </ControlLabel>
+                    <span> {date_created}</span>
+                  </div>
+                  <div className={styles.dimensions}>
+                    <ControlLabel>Physical Dimensions: </ControlLabel>
+                    <span> {physical_dimensions}</span>
+                  </div>
+                  <div className={styles.externalLink}>
+                    <ControlLabel>Link: </ControlLabel>
+                    <a target="blank" href={external_link === "Unknown" ? `https://www.google.com/culturalinstitute/beta/asset/${portraitId}` : external_link}>
+                      {external_link_text === "Unknown" ? 'Click here for more information' : external_link_text}</a>
+                  </div>
                 </div>
               </div>
             </div>

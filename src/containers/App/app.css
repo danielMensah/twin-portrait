@@ -19,6 +19,7 @@
   .beard {
     margin-right: 20px;
   }
+
 }
 
 .helper {
@@ -46,8 +47,8 @@
 .next, .submit, .notApplicable {
   margin-top: 15px;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   box-shadow: 0 6px 8px #888888;
   border: none;
 }
@@ -114,6 +115,11 @@
   .landmarks {
     margin-right: 80px;
   }
+}
+
+@media only screen and (max-width: 500px) {
+
+
 }
 
 .more {

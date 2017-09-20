@@ -109,7 +109,7 @@ class App extends Component {
               <div onClick={this.openInfoModal} className={styles.more}>
                 <Fab size="2x" icon="info-circle" />
               </div>
-              <div>
+              <div className={styles.groupBtn}>
                 <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
                   <FontAwesome className={styles.notAppIcon} name="times" size="2x" />
                 </Button>
