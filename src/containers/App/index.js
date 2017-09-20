@@ -16,6 +16,7 @@ import KeyGenerator from '../../util/landmark-key-generator';
 import ReactImageMagnify from 'react-image-magnify';
 import Fab from '../../components/floating-button';
 import FontAwesome from 'react-fontawesome';
+import JoyrideTour from './joyride-tour';
 
 class App extends Component {
 
@@ -91,7 +92,7 @@ class App extends Component {
 
     const submitNextButton = page > 8 ?
       <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
-      <Button onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
+      <Button id="next-portrait" onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
         <FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" />
       </Button>;
 
@@ -104,24 +105,26 @@ class App extends Component {
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
-              <span className={styles.pageTrack} >{currentPage}/10</span>
-              {imagePortrait}
-              <div onClick={this.openInfoModal} className={styles.more}>
+              <span id="page-track" className={styles.pageTrack} >{currentPage}/10</span>
+              <span id="image-portrait">
+                {imagePortrait}
+              </span>
+              <div id="portrait-info" onClick={this.openInfoModal} className={styles.more}>
                 <Fab size="2x" icon="info-circle" />
               </div>
               <div className={styles.groupBtn}>
-                <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
+                <Button id="not-applicable" className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
                   <FontAwesome className={styles.notAppIcon} name="times" size="2x" />
                 </Button>
                 {submitNextButton}
               </div>
-              {/*<Button onClick={this.openInfoModal}>Testing</Button>*/}
+              {/*<Button onClick={this.testFinishModal}>Testing</Button>*/}
             </span>
           </div>
-          <div className={styles.landmarks}>
+          <div id="landmark" className={styles.landmarks}>
             <div className={styles.extraInfo}>
               <FormGroup className={styles.form} controlId="formControlsSelect">
-                <div className={styles.gender}>
+                <div id="area-chart" className={styles.gender}>
                   <ControlLabel>Select gender</ControlLabel>
                   <FormControl ref={(gender) => this.gender = gender} componentClass="select" placeholder="select">
                     <option value="male">Male</option>
@@ -149,11 +152,12 @@ class App extends Component {
         </div>
         { showModal ? <RegistrationModal show={showModal} onHide={this.close} /> : null}
         { showInfoModal ? <PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} /> : null}
+        <JoyrideTour/>
       </div>
     )
   }
 
-  testModel = () => {
+  testFinishModal = () => {
     this.open();
   };
 

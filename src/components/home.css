@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial|Righteous');
+
+.firstHalf {
+    height: 600px;
+    width: 100%;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    color: white;
+    opacity: 0.95;
+    font-family: 'Righteous', sans-serif;
+}
+
+.tptext {
+    margin: 20px auto 0 auto;
+    font-size: 65px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.compare {
+    width: 555px;
+    margin: 15px auto 0 auto;
+}
+
+.text1, .text2, .comingSoon {
+    font-family: 'Questrial', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+.comingSoon {
+    font-weight: bold;
+}
+
+.text1 {
+    margin-top: 40px;
+}
+
+.startNow {
+    background-color: #e86a6c;
+    margin: 31px auto 0 auto;
+    color: #fff;
+    border: none;
+    font-size: 35px;
+}
+
+.startNow:hover, .startNow:focus {
+    background-color: #bc5e5e;
+    color: #ffffff;
+}
+
+.buttonDiv {
+    display: flex;
+    font-family: 'Questrial', sans-serif;
+}
+
+.secondHalf {
+    margin: 100px;
+}

@@ -68,8 +68,8 @@ class Faces extends Component {
             </ToggleButton>
           )
         })}
-        <Image onClick={this.openHelpModal} className={styles.help} src={HelpImg}/>
-        { showModalHelp ? <HelpModal show={showModalHelp} onHide={this.closeHelpModal} landmark={landmark}/> : null}
+        <Image id={`help-${landmark}`} onClick={this.openHelpModal} className={styles.help} src={HelpImg}/>
+        { showModalHelp ? <HelpModal id={`help-${landmark}`} show={showModalHelp} onHide={this.closeHelpModal} landmark={landmark}/> : null}
       </ToggleButtonGroup>
     )
   }
