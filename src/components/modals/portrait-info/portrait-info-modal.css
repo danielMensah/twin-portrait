@@ -8,10 +8,31 @@
     flex-direction: column;
     margin: auto 0 auto 6%;
     font-size: 18px;
+    max-width: 52%;
+}
+
+.details > div {
+    overflow-wrap: break-word;
 }
 
 .header {
     text-align: center;
     font-weight: bold;
     font-size: 23px;
+}
+
+.detailsContainer {
+    display: flex;
+}
+
+.loading {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.more {
+    position: relative;
+    float: right;
+    margin-bottom: -40px;
+    margin-right: -10px;
 }

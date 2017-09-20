@@ -55,31 +55,18 @@ export function setNotApplicable(portraitUrl) {
 
 export function fetchPortraitInfo(id) {
 
-  let data = {
-    title: "Kop van een leeuw",
-    creator: "Frederik Willem Z_rcher",
-    date_created: "1845 - 1894",
-    physical_dimensions: "h 249mm - w 149mm",
-    external_link: "http://hdl.handle.net/10934/RM0001.COLLECT.198545",
-    external_link_text: "See more details about this work on the Rijksmuseum Website"
-  };
-
   return (dispatch) => {
-    // let request = ajax(ApiRoutes.FETCH_PORTRAIT_INFO, 'POST', id );
+    let request = ajax(ApiRoutes.FETCH_PORTRAIT_INFO, 'POST', id, false );
 
-    dispatch({
-      type: ActionTypes.PORTRAIT.FETCH_PORTRAIT_INFO,
-      payload: data
-    })
 
-    // request.then((response) => {
-    //   dispatch({
-    //     type: ActionTypes.PORTRAIT.FETCH_PORTRAIT_INFO,
-    //     payload: data
-    //   })
-    // });
+    request.then((response) => {
+      dispatch({
+        type: ActionTypes.PORTRAIT.FETCH_PORTRAIT_INFO,
+        payload: response
+      })
+    });
 
-    // return request;
+    return request;
 
   }
 

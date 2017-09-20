@@ -14,6 +14,7 @@ import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/p
 import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
 import KeyGenerator from '../../util/landmark-key-generator';
 import ReactImageMagnify from 'react-image-magnify';
+import Fab from '../../components/floating-button';
 import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
@@ -90,7 +91,9 @@ class App extends Component {
 
     const submitNextButton = page > 8 ?
       <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
-      <Button onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">Next ({currentPage}/10)</Button>;
+      <Button onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
+        <FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" />
+      </Button>;
 
     return (
       <div id="app-container" className={styles.appContainer}>
@@ -101,13 +104,18 @@ class App extends Component {
         <div className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
+              <span className={styles.pageTrack} >{currentPage}/10</span>
               {imagePortrait}
               <div onClick={this.openInfoModal} className={styles.more}>
-                <FontAwesome className={styles.moreIcon} name="info-circle" size='2x' />
+                <Fab size="2x" icon="info-circle" />
               </div>
-              {submitNextButton}
-              <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>Not Applicable</Button>
-              <Button onClick={this.openInfoModal}>Testing</Button>
+              <div>
+                <Button className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
+                  <FontAwesome className={styles.notAppIcon} name="times" size="2x" />
+                </Button>
+                {submitNextButton}
+              </div>
+              {/*<Button onClick={this.openInfoModal}>Testing</Button>*/}
             </span>
           </div>
           <div className={styles.landmarks}>

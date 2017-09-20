@@ -45,6 +45,20 @@
 
 .next, .submit, .notApplicable {
   margin-top: 15px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 6px 8px #888888;
+  border: none;
+}
+
+.notApplicable {
+  background-color: #F44336;
+}
+
+.next {
+  background-color: #2196F3;
+  float: right;
 }
 
 .loadingContainer {
@@ -103,18 +117,13 @@
 }
 
 .more {
-  width: 50px;
-  height: 50px;
-  background-color: #2196F3;
-  border-radius: 50%;
-  box-shadow: 0 6px 8px #888888;
   margin: -30px auto 0 auto;
   z-index: 10;
-  text-align: center;
-  cursor: pointer;
 }
 
-.moreIcon {
-  color: #ffffff;
-  margin-top: 11px;
+.pageTrack {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: bold;
 }
