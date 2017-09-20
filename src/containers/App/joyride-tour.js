@@ -24,6 +24,7 @@ class JoyrideTour extends Component {
         showStepsProgress={true}
         type="continuous"
         debug={true}
+        scrollToSteps={true}
         callback={(callback) => callback.type === 'finished' ? this.tourCompleted() : null}
       />
     )
