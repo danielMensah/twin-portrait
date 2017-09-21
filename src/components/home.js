@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './home.css';
-import { Image, Button } from 'react-bootstrap/lib';
+import { Image, Button, ControlLabel } from 'react-bootstrap/lib';
 import Compare from '../images/comparison.jpg';
 import { browserHistory } from 'react-router';
 import rotateLandscape from '../images/rotate_landscape.gif';
@@ -28,17 +28,33 @@ class Home extends Component {
           </div>
         </div>
         <div className={styles.secondHalf}>
-          <div className={styles.text2}>
-            Help us to create an accurate matching system and in return you will be able to use Twin Portrait
-            for free after it's launched! Start now and you will be taken through what needs to be done!
-          </div>
+          <ControlLabel className={styles.controlLabel}>What is Twin Portrait</ControlLabel>
+          <p>
+            Twin Portrait is a website created to help Arts & Culture fans to find their
+            Doppelgangers through portraits. I believe that it will help people to have a deeper understanding
+            regarding Arts & Culture and be encourage to visit some of the best museums in the world.
+          </p>
+          <ControlLabel className={styles.controlLabel}>About the creator</ControlLabel>
+          <p>
+            Daniel Owusu Mensah studies Software Engineering including sandwich year at Kingston University. Born in Italy from Ghanaian parents,
+            he moved to London in the 2010 to pursuit his career of a Software Engineer. Daniel worked as a Software Developer
+            at Hindsight Software for his one year placement. He managed to learn and absorb most teachings regarding software development
+            and business management during his one year placement and looking forward to apply his knowledge with this project.
+          </p>
+          <ControlLabel className={styles.controlLabel}>How it works</ControlLabel>
+          <p>
+            Help me to create an accurate matching system and in return you will be able to use Twin Portrait
+            for free after it's launched! What do you have to do? Few portraits will be displayed and you need
+            to select the appropriate facial features for each one of them. Simple isn't it? At the end of it, you will
+            receive a promo code that will allow you to use Twin Portrait for free for life. So <b>start now!</b>
+          </p>
         </div>
       </div>
     )
   }
 
   startNow = () => {
-    browserHistory.push('/matchPortrait')
+    browserHistory.push('/match-portrait')
   }
 
 }

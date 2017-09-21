@@ -24,7 +24,7 @@
     margin: 15px auto 0 auto;
 }
 
-.text1, .text2, .comingSoon {
+.text1, .secondHalf p, .comingSoon {
     font-family: 'Questrial', sans-serif;
     margin-left: auto;
     margin-right: auto;
@@ -37,6 +37,15 @@
 
 .text1 {
     margin-top: 40px;
+}
+
+.secondHalf p {
+    font-size: 20px;
+}
+
+.controlLabel {
+    margin-top: 20px;
+    font-size: 23px;
 }
 
 .startNow {

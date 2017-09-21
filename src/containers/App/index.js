@@ -102,7 +102,7 @@ class App extends Component {
           <Image className={styles.rotateLandscape} src={rotateLandscape}/>
           <span>Rotate your device to landscape</span>
         </div>
-        <div className={styles.container}>
+        <div id="container" className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
               <span id="page-track" className={styles.pageTrack} >{currentPage}/10</span>
@@ -131,18 +131,13 @@ class App extends Component {
                     <option value="female">Female</option>
                   </FormControl>
                 </div>
-                <div className={styles.mustache}>
-                  <ControlLabel>Does the portrait have a mustache?</ControlLabel>
-                  <FormControl ref={(mustache) => this.mustache = mustache} componentClass="select" placeholder="select">
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                  </FormControl>
-                </div>
-                <div className={styles.beard}>
-                  <ControlLabel>Does the portrait have a beard?</ControlLabel>
-                  <FormControl ref={(beard) => this.beard = beard} componentClass="select" placeholder="select">
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
+                <div className={styles.facialHair}>
+                  <ControlLabel>Select facial hair</ControlLabel>
+                  <FormControl ref={(facialHair) => this.facialHair = facialHair} componentClass="select" placeholder="select">
+                    <option value="none">None</option>
+                    <option value="mustache">Mustache</option>
+                    <option value="beard">Beard</option>
+                    <option value="both">Mustache and beard</option>
                   </FormControl>
                 </div>
               </FormGroup>
@@ -168,14 +163,25 @@ class App extends Component {
     let gender = ReactDOM.findDOMNode(this.gender);
     gender = gender.options[gender.selectedIndex].value;
 
-    let mustache = ReactDOM.findDOMNode(this.mustache);
-    mustache = mustache.options[mustache.selectedIndex].value;
+    let facialHair = ReactDOM.findDOMNode(this.facialHair);
+    facialHair = facialHair.options[facialHair.selectedIndex].value;
 
-    let beard = ReactDOM.findDOMNode(this.beard);
-    beard = beard.options[beard.selectedIndex].value;
+    switch (facialHair) {
+      case 'none':
+        facialHair = { mustache: false, beard: false };
+        break;
+      case 'mustache':
+        facialHair = { mustache: true, beard: false };
+        break;
+      case 'beard':
+        facialHair = { mustache: false, beard: true };
+        break;
+      default:
+        facialHair = { mustache: true, beard: true };
+    }
 
     if (this.objectSize(selected) > 2) {
-      let obj = { portraitUrl, gender, mustache, beard };
+      let obj = { portraitUrl, gender, ...facialHair };
 
       for (let key in selected) {
         const item = selected[key];

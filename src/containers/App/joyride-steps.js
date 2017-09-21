@@ -1,13 +1,19 @@
 export const Steps = [
   {
+    title: 'Website Tour',
+    text: 'Before you start, let me take you for the website tour and show you how to use Twin Portrait.',
+    selector: '#container',
+    position: 'left',
+  },
+  {
     title: 'Select facial features',
-    text: 'Select the facial feature that you think reassemble the person in the portrait.',
+    text: 'Select the facial features that you think reassemble the person in the portrait.',
     selector: '#landmark',
-    position: 'top',
+    position: 'left',
   },
   {
     title: 'Get some help',
-    text: 'You will probably need some when selecting the features. These tips consist of images and description of the feature which should help you with your judgement.',
+    text: 'You will probably need some help when selecting the features. These tips consist of images and description of the feature which should help you with your judgement.',
     selector: '#help-eyebrows',
     position: 'left',
   },
@@ -37,7 +43,7 @@ export const Steps = [
   },
   {
     title: 'Portrait tracker',
-    text: 'For this task, you need to complete judge 10 portraits. At the end of it, you will receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
+    text: 'For this task, you need to complete judge 10 portraits. Makes sure to not refresh the page or you will have to start from the beginning! At the end of it, you will receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
     selector: '#page-track',
     position: 'top',
   }

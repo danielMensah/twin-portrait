@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={Home}/>
-      <Route path="/matchPortrait" component={App}/>
+      <Route path="/match-portrait" component={App}/>
     </Router>
   </Provider>,
   document.getElementById('root')
