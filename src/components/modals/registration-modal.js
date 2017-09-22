@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './registration-modal.css';
 import { bindActionCreators } from 'redux';
-import {Image, Button, Modal, FormGroup, FormControl} from 'react-bootstrap/lib';
+import {Image, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-bootstrap/lib';
 import tickImg from '../../images/tick.png';
 import loadingImg from '../../images/loading2.gif';
 import { registerUser } from '../../actions/user-actions';
@@ -16,6 +16,7 @@ class RegistrationModal extends Component {
       name: '',
       last_name: '',
       email: '',
+      feedback: '',
       promoCode: '',
       loading: false,
       error: false,
@@ -49,8 +50,10 @@ class RegistrationModal extends Component {
         <FormGroup>
           <FormControl style={{ marginBottom: 10}} onChange={(e) => this.handleInput(e)} type="text" placeholder="Name" name="name"/>
           <FormControl style={{ marginBottom: 10}} onChange={(e) => this.handleInput(e)} type="text" placeholder="Last Name" name="last_name"/>
-          <FormControl onChange={(e) => this.handleInput(e)} type="email" placeholder="Email..." name="email"/>
+          <FormControl onChange={(e) => this.handleInput(e)} type="email" placeholder="Email" name="email"/>
           <span className={styles.error}>{emailExists}</span>
+          <ControlLabel className={styles.feedbackLabel}>Feedback (optional)</ControlLabel>
+          <FormControl className={styles.feedback} onChange={(e) => this.handleInput(e)} name="feedback" componentClass="textarea" placeholder="Write about any challenges you faced using Twin portrait..." />
         </FormGroup>
 
         <Button className={styles.submitButton} type="submit">
@@ -88,7 +91,8 @@ class RegistrationModal extends Component {
     let obj = {
       name: this.state.name,
       lastName: this.state.last_name,
-      email: this.state.email
+      email: this.state.email,
+      feedback: this.state.feedback
     };
 
     if (this.validation(obj)) {
@@ -112,10 +116,9 @@ class RegistrationModal extends Component {
 
   validation = (obj) => {
     const isValidated = Object.keys(obj).map((key) => {
-      if (!obj[key]) {
+      if (!obj[key] && key !== 'feedback') {
         return false;
       }
-
       return true;
     });
 

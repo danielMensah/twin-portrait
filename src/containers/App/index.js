@@ -118,7 +118,7 @@ class App extends Component {
                 </Button>
                 {submitNextButton}
               </div>
-              {/*<Button onClick={this.testFinishModal}>Testing</Button>*/}
+              <Button onClick={this.open}>Testing</Button>
             </span>
           </div>
           <div id="landmark" className={styles.landmarks}>

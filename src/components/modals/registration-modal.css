@@ -27,3 +27,11 @@
 .error {
     color: #ff2d2b;
 }
+
+.feedbackLabel {
+    margin-top: 30px;
+}
+
+.feedback {
+    height: 170px !important;
+}
