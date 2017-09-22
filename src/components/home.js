@@ -43,7 +43,7 @@ class Home extends Component {
           </p>
           <ControlLabel className={styles.controlLabel}>How it works</ControlLabel>
           <p>
-            Twin Portrait isn't launched yet and it needs your help. Help me to create an accurate matching system and
+            Twin Portrait isn't launched yet and it needs your help. Help to create an accurate matching system and
             in return you will be able to use Twin Portrait for free after it's launched! What do you have to do?
             Few portraits will be displayed and you need to select the appropriate facial features for each one of them.
             Simple isn't it? At the end of it, you will receive a promo code that will allow you to use Twin Portrait
