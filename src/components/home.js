@@ -39,20 +39,20 @@ class Home extends Component {
             Daniel Mensah studies Software Engineering including sandwich year at Kingston University. Born in Italy from Ghanaian parents,
             he moved to London in the 2010 to pursuit his career of becoming a Software Engineer. Daniel worked as a Software Developer
             at Hindsight Software for his one year placement. He managed to learn and absorb most teachings regarding software development
-            and business management and looking forward to apply his knowledge with this project.
+            and business management and looking forward to apply his knowledge to his project.
           </p>
           <ControlLabel className={styles.controlLabel}>How it works</ControlLabel>
           <p>
-            Twin Portrait isn't launched yet and it needs your help. Help to create an accurate matching system and
+            Twin Portrait isn't launched yet and it needs your help. Help to create an accurate face matching system and
             in return you will be able to use Twin Portrait for free after it's launched! What do you have to do?
-            Few portraits will be displayed and you need to select the appropriate facial features for each one of them.
+            Few portraits will be displayed and you will need to select the appropriate facial features for each one of them.
             Simple isn't it? At the end of it, you will receive a promo code that will allow you to use Twin Portrait
-            for free for life. <b>Start now!</b>
+            for free for life. <b>Start now and you will be taken for through the website.</b>
           </p>
         </div>
         <div className={styles.footer}>
           <div className={styles.contact}>
-            Contact: K1422655@kingston.ac.uk
+            Student: K1422655@kingston.ac.uk
           </div>
           <div className={styles.disclaimer}>
             This website is created for study purposes. All portraits and their information are sourced from

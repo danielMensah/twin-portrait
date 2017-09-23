@@ -6,22 +6,22 @@ export const Steps = [
     position: 'left',
   },
   {
-    title: 'Select facial features',
-    text: 'Select the facial features that you think reassemble the person in the portrait.',
-    selector: '#landmark',
-    position: 'left',
-  },
-  {
-    title: 'Get some help',
-    text: 'You will probably need some help when selecting the features. These tips consist of images and description of the feature which should help you with your judgement.',
-    selector: '#help-eyebrows',
-    position: 'left',
-  },
-  {
     title: 'Portrait',
     text: 'This is the portrait you need to judge. You can zoom in by hovering( or pressing and moving around your finger if on mobile devices).',
     selector: '#image-portrait',
     position: 'right',
+  },
+  {
+    title: 'Selecting facial features',
+    text: "Select the facial features that you think reassemble the person in the portrait. There's no right or wrong answer here! It's all about your judgement and observation.",
+    selector: '#landmark',
+    position: 'left',
+  },
+  {
+    title: 'Help',
+    text: 'You will probably need some help when selecting the features. These tips consist of images and description of the feature which should help you with your judgement.',
+    selector: '#help-eyebrows',
+    position: 'left',
   },
   {
     title: 'Moving on',
@@ -37,13 +37,13 @@ export const Steps = [
   },
   {
     title: 'Information about the portrait',
-    text: 'Here you can view information about the portrait an also visit the source website for more insight.',
+    text: 'Here you can view information about the portrait and visit the source website for more insight.',
     selector: '#portrait-info',
     position: 'top',
   },
   {
     title: 'Portrait tracker',
-    text: 'For this task, you need to complete judge 10 portraits. Makes sure to not refresh the page or you will have to start from the beginning! At the end of it, you will receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
+    text: 'For this task, you need to complete 10 portraits. Makes sure to not refresh the page or you will have to start from the beginning! At the end of it, you will receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
     selector: '#page-track',
     position: 'top',
   }
