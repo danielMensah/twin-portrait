@@ -23,9 +23,6 @@ class Home extends Component {
             <div className={styles.comingSoon}>Coming Soon!</div>
             <Image className={styles.compare} src={Compare} rounded/>
           </div>
-          <div className={styles.buttonDiv}>
-            <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
-          </div>
         </div>
         <div className={styles.main}>
           <ControlLabel className={styles.controlLabel}>What is Twin Portrait</ControlLabel>
@@ -49,6 +46,9 @@ class Home extends Component {
             Simple isn't it? At the end of it, you will receive a promo code that will allow you to use Twin Portrait
             for free for life. <b>Start now and you will be taken for through the website.</b>
           </p>
+          <div className={styles.buttonDiv}>
+            <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
+          </div>
         </div>
         <div className={styles.footer}>
           <div className={styles.contact}>

@@ -49,21 +49,24 @@
 }
 
 .startNow {
-    background-color: #e86a6c;
-    margin: 31px auto 0 auto;
+    background-color: #2196F3;
+    margin: 0 auto 0 auto;
     color: #fff;
     border: none;
     font-size: 35px;
+    box-shadow: 0 6px 8px #888888;
 }
 
 .startNow:hover, .startNow:focus {
-    background-color: #bc5e5e;
+    background-color: #2079cc;
     color: #ffffff;
 }
 
 .buttonDiv {
     display: flex;
     font-family: 'Questrial', sans-serif;
+    margin-top: 70px;
+    margin-bottom: -30px;
 }
 
 .main {
