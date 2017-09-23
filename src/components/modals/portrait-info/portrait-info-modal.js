@@ -68,10 +68,18 @@ class PortraitInfoModal extends Component {
                     <ControlLabel>Physical Dimensions: </ControlLabel>
                     <span> {physical_dimensions}</span>
                   </div>
+                  {external_link === "Unknown" ? null :
+                    <div className={styles.externalLink}>
+                      <ControlLabel>Link: </ControlLabel>
+                      <a target="blank" href={external_link}>
+                        {external_link_text === "Unknown" ? 'Click here for more information' : external_link_text}</a>
+                    </div>
+                  }
                   <div className={styles.externalLink}>
                     <ControlLabel>Link: </ControlLabel>
-                    <a target="blank" href={external_link === "Unknown" ? `https://www.google.com/culturalinstitute/beta/asset/${portraitId}` : external_link}>
-                      {external_link_text === "Unknown" ? 'Click here for more information' : external_link_text}</a>
+                    <a target="blank" href={`https://www.google.com/culturalinstitute/beta/asset/${portraitId}`}>
+                      Click here for more information
+                    </a>
                   </div>
                 </div>
               </div>

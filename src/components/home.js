@@ -16,8 +16,8 @@ class Home extends Component {
           <Image className={styles.rotateLandscape} src={rotateLandscape}/>
           <span>Rotate your device to landscape</span>
         </div>
-        <div className={styles.firstHalf}>
-          <div className={styles.header}>
+        <div className={styles.header}>
+          <div className={styles.headerText}>
             <div className={styles.tptext}>Twin Portrait</div>
             <div className={styles.text1}>Find your Doppelgänger within 1000+ portraits</div>
             <div className={styles.comingSoon}>Coming Soon!</div>
@@ -27,7 +27,7 @@ class Home extends Component {
             <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
           </div>
         </div>
-        <div className={styles.secondHalf}>
+        <div className={styles.main}>
           <ControlLabel className={styles.controlLabel}>What is Twin Portrait</ControlLabel>
           <p>
             Twin Portrait is a website created to incite people to learn more about Arts & Culture and to find their
@@ -49,6 +49,16 @@ class Home extends Component {
             Simple isn't it? At the end of it, you will receive a promo code that will allow you to use Twin Portrait
             for free for life. <b>Start now!</b>
           </p>
+        </div>
+        <div className={styles.footer}>
+          <div className={styles.contact}>
+            Contact: K1422655@kingston.ac.uk
+          </div>
+          <div className={styles.disclaimer}>
+            This website is created for study purposes. All portraits and their information are sourced from
+            <a target="blank" href="https://www.google.com/culturalinstitute/beta/"> Google Arts & Culture</a>. I DO NOT OWN ANY OF
+            THE PORTRAITS.
+          </div>
         </div>
       </div>
     )
