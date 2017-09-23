@@ -57,6 +57,15 @@
   background-color: #F44336;
 }
 
+.submit {
+  float: right;
+  background-color: #4CAF50;
+}
+
+.submit span {
+  margin-left: -6px;
+}
+
 .next {
   background-color: #2196F3;
   float: right;

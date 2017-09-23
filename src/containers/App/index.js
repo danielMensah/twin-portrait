@@ -91,7 +91,9 @@ class App extends Component {
     }} />;
 
     const submitNextButton = page > 8 ?
-      <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">Submit</Button> :
+      <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">
+        <FontAwesome className={styles.nextIcon} name="paper-plane" size="2x" />
+      </Button> :
       <Button id="next-portrait" onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
         <FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" />
       </Button>;
