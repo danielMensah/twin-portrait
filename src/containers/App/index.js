@@ -101,7 +101,7 @@ class App extends Component {
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.turnLandscape}>
-          <Image className={styles.rotateLandscape} src={rotateLandscape}/>
+          <Image className={styles.rotateLandscape} src={rotateLandscape} responsive/>
           <span>Rotate your device to landscape</span>
         </div>
         <div id="container" className={styles.container}>

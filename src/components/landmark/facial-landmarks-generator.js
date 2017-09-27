@@ -6,7 +6,6 @@ import Image from 'react-bootstrap/lib/Image';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap/lib';
 import { FACES, EYES, EYEBROWS, LIPS, NOSES } from '../../images/index';
 import { selectLandmark } from '../../actions/landmark-select-actions';
-import FontAwesome from 'react-fontawesome';
 import HelpImg from '../../images/help.png';
 import HelpModal from '../modals/help-modal';
 
@@ -58,7 +57,6 @@ class Faces extends Component {
 
     return (
       <ToggleButtonGroup onChange={(e) => this.handleSelection(landmarkObj.prop[e-1])} type="radio" name="options" className={styles.facesContainer}>
-        <FontAwesome className={styles.collapse} name="cog" />
         {landmarkObj.prop.map((face, index) => {
           index++;
           return (
