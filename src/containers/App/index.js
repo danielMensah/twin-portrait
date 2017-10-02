@@ -18,20 +18,22 @@ import Fab from '../../components/floating-button';
 import FontAwesome from 'react-fontawesome';
 import JoyrideTour from './joyride-tour';
 
+const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is due to displaying display button when it's the last one.
+
 class App extends Component {
 
   constructor(prop) {
     super(prop);
     this.state = {
       page: 0,
-      showModal: false,
-      loading: true,
+      showRegistrationModal: false,
+      isLoading: true,
       showInfoModal: false
     }
   }
 
-  close = () => {
-    this.setState({ showModal: false }, () => {
+  closeRegistrationModal = () => {
+    this.setState({ showRegistrationModal: false }, () => {
       browserHistory.push('/')
     });
   };
@@ -40,8 +42,8 @@ class App extends Component {
     this.setState({ showInfoModal: false });
   };
 
-  open = () => {
-    this.setState({ showModal: true });
+  openRegistrationModal = () => {
+    this.setState({ showRegistrationModal: true });
   };
 
   openInfoModal = () => {
@@ -49,11 +51,11 @@ class App extends Component {
   };
 
   startLoading = () => {
-    this.setState({loading: true});
+    this.setState({isLoading: true});
   };
 
   stopLoading = () => {
-    this.setState({loading: false});
+    this.setState({isLoading: false});
   };
 
   componentDidMount() {
@@ -63,11 +65,11 @@ class App extends Component {
   }
 
   render() {
-    const {page, loading, showModal, showInfoModal} = this.state;
+    const {page, isLoading, showRegistrationModal, showInfoModal} = this.state;
     const { portraitUrl, portraitId } = this.props;
     const currentPage = page+1;
 
-    if (loading) {
+    if (isLoading) {
       return (
         <div className={styles.loadingContainer}>
           <Image src={loadingGif} />
@@ -75,6 +77,7 @@ class App extends Component {
       )
     }
 
+    //Displays image with magnifier
     const imagePortrait = <ReactImageMagnify {...{
       smallImage: {
         alt: 'Wristwatch by Ted Baker London',
@@ -90,7 +93,8 @@ class App extends Component {
       }
     }} />;
 
-    const submitNextButton = page > 8 ?
+    //Decides which button to display (next and submit). If it is the last page, a submit button will be displayed.
+    const submitNextButton = page > NUM_PORTRAITS ?
       <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">
         <FontAwesome className={styles.nextIcon} name="paper-plane" size="2x" />
       </Button> :
@@ -107,7 +111,7 @@ class App extends Component {
         <div id="container" className={styles.container}>
           <div id="portraits" className={styles.portraits}>
             <span className={styles.helper}>
-              <span id="page-track" className={styles.pageTrack} >{currentPage}/10</span>
+              <span id="page-track" className={styles.pageTrack} >{currentPage}/{NUM_PORTRAITS + 2}</span>
               <span id="image-portrait">
                 {imagePortrait}
               </span>
@@ -120,7 +124,7 @@ class App extends Component {
                 </Button>
                 {submitNextButton}
               </div>
-              {/*<Button onClick={this.open}>Testing</Button>*/}
+              {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
             </span>
           </div>
           <div id="landmark" className={styles.landmarks}>
@@ -147,19 +151,15 @@ class App extends Component {
             <LandmarksField/>
           </div>
         </div>
-        { showModal ? <RegistrationModal show={showModal} onHide={this.close} /> : null}
-        { showInfoModal ? <PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} /> : null}
+        <RegistrationModal show={showRegistrationModal} onHide={this.closeRegistrationModal} />
+        <PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} />
         <JoyrideTour/>
       </div>
     )
   }
 
-  testFinishModal = () => {
-    this.open();
-  };
-
   updatePortrait = () => {
-    const { selected, portraitUrl, updatePortrait } = this.props;
+    const { selectedLandmarks, portraitUrl, updatePortrait } = this.props;
     const { page } = this.state;
 
     let gender = ReactDOM.findDOMNode(this.gender);
@@ -182,11 +182,11 @@ class App extends Component {
         facialHair = { mustache: true, beard: true };
     }
 
-    if (this.objectSize(selected) > 2) {
+    if (this.objectSizeValidation(selectedLandmarks) > 2) {
       let obj = { portraitUrl, gender, ...facialHair };
 
-      for (let key in selected) {
-        const item = selected[key];
+      for (let key in selectedLandmarks) {
+        const item = selectedLandmarks[key];
         obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
       }
 
@@ -196,9 +196,9 @@ class App extends Component {
           this.stopLoading();
           alert('there was an error when submitting, please try to resubmit the form again')
         } else  {
-          if (page > 8) {
+          if (page > NUM_PORTRAITS) {
             this.stopLoading();
-            this.open();
+            this.openRegistrationModal();
           } else {
             this.setState({page: this.state.page+1});
             this.nextPortrait();
@@ -206,7 +206,7 @@ class App extends Component {
         }
       });
     } else {
-      alert('Please a style from each facial feature');
+      alert('Please a shape from each facial feature');
     }
   };
 
@@ -231,7 +231,7 @@ class App extends Component {
     });
   };
 
-  objectSize = (obj) => {
+  objectSizeValidation = (obj) => {
     let size = 0, key;
     for (key in obj) {
       if (obj.hasOwnProperty(key)) size++;
@@ -242,7 +242,7 @@ class App extends Component {
 }
 
 const mapStateProps = ({landmarkSelect, portrait}) => ({
-  selected: landmarkSelect,
+  selectedLandmarks: landmarkSelect,
   portraitUrl: portrait.portraitURL,
   portraitId: portrait.id
 });

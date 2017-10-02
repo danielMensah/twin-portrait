@@ -17,14 +17,12 @@ class Faces extends Component {
     super(prop);
     this.state = {
       objArr: [],
-      sectionOpen: false,
       showModalHelp: false
     }
   }
 
   componentDidMount() {
-    if (!this.props.selected.length) newArr = [];
-    if (this.props.landmark === 'face') this.setState({ sectionOpen: true })
+    if (!this.props.selectedLandmarks.length) newArr = [];
   }
 
   render() {
@@ -67,7 +65,7 @@ class Faces extends Component {
           )
         })}
         <Image id={`help-${landmark}`} onClick={this.openHelpModal} className={styles.help} src={HelpImg}/>
-        { showModalHelp ? <HelpModal id={`help-${landmark}`} show={showModalHelp} onHide={this.closeHelpModal} landmark={landmark}/> : null}
+        <HelpModal id={`help-${landmark}`} show={showModalHelp} onHide={this.closeHelpModal} landmark={landmark}/>
       </ToggleButtonGroup>
     )
   }
@@ -78,11 +76,6 @@ class Faces extends Component {
 
   closeHelpModal = () => {
     this.setState({ showModalHelp: false });
-  };
-
-  handleSectionOpen = () => {
-    const { sectionOpen } = this.state;
-    this.setState({ sectionOpen: !sectionOpen })
   };
 
   handleSelection = (obj) => {
@@ -104,7 +97,7 @@ class Faces extends Component {
 }
 
 const mapStateProps = ({landmarkSelect}) => ({
-  selected: landmarkSelect
+  selectedLandmarks: landmarkSelect
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ selectLandmark }, dispatch);
