@@ -12,7 +12,7 @@ export function fetchPortrait() {
         type: ActionTypes.PORTRAIT.FETCH_PORTRAIT,
         payload: response
       })
-    });
+    }).catch(e => console.log('errors', e));
 
     return request;
 

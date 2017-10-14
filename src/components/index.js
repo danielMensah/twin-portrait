@@ -116,20 +116,15 @@ class App extends Component {
       });
 
       this.startLoading();
-      updatePortrait(obj).then((r) => {
-        if ( r.response === 'error' ) {
+      updatePortrait(obj).then(() => {
+        if (page > NUM_PORTRAITS) {
           this.stopLoading();
-          alert('there was an error when submitting, please try to resubmit the form again')
-        } else  {
-          if (page > NUM_PORTRAITS) {
-            this.stopLoading();
-            this.openRegistrationModal();
-          } else {
-            this.setState({page: this.state.page+1});
-            this.nextPortrait();
-          }
+          this.openRegistrationModal();
+        } else {
+          this.setState({page: this.state.page+1});
+          this.nextPortrait();
         }
-      });
+      }).catch((e) => console.log('error', e));
     } else {
       alert('Please a shape from each facial feature');
     }
@@ -137,22 +132,19 @@ class App extends Component {
 
   notApplicable = () => {
     const { setNotApplicable, portraitId } = this.props;
-    const obj = { portraitId };
 
     this.startLoading();
-    setNotApplicable(obj).then(() => {
+    setNotApplicable({ portraitId }).then(() => {
       this.nextPortrait();
     })
 
   };
 
   nextPortrait = () => {
-    const { resetSelect, fetchPortrait } = this.props;
-
     this.startLoading();
-    fetchPortrait().then(() => {
+    this.props.fetchPortrait().then(() => {
       this.stopLoading();
-      resetSelect();
+      this.props.resetSelect();
     });
   };
 }

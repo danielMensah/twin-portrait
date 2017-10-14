@@ -8,7 +8,8 @@ export default function(url, type, options = {}, shouldStringify = true) {
       url: `https://twinportrait-server.herokuapp.com/${url}`,
       data: shouldStringify ? JSON.stringify(options) : options,
       success: (data) => {
-        resolved(JSON.parse(data))},
+        resolved(data ? JSON.parse(data) : data)
+      },
       error: (data) => {
         rejected(data)
       }
