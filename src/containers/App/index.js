@@ -18,7 +18,7 @@ import Fab from '../../components/floating-button';
 import FontAwesome from 'react-fontawesome';
 import JoyrideTour from './joyride-tour';
 
-const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is due to displaying display button when it's the last one.
+const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
 
 class App extends Component {
 
@@ -124,7 +124,7 @@ class App extends Component {
                 </Button>
                 {submitNextButton}
               </div>
-              {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
+              <Button onClick={this.openRegistrationModal}>Testing</Button>
             </span>
           </div>
           <div id="landmark" className={styles.landmarks}>
@@ -159,7 +159,7 @@ class App extends Component {
   }
 
   updatePortrait = () => {
-    const { selectedLandmarks, portraitUrl, updatePortrait } = this.props;
+    const { selectedLandmarks, portraitId, updatePortrait } = this.props;
     const { page } = this.state;
 
     let gender = ReactDOM.findDOMNode(this.gender);
@@ -183,7 +183,7 @@ class App extends Component {
     }
 
     if (this.objectSizeValidation(selectedLandmarks) > 2) {
-      let obj = { portraitUrl, gender, ...facialHair };
+      let obj = { portraitId, gender, ...facialHair };
 
       for (let key in selectedLandmarks) {
         const item = selectedLandmarks[key];
@@ -211,8 +211,8 @@ class App extends Component {
   };
 
   notApplicable = () => {
-    const { setNotApplicable, portraitUrl } = this.props;
-    const obj = { portraitUrl };
+    const { setNotApplicable, portraitId } = this.props;
+    const obj = { portraitId };
 
     this.startLoading();
     setNotApplicable(obj).then(() => {

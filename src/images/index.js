@@ -50,7 +50,7 @@ export const NOSES = [
   // },
   {
     img: hooked,
-    name: 'Roman/Hooked'
+    name: 'Roman Hooked'
   },
   // {
   //   img: roman,
@@ -154,7 +154,7 @@ export const FACES = [
 export const EYES = [
   {
     img: almond,
-    name: 'Monolid/Almond'
+    name: 'Monolid Almond'
   },
   {
     img: deepSet,

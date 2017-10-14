@@ -47,8 +47,8 @@ class Home extends Component {
             for free for life. <b>Start now and you will be taken for through the website.</b>
           </p>
           <div className={styles.buttonDiv}>
-            {/*<Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>*/}
-            <Button className={styles.startNow} bsSize="large" disabled>Under Development</Button>
+            <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
+            {/*<Button className={styles.startNow} bsSize="large" disabled>Under Development</Button>*/}
           </div>
         </div>
         <div className={styles.footer}>

@@ -6,15 +6,12 @@ import {Image, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-
 import tickImg from '../../images/tick.png';
 import loadingImg from '../../images/loading2.gif';
 import { registerUser } from '../../actions/user-actions';
-import { includes } from 'lodash';
 
 class RegistrationModal extends Component {
 
   constructor(prop) {
     super(prop);
     this.state = {
-      name: '',
-      last_name: '',
       email: '',
       feedback: '',
       promoCode: '',
@@ -48,8 +45,6 @@ class RegistrationModal extends Component {
     const formInstance = (
       <form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <FormControl style={{ marginBottom: 10}} onChange={(e) => this.handleInput(e)} type="text" placeholder="Name" name="name"/>
-          <FormControl style={{ marginBottom: 10}} onChange={(e) => this.handleInput(e)} type="text" placeholder="Last Name" name="last_name"/>
           <FormControl onChange={(e) => this.handleInput(e)} type="email" placeholder="Email" name="email"/>
           <span className={styles.error}>{emailExists}</span>
           <ControlLabel className={styles.feedbackLabel}>Feedback (optional)</ControlLabel>
@@ -75,7 +70,7 @@ class RegistrationModal extends Component {
               <Image src={tickImg} className={styles.tickImg}/>
               <h2>{header}</h2>
               <br/>
-              { error ? <span className={styles.error}>There's a missing field!</span> : null}
+              { error ? <span className={styles.error}>Please enter your email address!</span> : null}
               { promoCode ? null : <p>Please complete the form below and a promo code will be generated for you.</p>}
               { promoCode ? code : formInstance}
             </div>
@@ -88,42 +83,33 @@ class RegistrationModal extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!this.state.email) {
+      this.setState({ error: true });
+      return;
+    }
+
     let obj = {
-      name: this.state.name,
-      lastName: this.state.last_name,
       email: this.state.email,
-      feedback: this.state.feedback
+      feedbac: this.state.feedback
     };
 
-    if (this.validation(obj)) {
       this.startLoading();
       this.props.registerUser(obj).then((r) => {
-        if (r.response === 'updated') {
-          this.setState({ promoCode: r.promoCode, error: false, emailExists: '' })
-        } else if (r.response === 'error') {
-          alert('Error!');
-        } else {
-          this.setState({ emailExists: r.response, error: false, });
+        switch (r.response) {
+          case 'updated':
+            this.setState({ promoCode: r.promoCode, error: false, emailExists: '' });
+            break;
+          case 'error':
+            alert('Error! Please contact admin: k1422655@kingston.ac.uk');
+            break;
+          default:
+            this.setState({ emailExists: r.response, error: false, });
         }
 
         this.stopLoading();
-      })
-    } else {
-      this.setState({ error: true });
-    }
+      });
 
   };
-
-  validation = (obj) => {
-    const isValidated = Object.keys(obj).map((key) => {
-      if (!obj[key] && key !== 'feedback') {
-        return false;
-      }
-      return true;
-    });
-
-    return !includes(isValidated, false);
-  }
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ registerUser }, dispatch);
