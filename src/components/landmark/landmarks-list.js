@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './landmarks-field.css';
-import FacialLandmarksGenerator from './facial-landmarks-generator';
+import styles from './landmarks-list.css';
+import LandmarksListItem from './landmarks-list-item';
 
-class LandmarksField extends Component {
+class LandmarksList extends Component {
 
   render() {
 
@@ -33,7 +33,7 @@ class LandmarksField extends Component {
               <h2 className={styles.landmarkHeader}>
                 <span>{landmark.text}</span>
               </h2>
-              <FacialLandmarksGenerator landmark={landmark.name}/>
+              <LandmarksListItem landmark={landmark.name}/>
             </div>
           )
         })}
@@ -42,4 +42,4 @@ class LandmarksField extends Component {
   }
 }
 
-export default connect()(LandmarksField);
+export default connect()(LandmarksList);

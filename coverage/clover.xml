@@ -67,7 +67,7 @@
       </package>
       <package name="src.components.landmark">
         <metrics statements="12" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="11" coveredmethods="0"/>
-        <file name="facial-landmarks-generator.js" path="C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\facial-landmarks-generator.js">
+        <file name="landmarks-list-item.js" path="C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-list-item.js">
           <metrics statements="7" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="8" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="10" count="0" type="cond" truecount="0" falsecount="4"/>
@@ -77,7 +77,7 @@
           <line num="99" count="0" type="stmt"/>
           <line num="103" count="0" type="stmt"/>
         </file>
-        <file name="landmarks-field.js" path="C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-field.js">
+        <file name="landmarks-list.js" path="C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-list.js">
           <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="4" count="0" type="cond" truecount="0" falsecount="4"/>

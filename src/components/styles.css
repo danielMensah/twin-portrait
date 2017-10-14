@@ -16,16 +16,6 @@
 
 }
 
-/*.helper {*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-/*}*/
-
-/*.portraits, .helper img {*/
-    /*z-index: 10;*/
-    /*margin-right: 5%;*/
-/*}*/
-
 .landmarks {
     margin-left: auto;
     width: 60%;
@@ -38,45 +28,9 @@
     flex-direction: column;
 }
 
-/*.next, .submit, .notApplicable {*/
-    /*margin-top: 15px;*/
-    /*border-radius: 50%;*/
-    /*width: 60px;*/
-    /*height: 60px;*/
-    /*box-shadow: 0 6px 8px #888888;*/
-    /*border: none;*/
-/*}*/
-
-/*.notApplicable {*/
-    /*background-color: #F44336;*/
-/*}*/
-
-/*.submit {*/
-    /*float: right;*/
-    /*background-color: #4CAF50;*/
-/*}*/
-
-/*.submit span {*/
-    /*margin-left: -6px;*/
-/*}*/
-
-/*.next {*/
-    /*background-color: #2196F3;*/
-    /*float: right;*/
-/*}*/
-
 .loadingContainer {
     height: 100%;
     text-align: center;
-}
-
-.form {
-    display: flex;
-    width: 115%;
-}
-
-.form div:not(:first-child) {
-    margin-left: 50px;
 }
 
 .turnLandscape {
@@ -115,20 +69,3 @@
         margin-right: 80px;
     }
 }
-
-@media only screen and (max-width: 500px) {
-
-
-}
-
-/*.more {*/
-    /*margin: -30px auto 0 auto;*/
-    /*z-index: 10;*/
-/*}*/
-
-/*.pageTrack {*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*font-size: 20px;*/
-    /*font-weight: bold;*/
-/*}*/

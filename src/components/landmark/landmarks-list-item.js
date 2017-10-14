@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styles from './facial-landmarks-generator.css';
+import styles from './landmarks-list-item.css';
 import Image from 'react-bootstrap/lib/Image';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap/lib';
 import { FACES, EYES, EYEBROWS, LIPS, NOSES } from '../../images/index';
@@ -11,7 +11,7 @@ import HelpModal from '../modals/help-modal';
 
 let newArr = [];
 
-class Faces extends Component {
+class LandmarksListItem extends Component {
 
   constructor(prop) {
     super(prop);
@@ -102,4 +102,4 @@ const mapStateProps = ({landmarkSelect}) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ selectLandmark }, dispatch);
 
-export default connect(mapStateProps, mapDispatchToProps)(Faces);
+export default connect(mapStateProps, mapDispatchToProps)(LandmarksListItem);
