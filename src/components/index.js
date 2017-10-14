@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import ReactDOM from 'react-dom';
 import styles from './styles.css';
-import { Image, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
+import { Image, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
 import loadingGif from '../images/loading.gif';
 import rotateLandscape from '../images/rotate_landscape.gif';
 import LandmarksField from './landmark/landmarks-field';
@@ -13,10 +13,8 @@ import PortraitInfoModal from './modals/portrait-info/portrait-info-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../actions/landmark-select-actions';
 import KeyGenerator from '../util/landmark-key-generator';
-import ReactImageMagnify from 'react-image-magnify';
-import Fab from './floating-button';
-import FontAwesome from 'react-fontawesome';
 import JoyrideTour from './joyride/joyride-tour';
+import PortraitViewer from './portrait/portrait-viewer';
 
 const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
 
@@ -77,31 +75,6 @@ class App extends Component {
       )
     }
 
-    //Displays image with magnifier
-    const imagePortrait = <ReactImageMagnify {...{
-      smallImage: {
-        alt: 'Wristwatch by Ted Baker London',
-        isFluidWidth: true,
-        src: portraitUrl,
-        sizes: '(min-width: 480px) 30vw, 80vw'
-      },
-      largeImage: {
-        alt: '',
-        src: portraitUrl,
-        width: 1400,
-        height: 1800
-      }
-    }} />;
-
-    //Decides which button to display (next and submit). If it is the last page, a submit button will be displayed.
-    const submitNextButton = page > NUM_PORTRAITS ?
-      <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">
-        <FontAwesome className={styles.nextIcon} name="paper-plane" size="2x" />
-      </Button> :
-      <Button id="next-portrait" onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
-        <FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" />
-      </Button>;
-
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.turnLandscape}>
@@ -109,24 +82,10 @@ class App extends Component {
           <span>Rotate your device to landscape</span>
         </div>
         <div id="container" className={styles.container}>
-          <div id="portraits" className={styles.portraits}>
-            <span className={styles.helper}>
-              <span id="page-track" className={styles.pageTrack} >{currentPage}/{NUM_PORTRAITS + 2}</span>
-              <span id="image-portrait">
-                {imagePortrait}
-              </span>
-              <div id="portrait-info" onClick={this.openInfoModal} className={styles.more}>
-                <Fab size="2x" icon="info-circle" />
-              </div>
-              <div className={styles.groupBtn}>
-                <Button id="not-applicable" className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
-                  <FontAwesome className={styles.notAppIcon} name="times" size="2x" />
-                </Button>
-                {submitNextButton}
-              </div>
-              <Button onClick={this.openRegistrationModal}>Testing</Button>
-            </span>
-          </div>
+          <PortraitViewer portraitUrl={portraitUrl} currentPage={currentPage} NUM_PORTRAITS={NUM_PORTRAITS}
+                          updatePortrait={this.updatePortrait} notApplicable={this.notApplicable} openInfoModal={this.openInfoModal}
+                          page={page}/>
+          {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
           <div id="landmark" className={styles.landmarks}>
             <div className={styles.extraInfo}>
               <FormGroup className={styles.form} controlId="formControlsSelect">
