@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/home.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> home.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/3</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react<span class="cstat-no" title="statement not covered" >';<span class="cstat-no" title="statement not covered" ></span></span>
+import { connect } from 'react-redux';
+import styles from './home.css';
+import { Image, Button, ControlLabel } from 'react-bootstrap/lib';
+import Compare from '../images/comparison.jpg';
+import { browserHistory } from 'react-router';
+import rotateLandscape from '../images/rotate_landscape.gif';<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+class Home extends Component {
+&nbsp;
+  render() {
+&nbsp;
+    return (
+      &lt;div&gt;
+        &lt;div className={styles.turnLandscape}&gt;
+          &lt;Image className={styles.rotateLandscape} src={rotateLandscape}/&gt;
+          &lt;span&gt;Rotate your device to landscape&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className={styles.header}&gt;
+          &lt;div className={styles.headerText}&gt;
+            &lt;div className={styles.tptext}&gt;Twin Portrait&lt;/div&gt;
+            &lt;div className={styles.text1}&gt;Find your Doppelgänger within 1000+ portraits&lt;/div&gt;
+            &lt;div className={styles.comingSoon}&gt;Coming Soon!&lt;/div&gt;
+            &lt;Image className={styles.compare} src={Compare} rounded/&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className={styles.main}&gt;
+          &lt;ControlLabel className={styles.controlLabel}&gt;What is Twin Portrait&lt;/ControlLabel&gt;
+          &lt;p&gt;
+            Twin Portrait is a website created to incite people to learn more about Arts &amp; Culture and to find their
+            Doppelgängers through portraits. This will help individuals to have a deeper understanding
+            regarding Arts &amp; Culture and be encouraged to visit some of the best museums in the world.
+          &lt;/p&gt;
+          &lt;ControlLabel className={styles.controlLabel}&gt;About me: Daniel Mensah&lt;/ControlLabel&gt;
+          &lt;p&gt;
+            Daniel Mensah studies Software Engineering including sandwich year at Kingston University. Born in Italy from Ghanaian parents,
+            he moved to London in the 2010 to pursuit his career of becoming a Software Engineer. Daniel worked as a Software Developer
+            at Hindsight Software for his one year placement. He managed to learn and absorb most teachings regarding software development
+            and business management and looking forward to apply his knowledge to his project.
+          &lt;/p&gt;
+          &lt;ControlLabel className={styles.controlLabel}&gt;How it works&lt;/ControlLabel&gt;
+          &lt;p&gt;
+            Twin Portrait isn't launched yet and it needs your help. Help to create an accurate face matching system and
+            in return you will be able to use Twin Portrait for free after it's launched! What do you have to do?
+            Few portraits will be displayed and you will need to select the appropriate facial features for each one of them.
+            Simple isn't it? At the end of it, you will receive a promo code that will allow you to use Twin Portrait
+            for free for life. &lt;b&gt;Start now and you will be taken for through the website.&lt;/b&gt;
+          &lt;/p&gt;
+          &lt;div className={styles.buttonDiv}&gt;
+            &lt;Button onClick={this.startNow} className={styles.startNow} bsSize="large"&gt;Start now&lt;/Button&gt;
+            {/*&lt;Button className={styles.startNow} bsSize="large" disabled&gt;Under Development&lt;/Button&gt;*/}
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className={styles.footer}&gt;
+          &lt;div className={styles.contact}&gt;
+            Student: K1422655@kingston.ac.uk
+          &lt;/div&gt;
+          &lt;div className={styles.disclaimer}&gt;
+            This website is created for study purposes. All portraits and their information are sourced from
+            &lt;a target="blank" href="https://www.google.com/culturalinstitute/beta/"&gt; Google Arts &amp; Culture&lt;/a&gt;. I DO NOT OWN ANY OF
+            THE PORTRAITS.
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
+&nbsp;
+  startNow = () =&gt; {
+    browserHistory.push('/match-portrait')
+  }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+}
+&nbsp;
+export default connect()(Home);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Oct 14 2017 15:46:09 GMT+0100 (GMT Daylight Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

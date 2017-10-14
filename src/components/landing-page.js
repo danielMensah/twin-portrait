@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './home.css';
+import styles from './landing-page.css';
 import { Image, Button, ControlLabel } from 'react-bootstrap/lib';
 import Compare from '../images/comparison.jpg';
 import { browserHistory } from 'react-router';
 import rotateLandscape from '../images/rotate_landscape.gif';
 
-class Home extends Component {
+class LandingPage extends Component {
 
   render() {
 
@@ -71,4 +71,4 @@ class Home extends Component {
 
 }
 
-export default connect()(Home);
+export default connect()(LandingPage);

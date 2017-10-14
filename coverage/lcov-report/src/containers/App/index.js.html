@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/containers/App/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/containers/App</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/9</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react<span class="cstat-no" title="statement not covered" >';<span class="cstat-no" title="statement not covered" ></span></span>
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import ReactDOM from 'react-dom';
+import styles from './app.css';
+import { Image, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
+import loadingGif from '../../images/loading.gif';
+import rotateLandscape from '../../images/rotate_landscape.gif';
+import LandmarksField from '../../components/landmark/landmarks-field';
+import RegistrationModal from '../../components/modals/registration-modal';
+import PortraitInfoModal from '../../components/modals/portrait-info/portrait-info-modal';
+import { fetchPortrait, updatePortrait, setNotApplicable } from '../../actions/portrait-actions';
+import { selectLandmark, resetSelect } from '../../actions/landmark-select-actions';
+import KeyGenerator from '../../util/landmark-key-generator';
+import ReactImageMagnify from 'react-image-magnify';
+import Fab from '../../components/floating-button';
+import FontAwesome from 'react-fontawesome';
+import JoyrideTour from './joyride-tour';<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+const NUM_PORTRAITS = <span class="cstat-no" title="statement not covered" >3;</span> //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
+&nbsp;
+class App extends Component {
+&nbsp;
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(prop) {
+<span class="cstat-no" title="statement not covered" >    super(prop);</span>
+    this.state = {
+      page: 0,
+      showRegistrationModal: false,
+      isLoading: true,
+      showInfoModal: false
+    }
+  }
+&nbsp;
+  closeRegistrationModal = () =&gt; {
+    this.setState({ showRegistrationModal: false }, () =&gt; {
+      browserHistory.push('/')
+    });
+  };
+&nbsp;
+  closeInfoModal = () =&gt; {
+    this.setState({ showInfoModal: false });
+  };
+&nbsp;
+  openRegistrationModal = () =&gt; {
+    this.setState({ showRegistrationModal: true });
+  };
+&nbsp;
+  openInfoModal = () =&gt; {
+    this.setState({ showInfoModal: true });
+  };
+&nbsp;
+  startLoading = () =&gt; {
+    this.setState({isLoading: true});
+  };
+&nbsp;
+  stopLoading = () =&gt; {
+    this.setState({isLoading: false});
+  };
+&nbsp;
+  componentDidMount() {
+    this.props.fetchPortrait().then(() =&gt; {
+      this.stopLoading();
+    });
+  }
+&nbsp;
+  render() {
+    const {page, isLoading, showRegistrationModal, showInfoModal} = this.state;
+    const { portraitUrl, portraitId } = this.props;
+    const currentPage = page+1;
+&nbsp;
+    if (isLoading) {
+      return (
+        &lt;div className={styles.loadingContainer}&gt;
+          &lt;Image src={loadingGif} /&gt;
+        &lt;/div&gt;
+      )
+    }
+&nbsp;
+    //Displays image with magnifier
+    const imagePortrait = &lt;ReactImageMagnify {...{
+      smallImage: {
+        alt: 'Wristwatch by Ted Baker London',
+        isFluidWidth: true,
+        src: portraitUrl,
+        sizes: '(min-width: 480px) 30vw, 80vw'
+      },
+      largeImage: {
+        alt: '',
+        src: portraitUrl,
+        width: 1400,
+        height: 1800
+      }
+    }} /&gt;;
+&nbsp;
+    //Decides which button to display (next and submit). If it is the last page, a submit button will be displayed.
+    const submitNextButton = page &gt; NUM_PORTRAITS ?
+      &lt;Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success"&gt;
+        &lt;FontAwesome className={styles.nextIcon} name="paper-plane" size="2x" /&gt;
+      &lt;/Button&gt; :
+      &lt;Button id="next-portrait" onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary"&gt;
+        &lt;FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" /&gt;
+      &lt;/Button&gt;;
+&nbsp;
+    return (
+      &lt;div id="app-container" className={styles.appContainer}&gt;
+        &lt;div className={styles.turnLandscape}&gt;
+          &lt;Image className={styles.rotateLandscape} src={rotateLandscape} responsive/&gt;
+          &lt;span&gt;Rotate your device to landscape&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div id="container" className={styles.container}&gt;
+          &lt;div id="portraits" className={styles.portraits}&gt;
+            &lt;span className={styles.helper}&gt;
+              &lt;span id="page-track" className={styles.pageTrack} &gt;{currentPage}/{NUM_PORTRAITS + 2}&lt;/span&gt;
+              &lt;span id="image-portrait"&gt;
+                {imagePortrait}
+              &lt;/span&gt;
+              &lt;div id="portrait-info" onClick={this.openInfoModal} className={styles.more}&gt;
+                &lt;Fab size="2x" icon="info-circle" /&gt;
+              &lt;/div&gt;
+              &lt;div className={styles.groupBtn}&gt;
+                &lt;Button id="not-applicable" className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}&gt;
+                  &lt;FontAwesome className={styles.notAppIcon} name="times" size="2x" /&gt;
+                &lt;/Button&gt;
+                {submitNextButton}
+              &lt;/div&gt;
+              &lt;Button onClick={this.openRegistrationModal}&gt;Testing&lt;/Button&gt;
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div id="landmark" className={styles.landmarks}&gt;
+            &lt;div className={styles.extraInfo}&gt;
+              &lt;FormGroup className={styles.form} controlId="formControlsSelect"&gt;
+                &lt;div id="area-chart" className={styles.gender}&gt;
+                  &lt;ControlLabel&gt;Select gender&lt;/ControlLabel&gt;
+                  &lt;FormControl ref={(gender) =&gt; this.gender = gender} componentClass="select" placeholder="select"&gt;
+                    &lt;option value="male"&gt;Male&lt;/option&gt;
+                    &lt;option value="female"&gt;Female&lt;/option&gt;
+                  &lt;/FormControl&gt;
+                &lt;/div&gt;
+                &lt;div className={styles.facialHair}&gt;
+                  &lt;ControlLabel&gt;Select facial hair&lt;/ControlLabel&gt;
+                  &lt;FormControl ref={(facialHair) =&gt; this.facialHair = facialHair} componentClass="select" placeholder="select"&gt;
+                    &lt;option value="none"&gt;None&lt;/option&gt;
+                    &lt;option value="mustache"&gt;Mustache&lt;/option&gt;
+                    &lt;option value="beard"&gt;Beard&lt;/option&gt;
+                    &lt;option value="both"&gt;Mustache and beard&lt;/option&gt;
+                  &lt;/FormControl&gt;
+                &lt;/div&gt;
+              &lt;/FormGroup&gt;
+            &lt;/div&gt;
+            &lt;LandmarksField/&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;RegistrationModal show={showRegistrationModal} onHide={this.closeRegistrationModal} /&gt;
+        &lt;PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} /&gt;
+        &lt;JoyrideTour/&gt;
+      &lt;/div&gt;
+    )
+  }
+&nbsp;
+  updatePortrait = () =&gt; {
+    const { selectedLandmarks, portraitId, updatePortrait } = this.props;
+    const { page } = this.state;
+&nbsp;
+    let gender = ReactDOM.findDOMNode(this.gender);
+    gender = gender.options[gender.selectedIndex].value;
+&nbsp;
+    let facialHair = ReactDOM.findDOMNode(this.facialHair);
+    facialHair = facialHair.options[facialHair.selectedIndex].value;
+&nbsp;
+    switch (facialHair) {
+      case 'none':
+        facialHair = { mustache: false, beard: false };
+        break;
+      case 'mustache':
+        facialHair = { mustache: true, beard: false };
+        break;
+      case 'beard':
+        facialHair = { mustache: false, beard: true };
+        break;
+      default:
+        facialHair = { mustache: true, beard: true };
+    }
+&nbsp;
+    if (this.objectSizeValidation(selectedLandmarks) &gt; 2) {
+      let obj = { portraitId, gender, ...facialHair };
+&nbsp;
+      for (let key in selectedLandmarks) {
+        const item = selectedLandmarks[key];
+        obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
+      }
+&nbsp;
+      this.startLoading();
+      updatePortrait(obj).then((r) =&gt; {
+        if ( r.response === 'error' ) {
+          this.stopLoading();
+          alert('there was an error when submitting, please try to resubmit the form again')
+        } else  {
+          if (page &gt; NUM_PORTRAITS) {
+            this.stopLoading();
+            this.openRegistrationModal();
+          } else {
+            this.setState({page: this.state.page+1});
+            this.nextPortrait();
+          }
+        }
+      });
+    } else {
+      alert('Please a shape from each facial feature');
+    }
+  };
+&nbsp;
+  notApplicable = () =&gt; {
+    const { setNotApplicable, portraitId } = this.props;
+    const obj = { portraitId };
+&nbsp;
+    this.startLoading();
+    setNotApplicable(obj).then(() =&gt; {
+      this.nextPortrait();
+    })
+&nbsp;
+  };
+&nbsp;
+  nextPortrait = () =&gt; {
+    const { resetSelect, fetchPortrait } = this.props;
+&nbsp;
+    this.startLoading();
+    fetchPortrait().then(() =&gt; {
+      this.stopLoading();
+      resetSelect();
+    });
+  };
+&nbsp;
+  objectSizeValidation = (obj) =&gt; {
+    let size = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) size++;
+    }
+&nbsp;
+    return size;
+  };<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span>
+}<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span>
+const mapStateProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>landmarkSelect, portrait}) =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span>
+  selectedLandmarks: landmarkSelect,
+  portraitUrl: portrait.portraitURL,
+  portraitId: portrait.id
+});
+&nbsp;
+const mapDispatchToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; bindActionCreators({ fet<span class="cstat-no" title="statement not covered" >chPortrait, selectLandmark, resetSelect, updatePortrait, setNotApplicable }, dispatch);</span></span>
+&nbsp;
+export default connect(mapStateProps, mapDispatchToProps)(App);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Oct 14 2017 15:46:09 GMT+0100 (GMT Daylight Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>
