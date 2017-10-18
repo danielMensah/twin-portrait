@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 import React from 'react'
 
-import App from './containers/App'
+import App from './containers/App/index'
 import LandingPage from './components/landing-page'
 import configure from './store'
 

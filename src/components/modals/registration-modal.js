@@ -90,7 +90,7 @@ class RegistrationModal extends Component {
 
     let obj = {
       email: this.state.email,
-      feedbac: this.state.feedback
+      feedback: this.state.feedback
     };
 
       this.startLoading();

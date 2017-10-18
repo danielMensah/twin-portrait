@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import ReactDOM from 'react-dom';
 import styles from './styles.css';
-import { Image } from 'react-bootstrap/lib';
+import { Image, Button } from 'react-bootstrap/lib';
 import loadingGif from '../images/loading.gif';
 import rotateLandscape from '../images/rotate_landscape.gif';
 import LandmarksList from './landmark/landmarks-list';
