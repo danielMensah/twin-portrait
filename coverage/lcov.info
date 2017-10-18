@@ -187,7 +187,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\facial-landmarks-generator.js
+SF:C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-list-item.js
 FN:10,_interopRequireDefault
 FN:16,(anonymous_1)
 FN:96,(anonymous_2)
@@ -225,7 +225,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-field.js
+SF:C:\Users\MrDan\Documents\code\twinportrait\src\components\landmark\landmarks-list.js
 FN:4,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:30,(anonymous_2)

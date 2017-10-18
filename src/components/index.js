@@ -4,19 +4,20 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import ReactDOM from 'react-dom';
 import styles from './styles.css';
-import { Image, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap/lib';
+import { Image, Button } from 'react-bootstrap/lib';
 import loadingGif from '../images/loading.gif';
 import rotateLandscape from '../images/rotate_landscape.gif';
-import LandmarksField from './landmark/landmarks-field';
+import LandmarksList from './landmark/landmarks-list';
 import RegistrationModal from './modals/registration-modal';
 import PortraitInfoModal from './modals/portrait-info/portrait-info-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../actions/portrait-actions';
 import { selectLandmark, resetSelect } from '../actions/landmark-select-actions';
 import KeyGenerator from '../util/landmark-key-generator';
-import ReactImageMagnify from 'react-image-magnify';
-import Fab from './floating-button';
-import FontAwesome from 'react-fontawesome';
 import JoyrideTour from './joyride/joyride-tour';
+import PortraitViewer from './portrait/portrait-viewer';
+import FacialHairGenderList from './landmark/facial-hair-gender-list';
+import FacialHairManager from '../util/managers/facial-hair-manager';
+import { size, forEach } from 'lodash';
 
 const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
 
@@ -77,31 +78,6 @@ class App extends Component {
       )
     }
 
-    //Displays image with magnifier
-    const imagePortrait = <ReactImageMagnify {...{
-      smallImage: {
-        alt: 'Wristwatch by Ted Baker London',
-        isFluidWidth: true,
-        src: portraitUrl,
-        sizes: '(min-width: 480px) 30vw, 80vw'
-      },
-      largeImage: {
-        alt: '',
-        src: portraitUrl,
-        width: 1400,
-        height: 1800
-      }
-    }} />;
-
-    //Decides which button to display (next and submit). If it is the last page, a submit button will be displayed.
-    const submitNextButton = page > NUM_PORTRAITS ?
-      <Button onClick={this.updatePortrait} className={styles.submit} bsSize="large" bsStyle="success">
-        <FontAwesome className={styles.nextIcon} name="paper-plane" size="2x" />
-      </Button> :
-      <Button id="next-portrait" onClick={this.updatePortrait} className={styles.next} bsSize="large" bsStyle="primary">
-        <FontAwesome className={styles.nextIcon} name="arrow-right" size="2x" />
-      </Button>;
-
     return (
       <div id="app-container" className={styles.appContainer}>
         <div className={styles.turnLandscape}>
@@ -109,46 +85,13 @@ class App extends Component {
           <span>Rotate your device to landscape</span>
         </div>
         <div id="container" className={styles.container}>
-          <div id="portraits" className={styles.portraits}>
-            <span className={styles.helper}>
-              <span id="page-track" className={styles.pageTrack} >{currentPage}/{NUM_PORTRAITS + 2}</span>
-              <span id="image-portrait">
-                {imagePortrait}
-              </span>
-              <div id="portrait-info" onClick={this.openInfoModal} className={styles.more}>
-                <Fab size="2x" icon="info-circle" />
-              </div>
-              <div className={styles.groupBtn}>
-                <Button id="not-applicable" className={styles.notApplicable} bsSize="large" bsStyle="danger" onClick={this.notApplicable}>
-                  <FontAwesome className={styles.notAppIcon} name="times" size="2x" />
-                </Button>
-                {submitNextButton}
-              </div>
-              <Button onClick={this.openRegistrationModal}>Testing</Button>
-            </span>
-          </div>
+          <PortraitViewer portraitUrl={portraitUrl} currentPage={currentPage} NUM_PORTRAITS={NUM_PORTRAITS}
+                          updatePortrait={this.updatePortrait} notApplicable={this.notApplicable} openInfoModal={this.openInfoModal}
+                          page={page}/>
+          {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
           <div id="landmark" className={styles.landmarks}>
-            <div className={styles.extraInfo}>
-              <FormGroup className={styles.form} controlId="formControlsSelect">
-                <div id="area-chart" className={styles.gender}>
-                  <ControlLabel>Select gender</ControlLabel>
-                  <FormControl ref={(gender) => this.gender = gender} componentClass="select" placeholder="select">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </FormControl>
-                </div>
-                <div className={styles.facialHair}>
-                  <ControlLabel>Select facial hair</ControlLabel>
-                  <FormControl ref={(facialHair) => this.facialHair = facialHair} componentClass="select" placeholder="select">
-                    <option value="none">None</option>
-                    <option value="mustache">Mustache</option>
-                    <option value="beard">Beard</option>
-                    <option value="both">Mustache and beard</option>
-                  </FormControl>
-                </div>
-              </FormGroup>
-            </div>
-            <LandmarksField/>
+            <FacialHairGenderList genderRef={el => this.gender = el} facialHairRef={el => this.facialHair = el}/>
+            <LandmarksList/>
           </div>
         </div>
         <RegistrationModal show={showRegistrationModal} onHide={this.closeRegistrationModal} />
@@ -162,49 +105,26 @@ class App extends Component {
     const { selectedLandmarks, portraitId, updatePortrait } = this.props;
     const { page } = this.state;
 
-    let gender = ReactDOM.findDOMNode(this.gender);
-    gender = gender.options[gender.selectedIndex].value;
+    let gender = ReactDOM.findDOMNode(this.gender).options[ReactDOM.findDOMNode(this.gender).selectedIndex].value;
+    let facialHair = FacialHairManager(ReactDOM.findDOMNode(this.facialHair));
 
-    let facialHair = ReactDOM.findDOMNode(this.facialHair);
-    facialHair = facialHair.options[facialHair.selectedIndex].value;
-
-    switch (facialHair) {
-      case 'none':
-        facialHair = { mustache: false, beard: false };
-        break;
-      case 'mustache':
-        facialHair = { mustache: true, beard: false };
-        break;
-      case 'beard':
-        facialHair = { mustache: false, beard: true };
-        break;
-      default:
-        facialHair = { mustache: true, beard: true };
-    }
-
-    if (this.objectSizeValidation(selectedLandmarks) > 2) {
+    if (size(selectedLandmarks) > 2) {
       let obj = { portraitId, gender, ...facialHair };
 
-      for (let key in selectedLandmarks) {
-        const item = selectedLandmarks[key];
+      forEach(selectedLandmarks, (item) => {
         obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
-      }
+      });
 
       this.startLoading();
-      updatePortrait(obj).then((r) => {
-        if ( r.response === 'error' ) {
+      updatePortrait(obj).then(() => {
+        if (page > NUM_PORTRAITS) {
           this.stopLoading();
-          alert('there was an error when submitting, please try to resubmit the form again')
-        } else  {
-          if (page > NUM_PORTRAITS) {
-            this.stopLoading();
-            this.openRegistrationModal();
-          } else {
-            this.setState({page: this.state.page+1});
-            this.nextPortrait();
-          }
+          this.openRegistrationModal();
+        } else {
+          this.setState({page: this.state.page+1});
+          this.nextPortrait();
         }
-      });
+      }).catch((e) => console.log('error', e));
     } else {
       alert('Please a shape from each facial feature');
     }
@@ -212,32 +132,20 @@ class App extends Component {
 
   notApplicable = () => {
     const { setNotApplicable, portraitId } = this.props;
-    const obj = { portraitId };
 
     this.startLoading();
-    setNotApplicable(obj).then(() => {
+    setNotApplicable({ portraitId }).then(() => {
       this.nextPortrait();
     })
 
   };
 
   nextPortrait = () => {
-    const { resetSelect, fetchPortrait } = this.props;
-
     this.startLoading();
-    fetchPortrait().then(() => {
+    this.props.fetchPortrait().then(() => {
       this.stopLoading();
-      resetSelect();
+      this.props.resetSelect();
     });
-  };
-
-  objectSizeValidation = (obj) => {
-    let size = 0, key;
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) size++;
-    }
-
-    return size;
   };
 }
 
