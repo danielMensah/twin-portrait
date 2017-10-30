@@ -12,7 +12,9 @@ export function fetchPortrait() {
         type: ActionTypes.PORTRAIT.FETCH_PORTRAIT,
         payload: response
       })
-    }).catch(e => console.log('errors', e));
+    }).catch(e => {
+      throw new Error(`Exception status ${e.status}. Response => ${e.responseText}`)
+    });
 
     return request;
 

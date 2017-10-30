@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import ReactDOM from 'react-dom';
 import styles from './styles.css';
-import { Image, Button } from 'react-bootstrap/lib';
+import { Image } from 'react-bootstrap/lib';
 import loadingGif from '../images/loading.gif';
 import rotateLandscape from '../images/rotate_landscape.gif';
 import LandmarksList from './landmark/landmarks-list';
@@ -33,22 +33,22 @@ class App extends Component {
     }
   }
 
+  openRegistrationModal = () => {
+    this.setState({ showRegistrationModal: true });
+  };
+
   closeRegistrationModal = () => {
     this.setState({ showRegistrationModal: false }, () => {
       browserHistory.push('/')
     });
   };
 
-  closeInfoModal = () => {
-    this.setState({ showInfoModal: false });
-  };
-
-  openRegistrationModal = () => {
-    this.setState({ showRegistrationModal: true });
-  };
-
   openInfoModal = () => {
     this.setState({ showInfoModal: true });
+  };
+
+  closeInfoModal = () => {
+    this.setState({ showInfoModal: false });
   };
 
   startLoading = () => {
@@ -124,7 +124,7 @@ class App extends Component {
           this.setState({page: this.state.page+1});
           this.nextPortrait();
         }
-      }).catch((e) => console.log('error', e));
+      })
     } else {
       alert('Please a shape from each facial feature');
     }
