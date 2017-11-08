@@ -26,15 +26,16 @@ class JoyrideTour extends Component {
       <Joyride
         ref={(joyride) => this.joyride = joyride}
         steps={Steps}
-        locale={{last: 'Start now', next: startTourText ? 'Start tour' : 'Next'}}
+        locale={{last: 'Start now', next: startTourText ? 'Start tour' : 'Next', skip: 'Skip'}}
         autoStart={true}
         run={!LocalStorage.getItem('tourCompleted')} // or some other boolean for when you want to start it
         showStepsProgress={!startTourText}
         type="continuous"
         debug={false}
+        showSkipButton={true}
         scrollToSteps={true}
         callback={(callback) => {
-          if ( callback.type === 'finished') this.tourCompleted();
+          if ( callback.type === 'finished' || callback.action === 'skip') this.tourCompleted();
           if (  callback.index === 0 ) {
             this.setState({ startTourText: true })
           } else {
