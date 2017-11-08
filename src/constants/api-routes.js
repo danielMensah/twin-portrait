@@ -4,5 +4,7 @@ export default {
   SET_NOT_APPLICABLE: 'setNotApplicable',
   FETCH_PORTRAIT_INFO: 'getPortraitInfo',
 
-  REGISTER_USER: 'registerUser'
+  REGISTER_USER: 'registerUser',
+
+  STATISTICS: 'statistics'
 }
