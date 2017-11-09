@@ -1,5 +1,7 @@
 .modalBody {
     text-align: center;
+    overflow-y: scroll;
+    height: 545px;
 }
 
 .modalBody h2, .modalBody p {
