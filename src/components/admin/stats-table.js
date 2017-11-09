@@ -13,7 +13,8 @@ class StatsTable extends Component {
   render() {
     const { type } = this.props;
 
-    const heading = type === 'user' ? ['User id', 'E-mail', 'Date registered', 'Feedback'] : ['landmarktest'];
+    const heading = type === 'user' ? ['User id', 'E-mail', 'Date registered', 'Feedback']
+      : ['Id', 'Flat eyebrows', 'Angled eyebrows', 'Rounded eyebrows', 'Monolid/Almond eye', 'Deep-set eye', 'Downturned eye', 'Hooded eye'];
     const tableBody = this.generateBody();
 
     return (
@@ -50,7 +51,8 @@ class StatsTable extends Component {
       default:
         return data.landmarks.map((landmark) => {
           return (
-            <tr>
+            <tr key={landmark.portrait_id}>
+              <td>{landmark}</td>
             </tr>
           )
         });
