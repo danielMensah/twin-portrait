@@ -19,8 +19,8 @@ ReactDOM.render(
       <Route path="/" component={AdminPanel}/>
       <Route path="/match-portrait" component={App}/>
       <Route path="/admin-login" component={AdminPanelLogin}/>
-      <Route path="/panel" component={AdminPanel}/>
+      {/*<Route path="/panel" component={AdminPanel}/>*/}
     </Router>
   </Provider>,
   document.getElementById('root')
-)
+);
