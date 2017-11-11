@@ -67,7 +67,7 @@ class Statistics extends Component {
       if (!obj) {
         dataArray.push({ date: date, Users: 0, Landmarks: 1 })
       } else {
-        dataArray.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
+        dataArray.splice(index, 1, { ...obj, Landmarks: obj.Landmarks + 1})
       }
     });
 
