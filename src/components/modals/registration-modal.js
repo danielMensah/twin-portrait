@@ -40,7 +40,7 @@ class RegistrationModal extends Component {
     const { show, onHide } = this.props;
     const { promoCode, loading, error, emailExists } = this.state;
 
-    const header = promoCode ? 'Here\'s your code! You will be contacted within a week you have won!' : 'Thank you!';
+    const header = promoCode ? 'Here\'s your code! You will be contacted within a week IF you have won.' : 'Thank you!';
 
     const formInstance = (
       <form onSubmit={this.handleSubmit}>
