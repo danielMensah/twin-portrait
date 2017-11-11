@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { sortBy, find, findIndex } from 'lodash';
+import moment from 'moment';
 
 class Statistics extends Component {
 
-  render() {
+  static propTypes = {
+    userData: PropTypes.array.isRequired,
+    landmarkData: PropTypes.array.isRequired
+  };
 
-    const data = [
-      {date: '20/10/17', Users: 4000, Landmarks: 2400},
-      {date: '22/10/17', Users: 3000, Landmarks: 1398},
-      {date: '23/10/17', Users: 2000, Landmarks: 9800, amt: 2290},
-      {date: '29/10/17', Users: 2780, Landmarks: 3908, amt: 2000},
-      {date: '02/11/17', Users: 1890, Landmarks: 4800, amt: 2181},
-      {date: '05/11/17', Users: 2390, Landmarks: 3800, amt: 2500},
-      {date: '06/11/17', Users: 3490, Landmarks: 4300, amt: 2100},
-    ];
+  render() {
+    const data = this.generateGraphData();
 
     return (
       <div>
@@ -30,6 +29,37 @@ class Statistics extends Component {
         </LineChart>
       </div>
     )
+  }
+
+  generateGraphData = () => {
+    const { userData, landmarkData } = this.props;
+    let dateArray = [];
+
+    userData.forEach((user) => {
+      const date = moment(user.registered_at).format('DD/MM/YYYY');
+      let obj = find(dateArray, { date: date });
+      let index = findIndex(dateArray, { date: date });
+
+      if (!obj) {
+        dateArray.push({ date: date, Users: 1, Landmarks: 0 })
+      } else {
+        dateArray.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
+      }
+    });
+
+    landmarkData.forEach((landmark) => {
+      const date = moment(landmark.date_completed).format('DD/MM/YYYY');
+      let obj = find(dateArray, { date: date });
+      let index = findIndex(dateArray, { date: date });
+
+      if (!obj) {
+        dateArray.push({ date: date, Users: 0, Landmarks: 1 })
+      } else {
+        dateArray.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
+      }
+    });
+
+    return sortBy(dateArray, (o) => o.date);
   }
 
 }

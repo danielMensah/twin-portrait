@@ -5,6 +5,8 @@ import Statistics from './statistics';
 import StatsTable from './stats-table';
 import styles from './admin-panel.css';
 import { fetchStatistics } from '../../actions/statistics-actions';
+import { Image } from 'react-bootstrap';
+import loadingImg from '../../images/loading2.gif';
 
 class AdminPanel extends Component {
 
@@ -14,9 +16,9 @@ class AdminPanel extends Component {
       landmarkData: [],
       completedLandmarksCount: null,
       userData: [],
-      registeredUsersCount: null
+      registeredUsersCount: null,
+      loading: true
     }
-
   }
 
   componentWillMount() {
@@ -26,16 +28,19 @@ class AdminPanel extends Component {
         completedLandmarksCount: r.completedLandmarksCount,
         userData: r.registeredUsers,
         registeredUsersCount: r.registeredUsersCount
-      })
+      }, () => this.setState({ loading: false }))
     });
 
   }
 
   render() {
-    const { userData, landmarkData } = this.state;
+    const { userData, landmarkData, loading } = this.state;
+
+    if (loading) return <div className={styles.loadingContainer} ><Image src={loadingImg}/></div>;
+
     return (
       <div className={styles.container}>
-        <Statistics/>
+        <Statistics userData={userData} landmarkData={landmarkData} />
         <div className={styles.tablesContainer}>
           <StatsTable type="user" data={userData} />
           <StatsTable type="landmark" data={landmarkData} />

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
-import styles from './stats-table.css';
 
 class StatsTable extends Component {
 
@@ -21,7 +20,7 @@ class StatsTable extends Component {
 
     return (
       <div>
-        <Table responsive striped bordered condensed hover className={styles.table}>
+        <Table responsive striped bordered condensed hover>
           <thead>
           <tr>
             {heading.map((heading) => <th key={heading}>{heading}</th>)}

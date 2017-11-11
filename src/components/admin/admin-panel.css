@@ -14,3 +14,7 @@
 .tablesContainer > div:not(:first-child) {
     margin-left: auto;
 }
+
+.loadingContainer {
+    text-align: center;
+}
