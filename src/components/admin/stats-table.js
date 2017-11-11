@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
+import styles from './stats-table.css';
 
 class StatsTable extends Component {
 
@@ -20,7 +21,7 @@ class StatsTable extends Component {
 
     return (
       <div>
-        <Table responsive striped bordered condensed hover>
+        <Table responsive striped bordered condensed hover className={styles.table}>
           <thead>
           <tr>
             {heading.map((heading) => <th key={heading}>{heading}</th>)}
@@ -41,7 +42,7 @@ class StatsTable extends Component {
       case "user":
         return data.map((user) => {
             return (
-              <tr key={user.userId}>
+              <tr key={user.user_id}>
                 <td>{user.user_id}</td>
                 <td>{user.email}</td>
                 <td>{moment(user.registered_at).format('DD/MM/YYYY')}</td>
