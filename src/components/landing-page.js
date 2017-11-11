@@ -20,7 +20,7 @@ class LandingPage extends Component {
           <div className={styles.headerText}>
             <div className={styles.tptext}>Twin Portrait</div>
             <div className={styles.text1}>Find your Doppelgänger within 1000+ portraits</div>
-            <div className={styles.comingSoon}>WIN A £20 AMAZON VOUCHER!</div>
+            <div className={styles.comingSoon}>WIN £20 AMAZON VOUCHER x2!</div>
             <Image className={styles.compare} src={Compare} rounded/>
           </div>
         </div>
@@ -40,11 +40,12 @@ class LandingPage extends Component {
           </p>
           <ControlLabel className={styles.controlLabel}>How it works</ControlLabel>
           <p>
-            Twin Portrait isn't launched yet and it needs your help. Help to create an accurate face matching system and
-            in return you can win a <b>£20 Amazon voucher</b> plus use Twin Portrait for free after it's launched! What do you have to do?
+            Twin Portrait isn't launched yet and it needs your help. Help to gather some data to create face matching system and
+            in return you can win a <b>£20 Amazon voucher</b> plus use Twin Portrait for free after it's launched!
+            There are 2 Amazon vouchers and at the end, there will be two winners. What do you have to do?
             Few portraits will be displayed and you will need to select the appropriate facial features for each one of them.
-            Simple isn't it? At the end of it, you will receive a promo code that will allow you to enter a competition to win a <b>£20 Amazon voucher!
-            Start now and you will be taken for through the website.</b>
+            Simple isn't it? At the end of it, you will automatically enter a competition to win £20 Amazon x2 receive a promo code that
+            will allow you to enter a competition to win a <b>£20 Amazon voucher! Start now and you will be taken for through the website.</b>
           </p>
           <div className={styles.buttonDiv}>
             <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
