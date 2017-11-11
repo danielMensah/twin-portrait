@@ -34,13 +34,13 @@ class AdminPanel extends Component {
   }
 
   render() {
-    const { userData, landmarkData, loading } = this.state;
+    const { userData, landmarkData, completedLandmarksCount, registeredUsersCount, loading } = this.state;
 
     if (loading) return <div className={styles.loadingContainer} ><Image src={loadingImg}/></div>;
 
     return (
       <div className={styles.container}>
-        <Statistics userData={userData} landmarkData={landmarkData} />
+        <Statistics numberOfCompletedLandmarks={completedLandmarksCount} numberOfUsers={registeredUsersCount} userData={userData} landmarkData={landmarkData} />
         <div className={styles.tablesContainer}>
           <StatsTable type="user" data={userData} />
           <StatsTable type="landmark" data={landmarkData} />
