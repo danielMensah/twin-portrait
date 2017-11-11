@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
+import styles from './stats-table.css';
 
 class StatsTable extends Component {
 
@@ -43,7 +44,7 @@ class StatsTable extends Component {
             return (
               <tr key={user.user_id}>
                 <td>{user.user_id}</td>
-                <td>{user.email}</td>
+                <td className={styles.blurText}>{user.email}</td>
                 <td>{moment(user.registered_at).format('DD/MM/YYYY')}</td>
                 <td>{user.feedback}</td>
               </tr>
