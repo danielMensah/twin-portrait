@@ -33,6 +33,8 @@ class Statistics extends Component {
         </LineChart>
         <div className={styles.extraStats}>
           <h3>Data analysis</h3>
+          <p><b>Completed landmarks:</b> {numberOfCompletedLandmarks}</p>
+          <p><b>Registered users:</b> {numberOfUsers}</p>
           <p><b>Average landmark completed per user:</b> { (numberOfCompletedLandmarks/numberOfUsers).toFixed(2) }</p>
           <p><b>Average daily landmark completed:</b> { (numberOfCompletedLandmarks/data.length).toFixed(2) }</p>
           <p><b>Average daily registered users:</b> { (numberOfUsers/data.length).toFixed(2) }</p>
@@ -43,33 +45,33 @@ class Statistics extends Component {
 
   generateGraphData = () => {
     const { userData, landmarkData } = this.props;
-    let dateArray = [];
+    let dataArray = [];
 
     userData.forEach((user) => {
       const date = moment(user.registered_at).format('DD/MM/YYYY');
-      let obj = find(dateArray, { date: date });
-      let index = findIndex(dateArray, { date: date });
+      let obj = find(dataArray, { date: date });
+      let index = findIndex(dataArray, { date: date });
 
       if (!obj) {
-        dateArray.push({ date: date, Users: 1, Landmarks: 0 })
+        dataArray.push({ date: date, Users: 1, Landmarks: 0 })
       } else {
-        dateArray.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
+        dataArray.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
       }
     });
 
     landmarkData.forEach((landmark) => {
       const date = moment(landmark.date_completed).format('DD/MM/YYYY');
-      let obj = find(dateArray, { date: date });
-      let index = findIndex(dateArray, { date: date });
+      let obj = find(dataArray, { date: date });
+      let index = findIndex(dataArray, { date: date });
 
       if (!obj) {
-        dateArray.push({ date: date, Users: 0, Landmarks: 1 })
+        dataArray.push({ date: date, Users: 0, Landmarks: 1 })
       } else {
-        dateArray.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
+        dataArray.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
       }
     });
 
-    return sortBy(dateArray, (o) => o.date);
+    return sortBy(dataArray, (o) => o.date);
   }
 
 }
