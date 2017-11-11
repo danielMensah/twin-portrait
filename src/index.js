@@ -6,6 +6,8 @@ import React from 'react'
 
 import App from './containers/App/index'
 import LandingPage from './components/landing-page'
+import AdminPanelLogin from './components/admin/admin-panel-login'
+import AdminPanel from './components/admin/admin-panel'
 import configure from './store'
 
 const store = configure();
@@ -16,7 +18,19 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={LandingPage}/>
       <Route path="/match-portrait" component={App}/>
+      <Route path="/admin-login" component={AdminPanelLogin}/>
+      <Route path="/panel" component={AdminPanel}/>
     </Router>
   </Provider>,
   document.getElementById('root')
-)
+);
+
+// if (module.hot) {
+//   module.hot.accept('./containers/App', () => {
+//     const NextApp = require('./containers/App').default;
+//     ReactDOM.render(
+//       <NextApp />,
+//       document.getElementById('root')
+//     )
+//   })
+// }

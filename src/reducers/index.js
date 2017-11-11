@@ -3,10 +3,12 @@ import { combineReducers } from 'redux'
 import landmarkSelect from './landmark-select-reducer'
 import portrait from './portrait-reducer'
 import portraitInfo from './portrait-info-reducer'
+import statistics from './statistics-reducer'
 
 export default combineReducers({
   routing,
   landmarkSelect,
   portrait,
-  portraitInfo
+  portraitInfo,
+  statistics
 })

@@ -10,6 +10,17 @@ export default {
   },
 
   USER: {
-    REGISTER_USER: '/registerUser'
+    REGISTER_USER: 'register_user'
+  },
+
+  STATISTICS: {
+    FETCH_STATS: 'fetch_stats'
+  },
+
+  ADMIN: {
+    ADMIN_LOGIN: 'admin_login',
+    ADMIN_LOGIN_SUCCESS: 'admin_login_success',
+    ADMIN_LOGOUT: 'admin_logout',
+    ADMIN_LOGOUT_SUCCESS: 'admin_logout_success'
   }
 }

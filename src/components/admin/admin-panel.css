@@ -1,0 +1,20 @@
+.container {
+    margin: 30px
+}
+
+.tablesContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tablesContainer > div:not(:first-child) {
+    margin-left: auto;
+}
+
+.loadingContainer {
+    text-align: center;
+}
