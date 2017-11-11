@@ -1,7 +1,7 @@
 export const Steps = [
   {
     title: 'Website Tour',
-    text: 'Before you start, let me take you for the website tour and show you how to use Twin Portrait.',
+    text: 'Before you start, let me take you for the website tour and show you how to use Twin Portrait. You can skip the tutorial if you want by clicking the "Skip" button',
     selector: '#container',
     position: 'left',
   },
@@ -43,7 +43,7 @@ export const Steps = [
   },
   {
     title: 'Portrait tracker',
-    text: 'For this task, you need to complete 10 portraits. Makes sure to not refresh the page or you will have to start from the beginning! At the end of it, you will receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
+    text: 'For this task, you need to complete 5 portraits. Make sure to not refresh the page or you will have to start from the beginning! After the task is completed, you will automatically enter the £20 Amazon voucher competition and receive a promo code which will allow you to use Twin Portrait for free once it is launched.',
     selector: '#page-track',
     position: 'top',
   }
