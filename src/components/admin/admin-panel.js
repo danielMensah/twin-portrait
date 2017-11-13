@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Statistics from './statistics';
+import Graph from './graph';
+import GenderPieChart from './pie-chart';
 import StatsTable from './stats-table';
 import styles from './admin-panel.css';
 import { fetchStatistics } from '../../actions/statistics-actions';
@@ -40,7 +41,8 @@ class AdminPanel extends Component {
 
     return (
       <div className={styles.container}>
-        <Statistics numberOfCompletedLandmarks={completedLandmarksCount} numberOfUsers={registeredUsersCount} userData={userData} landmarkData={landmarkData} />
+        <Graph numberOfCompletedLandmarks={completedLandmarksCount} numberOfUsers={registeredUsersCount} userData={userData} landmarkData={landmarkData} />
+        <GenderPieChart landmarkData={landmarkData}/>
         <div className={styles.tablesContainer}>
           <StatsTable type="user" data={userData} />
           <StatsTable type="landmark" data={landmarkData} />

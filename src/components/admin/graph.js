@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { sortBy, find, findIndex } from 'lodash';
 import moment from 'moment';
-import styles from './statistics.css';
+import styles from './graph.css';
 
 class Statistics extends Component {
 
@@ -17,11 +17,11 @@ class Statistics extends Component {
 
   render() {
     const { numberOfCompletedLandmarks, numberOfUsers } = this.props;
-    const data = this.generateGraphData();
+    const graphData = this.generateGraphData();
 
     return (
       <div className={styles.statisticsContainer}>
-        <LineChart style={{ marginLeft: 'auto', marginRight: 'auto'}} width={600} height={300} data={data}
+        <LineChart style={{ marginLeft: 'auto', marginRight: 'auto'}} width={600} height={300} data={graphData}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="date"/>
           <YAxis/>
@@ -36,8 +36,8 @@ class Statistics extends Component {
           <p><b>Completed landmarks:</b> {numberOfCompletedLandmarks}</p>
           <p><b>Registered users:</b> {numberOfUsers}</p>
           <p><b>Average landmark completed per user:</b> { (numberOfCompletedLandmarks/numberOfUsers).toFixed(2) }</p>
-          <p><b>Average daily landmark completed:</b> { (numberOfCompletedLandmarks/data.length).toFixed(2) }</p>
-          <p><b>Average daily registered users:</b> { (numberOfUsers/data.length).toFixed(2) }</p>
+          <p><b>Average daily landmark completed:</b> { (numberOfCompletedLandmarks/graphData.length).toFixed(2) }</p>
+          <p><b>Average daily registered users:</b> { (numberOfUsers/graphData.length).toFixed(2) }</p>
         </div>
       </div>
     )
@@ -45,35 +45,34 @@ class Statistics extends Component {
 
   generateGraphData = () => {
     const { userData, landmarkData } = this.props;
-    let dataArray = [];
+    let graphData = [];
 
     userData.forEach((user) => {
       const date = moment(user.registered_at).format('DD/MM/YYYY');
-      let obj = find(dataArray, { date: date });
-      let index = findIndex(dataArray, { date: date });
+      let obj = find(graphData, { date: date });
+      let index = findIndex(graphData, { date: date });
 
       if (!obj) {
-        dataArray.push({ date: date, Users: 1, Landmarks: 0 })
+        graphData.push({ date: date, Users: 1, Landmarks: 0 })
       } else {
-        dataArray.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
+        graphData.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
       }
     });
 
     landmarkData.forEach((landmark) => {
       const date = moment(landmark.date_completed).format('DD/MM/YYYY');
-      let obj = find(dataArray, { date: date });
-      let index = findIndex(dataArray, { date: date });
+      let obj = find(graphData, { date: date });
+      let index = findIndex(graphData, { date: date });
 
       if (!obj) {
-        dataArray.push({ date: date, Users: 0, Landmarks: 1 })
+        graphData.push({ date: date, Users: 0, Landmarks: 1 })
       } else {
-        dataArray.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
+        graphData.splice(index, 1, {date: date, Users: obj.Users, Landmarks: obj.Landmarks + 1})
       }
     });
 
-    return sortBy(dataArray, (o) => o.date);
-  }
-
+    return sortBy(graphData, (o) => o.date);
+  };
 }
 
 export default connect()(Statistics);
