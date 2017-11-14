@@ -23,12 +23,12 @@ class AdminPanel extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchStatistics().then((r) => {
+    this.props.fetchStatistics().then((response) => {
       this.setState({
-        landmarkData: r.completedLandmarks,
-        completedLandmarksCount: r.completedLandmarksCount,
-        userData: r.registeredUsers,
-        registeredUsersCount: r.registeredUsersCount
+        landmarkData: response.completedLandmarks,
+        completedLandmarksCount: response.completedLandmarksCount,
+        userData: response.registeredUsers,
+        registeredUsersCount: response.registeredUsersCount
       }, () => this.setState({ loading: false }))
     });
 
