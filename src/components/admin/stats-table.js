@@ -16,7 +16,7 @@ class StatsTable extends Component {
     const { type } = this.props;
 
     const heading = type === 'user' ? ['User id', 'E-mail', 'Date registered', 'Feedback']
-      : ['Id', 'Flat eyebrows', 'Angled eyebrows', 'Rounded eyebrows', 'Monolid/Almond eye', 'Deep-set eye', 'Downturned eye', 'Hooded eye', 'Aquiline nose', 'Flat nose', 'Roman/Hooked nose', 'Snub nose', 'Discarded', 'Gender', 'Mustache', 'Beard', 'Completed', 'Date Completed'];
+      : ['Id', 'Flat eyebrows', 'Angled eyebrows', 'Rounded eyebrows', 'Monolid/Almond eye', 'Deep-set eye', 'Downturned eye', 'Hooded eye', 'Aquiline nose', 'Flat nose', 'Roman/Hooked nose', 'Snub nose', 'Discarded', 'Gender', 'Mustache', 'Beard', 'Date Completed'];
     const tableBody = this.generateBody();
 
     return (
@@ -52,8 +52,10 @@ class StatsTable extends Component {
           });
       default:
         return data.map((landmark) => {
+          const discard = parseInt(landmark.not_applicable, 10);
+          console.log(discard ? discard : '');
           return (
-            <tr key={landmark.portrait_id}>
+            <tr className={discard ? styles.discarded : styles.normal} key={landmark.portrait_id}>
               <td>{landmark.portrait_id}</td>
               <td>{landmark.EB_FLAT_SHAPED}</td>
               <td>{landmark.EB_ANGLED}</td>
@@ -66,11 +68,10 @@ class StatsTable extends Component {
               <td>{landmark.NOSE_FLAT}</td>
               <td>{landmark.NOSE_ROMAN_HOOKED}</td>
               <td>{landmark.NOSE_SNUB}</td>
-              <td>{landmark.not_applicable}</td>
+              <td>{discard ? 'True' : 'False'}</td>
               <td>{landmark.gender}</td>
               <td>{landmark.mustache}</td>
               <td>{landmark.beard}</td>
-              <td>{landmark.features_completed}</td>
               <td>{moment(landmark.date_completed).format('DD/MM/YYYY')}</td>
             </tr>
           )

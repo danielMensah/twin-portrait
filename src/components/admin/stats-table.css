@@ -3,3 +3,12 @@
     color: transparent;
     text-shadow: 0 0 12px rgba(0,0,0,0.5);
 }
+
+.table {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.discarded {
+    background-color: #ff9584 !Important;
+}
