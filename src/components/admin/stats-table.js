@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
 import styles from './stats-table.css';
+import { isDev } from '../../util/env-mode';
+import { userColumn, portraitColumn } from './table-columns';
 
 class StatsTable extends Component {
 
@@ -15,16 +17,15 @@ class StatsTable extends Component {
   render() {
     const { type } = this.props;
 
-    const heading = type === 'user' ? ['User id', 'E-mail', 'Date registered', 'Feedback']
-      : ['Id', 'Flat eyebrows', 'Angled eyebrows', 'Rounded eyebrows', 'Monolid/Almond eye', 'Deep-set eye', 'Downturned eye', 'Hooded eye', 'Aquiline nose', 'Flat nose', 'Roman/Hooked nose', 'Snub nose', 'Discarded', 'Gender', 'Mustache', 'Beard', 'Date Completed'];
+    const columnsHeading = type === 'user' ? userColumn : portraitColumn;
     const tableBody = this.generateBody();
 
     return (
-      <div>
+      <div className={`${styles.table} ${type === 'portrait' ? styles.portraitTable : ''}`}>
         <Table responsive striped bordered condensed hover>
           <thead>
           <tr>
-            {heading.map((heading) => <th key={heading}>{heading}</th>)}
+            {columnsHeading.map((column) => <th key={column}>{column}</th>)}
           </tr>
           </thead>
           <tbody>
@@ -37,6 +38,7 @@ class StatsTable extends Component {
 
   generateBody = () => {
     const { type, data } = this.props;
+    const emailStyles = isDev() ? styles.email : styles.blurText;
 
     switch (type) {
       case "user":
@@ -44,7 +46,7 @@ class StatsTable extends Component {
             return (
               <tr key={user.user_id}>
                 <td>{user.user_id}</td>
-                <td className={styles.blurText}>{user.email}</td>
+                <td className={emailStyles}>{user.email}</td>
                 <td>{moment(user.registered_at).format('DD/MM/YYYY')}</td>
                 <td>{user.feedback}</td>
               </tr>
@@ -53,7 +55,6 @@ class StatsTable extends Component {
       default:
         return data.map((landmark) => {
           const discard = parseInt(landmark.not_applicable, 10);
-          console.log(discard ? discard : '');
           return (
             <tr className={discard ? styles.discarded : styles.normal} key={landmark.portrait_id}>
               <td>{landmark.portrait_id}</td>
@@ -68,7 +69,6 @@ class StatsTable extends Component {
               <td>{landmark.NOSE_FLAT}</td>
               <td>{landmark.NOSE_ROMAN_HOOKED}</td>
               <td>{landmark.NOSE_SNUB}</td>
-              <td>{discard ? 'True' : 'False'}</td>
               <td>{landmark.gender}</td>
               <td>{landmark.mustache}</td>
               <td>{landmark.beard}</td>

@@ -13,8 +13,8 @@ class AdminPanel extends Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      landmarkData: [],
-      completedLandmarksCount: null,
+      portraitData: [],
+      completedPortraitsCount: null,
       userData: [],
       registeredUsersCount: null,
       loading: true
@@ -24,8 +24,8 @@ class AdminPanel extends Component {
   componentWillMount() {
     this.props.fetchStatistics().then((r) => {
       this.setState({
-        landmarkData: r.completedLandmarks,
-        completedLandmarksCount: r.completedLandmarksCount,
+        portraitData: r.completedLandmarks,
+        completedPortraitsCount: r.completedLandmarksCount,
         userData: r.registeredUsers,
         registeredUsersCount: r.registeredUsersCount
       }, () => this.setState({ loading: false }))
@@ -34,16 +34,16 @@ class AdminPanel extends Component {
   }
 
   render() {
-    const { userData, landmarkData, completedLandmarksCount, registeredUsersCount, loading } = this.state;
+    const { userData, portraitData, completedPortraitsCount, registeredUsersCount, loading } = this.state;
 
     if (loading) return <div className={styles.loadingContainer} ><Image src={loadingImg}/></div>;
 
     return (
       <div className={styles.container}>
-        <Statistics numberOfCompletedLandmarks={completedLandmarksCount} numberOfUsers={registeredUsersCount} userData={userData} landmarkData={landmarkData} />
+        <Statistics numberOfCompletedPortraits={completedPortraitsCount} numberOfUsers={registeredUsersCount} userData={userData} portraitData={portraitData} />
         <div className={styles.tablesContainer}>
           <StatsTable type="user" data={userData} />
-          <StatsTable type="landmark" data={landmarkData} />
+          <StatsTable type="portrait" data={portraitData} />
         </div>
       </div>
     )
@@ -53,7 +53,7 @@ class AdminPanel extends Component {
 
 const mapStateProps = ({ statistics }) => ({
   userData: statistics.registeredUsers,
-  landmarkData: statistics.completedLandmarks,
+  portraitData: statistics.completedLandmarks,
   stats: statistics
 });
 
