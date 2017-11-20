@@ -10,68 +10,79 @@ class Statistics extends Component {
 
   static propTypes = {
     userData: PropTypes.array.isRequired,
-    landmarkData: PropTypes.array.isRequired,
+    portraitData: PropTypes.array.isRequired,
     numberOfUsers: PropTypes.number.isRequired,
-    numberOfCompletedLandmarks: PropTypes.number.isRequired
+    numberOfCompletedPortraits: PropTypes.number.isRequired
   };
 
   render() {
-    const { numberOfCompletedLandmarks, numberOfUsers } = this.props;
-    const data = this.generateGraphData();
+    const { numberOfCompletedPortraits, numberOfUsers } = this.props;
+    const data = this.getGraphData();
+    const lineChartProps = {
+      width: 600,
+      height: 300,
+      data,
+      style: {
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      },
+      margin: {
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5
+      }
+    };
 
     return (
       <div className={styles.statisticsContainer}>
-        <LineChart style={{ marginLeft: 'auto', marginRight: 'auto'}} width={600} height={300} data={data}
-                   margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <LineChart {...lineChartProps}>
           <XAxis dataKey="date"/>
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />
-          <Line type="monotone" dataKey="Landmarks" stroke="#8884d8" activeDot={{r: 8}}/>
+          <Line type="monotone" dataKey="Portraits" stroke="#8884d8" activeDot={{r: 8}}/>
           <Line type="monotone" dataKey="Users" stroke="#82ca9d"/>
         </LineChart>
         <div className={styles.extraStats}>
           <h3>Data analysis</h3>
-          <p><b>Completed landmarks:</b> {numberOfCompletedLandmarks}</p>
+          <p><b>Completed portraits:</b> {numberOfCompletedPortraits}/1100</p>
           <p><b>Registered users:</b> {numberOfUsers}</p>
-          <p><b>Average landmark completed per user:</b> { (numberOfCompletedLandmarks/numberOfUsers).toFixed(2) }</p>
-          <p><b>Average daily landmark completed:</b> { (numberOfCompletedLandmarks/data.length).toFixed(2) }</p>
+          <p><b>Average portrait completed per user:</b> { (numberOfCompletedPortraits/numberOfUsers).toFixed(2) }</p>
+          <p><b>Average daily portrait completed:</b> { (numberOfCompletedPortraits/data.length).toFixed(2) }</p>
           <p><b>Average daily registered users:</b> { (numberOfUsers/data.length).toFixed(2) }</p>
         </div>
       </div>
     )
   }
 
-  generateGraphData = () => {
-    const { userData, landmarkData } = this.props;
-    let dataArray = [];
+  getGraphData = () => {
+    const { userData, portraitData } = this.props;
+    const userDataArray = this.generateGraphData('user', userData, []);
+    const numberOfCompletedPortraits = this.generateGraphData('portrait', portraitData, userDataArray);
 
-    userData.forEach((user) => {
-      const date = moment(user.registered_at).format('DD/MM/YYYY');
-      let obj = find(dataArray, { date: date });
-      let index = findIndex(dataArray, { date: date });
+    return sortBy(numberOfCompletedPortraits, (o) => o.date);
+  };
+
+  generateGraphData = (dataType, dataArray, processedDataArray) => {
+    const dateProp = dataType === 'user' ? 'registered_at' : 'date_completed';
+
+    dataArray.forEach((data) => {
+      const date = moment(data[dateProp]).format('DD/MM/YYYY');
+      let obj = find(processedDataArray, { date: date });
+      let index = findIndex(processedDataArray, { date: date });
 
       if (!obj) {
-        dataArray.push({ date: date, Users: 1, Landmarks: 0 })
+        dataType === 'user' ? processedDataArray.push({ date: date, Users: 1, Portraits: 0 }) :
+          processedDataArray.push({ date: date, Users: 0, Portraits: 1 });
       } else {
-        dataArray.splice(index, 1, {date: date, Users: obj.Users + 1, Landmarks: 0})
+        dataType === 'user' ? processedDataArray.splice(index, 1, {date: date, Users: obj.Users + 1, Portraits: 0}) :
+          processedDataArray.splice(index, 1, { ...obj, Portraits: obj.Portraits + 1});
       }
     });
 
-    landmarkData.forEach((landmark) => {
-      const date = moment(landmark.date_completed).format('DD/MM/YYYY');
-      let obj = find(dataArray, { date: date });
-      let index = findIndex(dataArray, { date: date });
-
-      if (!obj) {
-        dataArray.push({ date: date, Users: 0, Landmarks: 1 })
-      } else {
-        dataArray.splice(index, 1, { ...obj, Landmarks: obj.Landmarks + 1})
-      }
-    });
-
-    return sortBy(dataArray, (o) => o.date);
+    return processedDataArray;
   }
 
 }
