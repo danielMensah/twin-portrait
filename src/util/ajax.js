@@ -5,7 +5,7 @@ export default function(url, type, options = {}, shouldStringify = true) {
   return new Promise((resolved, rejected) => {
     $.ajax({
       type: type,
-      url: `https://twinportrait-server.herokuapp.com/${url}`,
+      url: `https://twinportrait-server-test.herokuapp.com/${url}`,
       data: shouldStringify ? JSON.stringify(options) : options,
       success: (data) => {
         resolved(data ? JSON.parse(data) : data)
