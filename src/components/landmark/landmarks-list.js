@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './landmarks-list.css';
-import DndTest from './dnd-test';
+import DroppableField from './droppable-field';
 import { EYEBROWS, EYES, NOSES } from '../../images';
 
 class LandmarksList extends Component {
@@ -34,7 +34,7 @@ class LandmarksList extends Component {
               <h2 className={styles.landmarkHeader}>
                 <span>{landmark.text}</span>
               </h2>
-              <DndTest landmarks={landmark.landmarks} landmarkName={landmark.name}/>
+              <DroppableField landmarks={landmark.landmarks} landmarkName={landmark.name}/>
             </div>
           )
         })}

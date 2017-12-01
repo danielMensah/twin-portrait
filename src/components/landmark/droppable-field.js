@@ -10,7 +10,7 @@ import KeyGen from '../../util/landmark-key-generator';
 
 let landmarkObjectArray = [];
 
-class DndTest extends Component {
+class DroppableField extends Component {
 
   static propTypes = {
     landmarks: PropTypes.array.isRequired,
@@ -88,4 +88,4 @@ const mapStateProps = ({landmarkSelect}) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ selectLandmark }, dispatch);
 
-export default connect(mapStateProps, mapDispatchToProps)(DndTest);
+export default connect(mapStateProps, mapDispatchToProps)(DroppableField);
