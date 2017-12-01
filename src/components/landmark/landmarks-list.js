@@ -1,39 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './landmarks-list.css';
-import LandmarksListItem from './landmarks-list-item';
+import DndTest from './dnd-test';
+import { EYEBROWS, EYES, NOSES } from '../../images';
 
 class LandmarksList extends Component {
 
   render() {
 
-    const landmarks = [
+    const arrayOfLandmarks = [
       {
         text: 'Select Eyebrows Shape',
-        className: `${styles.eyeBrows}`,
-        name: 'eyebrows'
+        name: 'eyebrows',
+        landmarks: EYEBROWS
       },
       {
         text: 'Select Eyes Shape',
-        className: `${styles.eyes}`,
-        name: 'eye'
+        name: 'eye',
+        landmarks: EYES
       },
       {
         text: 'Select Nose Shape',
-        className: `${styles.noses}`,
-        name: 'nose'
+        name: 'nose',
+        landmarks: NOSES
       }
     ];
 
     return (
       <div className={styles.container}>
-        {landmarks.map((landmark) => {
+        {arrayOfLandmarks.map((landmark) => {
           return (
-            <div className={landmark.className} key={landmark.text}>
+            <div key={landmark.text}>
               <h2 className={styles.landmarkHeader}>
                 <span>{landmark.text}</span>
               </h2>
-              <LandmarksListItem landmark={landmark.name}/>
+              <DndTest landmarks={landmark.landmarks} landmarkName={landmark.name}/>
             </div>
           )
         })}
