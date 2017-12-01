@@ -9,12 +9,3 @@ export function selectLandmark(landmarkObj) {
     });
   }
 }
-
-export function resetSelect() {
-
-  return dispatch => {
-    dispatch({
-      type: ActionTypes.RESET_SELECT,
-    });
-  }
-}

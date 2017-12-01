@@ -11,13 +11,11 @@ import LandmarksList from './landmark/landmarks-list';
 import RegistrationModal from './modals/registration-modal';
 import PortraitInfoModal from './modals/portrait-info/portrait-info-modal';
 import { fetchPortrait, updatePortrait, setNotApplicable } from '../actions/portrait-actions';
-import { selectLandmark, resetSelect } from '../actions/landmark-select-actions';
-import KeyGenerator from '../util/landmark-key-generator';
 import JoyrideTour from './joyride/joyride-tour';
 import PortraitViewer from './portrait/portrait-viewer';
 import FacialHairGenderList from './landmark/facial-hair-gender-list';
 import FacialHairManager from '../util/managers/facial-hair-manager';
-import { size, forEach } from 'lodash';
+import { forEach } from 'lodash';
 
 const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
 
@@ -105,29 +103,31 @@ class App extends Component {
     const { selectedLandmarks, portraitId, updatePortrait } = this.props;
     const { page } = this.state;
 
-    let gender = ReactDOM.findDOMNode(this.gender).options[ReactDOM.findDOMNode(this.gender).selectedIndex].value;
-    let facialHair = FacialHairManager(ReactDOM.findDOMNode(this.facialHair));
+    const gender = ReactDOM.findDOMNode(this.gender).options[ReactDOM.findDOMNode(this.gender).selectedIndex].value;
+    const facialHair = FacialHairManager(ReactDOM.findDOMNode(this.facialHair));
 
-    if (size(selectedLandmarks) > 2) {
-      let obj = { portraitId, gender, ...facialHair };
+    let dataToSend = { portraitId, gender };
+    dataToSend['landmarks'] = {...facialHair};
 
-      forEach(selectedLandmarks, (item) => {
-        obj[item.landmark] = {...item, landmarkKey: KeyGenerator(item.name, item.landmark)};
-      });
+    console.log('Selected landmarks: ', selectedLandmarks);
 
-      this.startLoading();
-      updatePortrait(obj).then(() => {
-        if (page > NUM_PORTRAITS) {
-          this.stopLoading();
-          this.openRegistrationModal();
-        } else {
-          this.setState({page: this.state.page+1});
-          this.nextPortrait();
-        }
-      })
-    } else {
-      alert('Please a shape from each facial feature');
-    }
+    forEach(selectedLandmarks, (landmark) => {
+      const key = Object.keys(landmark)[0];
+      dataToSend['landmarks'][key] = landmark[key];
+    });
+
+    console.log('data to send: ', dataToSend);
+
+    this.startLoading();
+    updatePortrait(dataToSend).then(() => {
+      if (page > NUM_PORTRAITS) {
+        this.stopLoading();
+        this.openRegistrationModal();
+      } else {
+        this.setState({page: this.state.page+1});
+        this.nextPortrait();
+      }
+    })
   };
 
   notApplicable = () => {
@@ -144,7 +144,6 @@ class App extends Component {
     this.startLoading();
     this.props.fetchPortrait().then(() => {
       this.stopLoading();
-      this.props.resetSelect();
     });
   };
 }
@@ -155,6 +154,6 @@ const mapStateProps = ({landmarkSelect, portrait}) => ({
   portraitId: portrait.id
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait, selectLandmark, resetSelect, updatePortrait, setNotApplicable }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortrait,updatePortrait, setNotApplicable }, dispatch);
 
 export default connect(mapStateProps, mapDispatchToProps)(App);
