@@ -43,7 +43,7 @@ class LandingPage extends Component {
             Twin Portrait isn't launched yet and it needs your help. Help to gather some data to create face matching system and
             in return you can win a <b>£20 Amazon voucher</b> plus use Twin Portrait for free after it's launched!
             There are 2 Amazon vouchers and at the end, there will be two winners. What do you have to do?
-            Few portraits will be displayed and you will need to select the appropriate facial features for each one of them.
+            Few portraits will be displayed and you will need to order the facial features from the most applicable to the least.
             Simple isn't it? At the end of it, you will automatically enter a competition to win £20 Amazon x2 receive a promo code that
             will allow you to enter a competition to win a <b>£20 Amazon voucher! Start now and you will be taken for through the website.</b>
           </p>

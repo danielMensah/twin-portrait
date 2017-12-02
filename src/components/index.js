@@ -87,7 +87,7 @@ class App extends Component {
                           updatePortrait={this.updatePortrait} notApplicable={this.notApplicable} openInfoModal={this.openInfoModal}
                           page={page}/>
           {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
-          <div id="landmark" className={styles.landmarks}>
+          <div className={styles.landmarks}>
             <FacialHairGenderList genderRef={el => this.gender = el} facialHairRef={el => this.facialHair = el}/>
             <LandmarksList/>
           </div>

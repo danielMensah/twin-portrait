@@ -26,11 +26,11 @@ export const getItemStyle = (draggableStyle, isDragging) => ({
   // styles we need to apply on draggables
   ...draggableStyle,
 });
+
 export const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   display: 'flex',
   margin: "10px 10px 10px 0",
   borderRadius: '10px',
-  overflowX: 'scroll'
 });

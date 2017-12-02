@@ -15,7 +15,7 @@ class FacialHairGenderList extends Component {
     const { genderRef, facialHairRef } = this.props;
 
     return (
-      <div className={styles.extraInfo}>
+      <div id="extra-info" className={styles.extraInfo}>
         <FormGroup className={styles.form} controlId="formControlsSelect">
           <div id="area-chart" className={styles.gender}>
             <ControlLabel>Select gender</ControlLabel>

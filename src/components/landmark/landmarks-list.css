@@ -12,3 +12,25 @@
     padding: 0 15px;
     background: #fff;
 }
+
+.openHelpModal {
+    background-color: #2196F3;
+    float: right;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 6px 8px #888888;
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.landmarkSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.droppableField {
+    display: flex;
+}

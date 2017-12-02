@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './registration-modal.css';
-import {Modal} from 'react-bootstrap/lib';
+import { Modal } from 'react-bootstrap/lib';
 import Body from './help-body/body';
 
 class HelpModal extends Component {
+
+  static propTypes = {
+    show: PropTypes.bool.isRequired,
+    onHide: PropTypes.func.isRequired,
+    landmark: PropTypes.string.isRequired
+  };
 
   render() {
     const { show, onHide, landmark } = this.props;
