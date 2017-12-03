@@ -41,7 +41,9 @@ module.exports = {
     fallback: paths.nodePaths,
     extensions: ['.js', '.json', '.jsx', ''],
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
     }
   },
   

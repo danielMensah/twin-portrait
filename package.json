@@ -11,6 +11,8 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
+    "preact": "^8.2.6",
+    "preact-compat": "^3.17.0",
     "react": "^15.5.4",
     "react-beautiful-dnd": "^3.0.0",
     "react-bootstrap": "^0.31.2",
