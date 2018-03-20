@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './body.css';
 import { Image, ControlLabel } from 'react-bootstrap/lib';
 import { EYEBROWS, EYES, NOSE } from './content-list';
 
 class Body extends Component {
+  static propTypes = {
+    landmark: PropTypes.string.isRequired
+  };
 
   render() {
     const { landmark } = this.props;

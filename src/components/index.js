@@ -109,14 +109,10 @@ class App extends Component {
     let dataToSend = { portraitId, gender };
     dataToSend['landmarks'] = {...facialHair};
 
-    console.log('Selected landmarks: ', selectedLandmarks);
-
     forEach(selectedLandmarks, (landmark) => {
       const key = Object.keys(landmark)[0];
       dataToSend['landmarks'][key] = landmark[key];
     });
-
-    console.log('data to send: ', dataToSend);
 
     this.startLoading();
     updatePortrait(dataToSend).then(() => {

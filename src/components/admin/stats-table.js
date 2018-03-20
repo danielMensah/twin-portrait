@@ -54,7 +54,7 @@ class StatsTable extends Component {
           });
       default:
         return data.map((landmark) => {
-          const discard = parseInt(landmark.not_applicable, 10);
+          const discard = +landmark.not_applicable;
           return (
             <tr className={discard ? styles.discarded : styles.normal} key={landmark.portrait_id}>
               <td>{landmark.portrait_id}</td>
@@ -70,8 +70,8 @@ class StatsTable extends Component {
               <td>{landmark.NOSE_ROMAN_HOOKED}</td>
               <td>{landmark.NOSE_SNUB}</td>
               <td>{landmark.gender}</td>
-              <td>{landmark.mustache}</td>
-              <td>{landmark.beard}</td>
+              <td>{!discard ? (+landmark.mustache === 1).toString() : null}</td>
+              <td>{!discard ? (+landmark.beard === 1).toString() : null}</td>
               <td>{moment(landmark.date_completed).format('DD/MM/YYYY')}</td>
             </tr>
           )

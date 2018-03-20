@@ -8,6 +8,7 @@ import App from './containers/App/index'
 import LandingPage from './components/landing-page'
 import AdminPanelLogin from './components/admin/admin-panel-login'
 import AdminPanel from './components/admin/admin-panel'
+import MatchUser from './components/match-user'
 import configure from './store'
 
 const store = configure();
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/match-portrait" component={App}/>
       <Route path="/admin-login" component={AdminPanelLogin}/>
       <Route path="/panel" component={AdminPanel}/>
+      <Route path="/match-user" component={MatchUser}/>
     </Router>
   </Provider>,
   document.getElementById('root')
