@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router';
 import { RaisedButton } from 'material-ui';
 import styles from './main.css';
 import Landmarks from '../landmark/landmarks-list';
 import FacialHairGenderList from '../landmark/facial-hair-gender-list';
-import FontAwesome from 'react-fontawesome';
 
 class Main extends Component {
 
@@ -30,14 +30,20 @@ class Main extends Component {
         <div className={styles.buttons}>
           <RaisedButton
             label="Basic Search"
+            onClick={() => this.searchDoppelganger('basic')}
             style={styles.basic}/>
           <RaisedButton
             label="Advanced Search"
             primary={true}
+            onClick={() => this.searchDoppelganger('advanced')}
             style={styles.advanced}/>
         </div>
       </div>
     )
+  }
+
+  searchDoppelganger = (type) => {
+    browserHistory.push('/results')
   }
 
 }

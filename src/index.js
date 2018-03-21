@@ -9,6 +9,7 @@ import LandingPage from './components/landing-page'
 import AdminPanelLogin from './components/admin/admin-panel-login'
 import AdminPanel from './components/admin/admin-panel'
 import MatchUser from './components/match-user'
+import Results from './components/match-result'
 import configure from './store'
 
 const store = configure();
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/admin-login" component={AdminPanelLogin}/>
       <Route path="/panel" component={AdminPanel}/>
       <Route path="/match-user" component={MatchUser}/>
+      <Route path="/results" component={Results}/>
       {/*<Route path="/about" component={MatchUser}/>*/}
       {/*<Route path="/explore" component={MatchUser}/>*/}
       {/*<Route path="/help" component={MatchUser}/>*/}
