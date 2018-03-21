@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-// import { AppBar, MuiThemeProvider, MenuItem, Menu } from 'material-ui';
+import { RaisedButton } from 'material-ui';
 import styles from './main.css';
 import Landmarks from '../landmark/landmarks-list';
-// import { Button } from 'react-bootstrap/lib';
-// import FontAwesome from 'react-fontawesome';
+import FacialHairGenderList from '../landmark/facial-hair-gender-list';
+import FontAwesome from 'react-fontawesome';
 
 class Main extends Component {
 
@@ -21,7 +21,21 @@ class Main extends Component {
 
     return (
       <div className={styles.main}>
-        <Landmarks/>
+        <div className={styles.extraInfo}>
+          <FacialHairGenderList genderRef={el => this.gender = el} facialHairRef={el => this.facialHair = el}/>
+        </div>
+        <div className={styles.landmarkList}>
+          <Landmarks/>
+        </div>
+        <div className={styles.buttons}>
+          <RaisedButton
+            label="Basic Search"
+            style={styles.basic}/>
+          <RaisedButton
+            label="Advanced Search"
+            primary={true}
+            style={styles.advanced}/>
+        </div>
       </div>
     )
   }

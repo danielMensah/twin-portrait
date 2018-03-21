@@ -9,6 +9,10 @@ import Main from './main';
 
 class UserMatch extends Component {
 
+  componentDidMount() {
+    document.getElementById('root').firstChild.style.textAlign = 'center';
+  }
+
   // static propTypes = {
   // };
 
@@ -26,7 +30,7 @@ class UserMatch extends Component {
     </Menu>;
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider styles={{textAlign: 'center'}}>
         <div>
           <AppBar
             className={styles.appBar}

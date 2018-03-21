@@ -38,13 +38,4 @@ class HelpModal extends Component {
   }
 }
 
-{/*<Dialog bsSize="large" show={show} onHide={onHide}>*/}
-  {/*<Modal.Header closeButton>*/}
-    {/*<Modal.Title id="contained-modal-title-lg">How to choose {landmark} shape</Modal.Title>*/}
-  {/*</Modal.Header>*/}
-  {/*<Modal.Body className={styles.modalBody}>*/}
-    {/*<Body landmark={landmark}/>*/}
-  {/*</Modal.Body>*/}
-{/*</Dialog>*/}
-
 export default connect()(HelpModal);

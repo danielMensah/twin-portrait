@@ -1,3 +1,15 @@
 .main {
-    display: flex;
+    display: inline-block;
+}
+
+.landmarkList {
+    margin-top: 5px;
+}
+
+.extraInfo {
+    margin-top: 40px;
+}
+
+.buttons {
+    margin-bottom: 30px;
 }

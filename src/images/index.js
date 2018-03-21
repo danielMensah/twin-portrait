@@ -42,7 +42,7 @@ export const NOSES = [
   },
   {
     img: hooked,
-    name: 'Roman Hooked'
+    name: 'Roman'
   },
   {
     img: snub,
@@ -68,7 +68,7 @@ export const LIPS = [
 export const EYEBROWS = [
   {
     img: flatShaped,
-    name: 'Flat Shaped'
+    name: 'Flat'
   },
   {
     img: hardAngled,
@@ -110,7 +110,7 @@ export const FACES = [
 export const EYES = [
   {
     img: almond,
-    name: 'Monolid Almond'
+    name: 'Monolid'
   },
   {
     img: deepSet,

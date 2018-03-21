@@ -3,6 +3,7 @@
     background-color: white !important;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+    text-align: left;
 }
 
 .appBar > div {
@@ -30,7 +31,7 @@
 .headerContainer {
     font-weight: 100;
     text-align: center;
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 .header {

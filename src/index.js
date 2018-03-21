@@ -17,11 +17,14 @@ const history = syncHistoryWithStore(browserHistory, store);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={LandingPage}/>
+      <Route path="/" component={MatchUser}/>
       <Route path="/match-portrait" component={App}/>
       <Route path="/admin-login" component={AdminPanelLogin}/>
       <Route path="/panel" component={AdminPanel}/>
       <Route path="/match-user" component={MatchUser}/>
+      {/*<Route path="/about" component={MatchUser}/>*/}
+      {/*<Route path="/explore" component={MatchUser}/>*/}
+      {/*<Route path="/help" component={MatchUser}/>*/}
     </Router>
   </Provider>,
   document.getElementById('root')
