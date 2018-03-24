@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { MuiThemeProvider } from 'material-ui';
 import Main from './main';
 import Header from './header';
-// import { Button } from 'react-bootstrap/lib';
-// import FontAwesome from 'react-fontawesome';
 
 class UserMatch extends Component {
 
@@ -13,14 +10,16 @@ class UserMatch extends Component {
     document.getElementById('root').firstChild.style.textAlign = 'center';
   }
 
-  // static propTypes = {
-  // };
-
   render() {
+    const headerOptions = {
+      title: 'Describe yourself',
+      subtitle: 'Order each landmark from the most applicable to you to the least'
+    };
+
     return (
       <MuiThemeProvider styles={{textAlign: 'center'}}>
         <div>
-          <Header title="Find Doppelgänger" subtitle="Order each landmark from the most applicable to the least"/>
+          <Header {...headerOptions}/>
           <Main/>
         </div>
       </MuiThemeProvider>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import styles from './registration-modal.css';
-// import { Modal } from 'react-bootstrap/lib';
 import { Dialog, FlatButton } from 'material-ui';
 import Body from './help-body/body';
 

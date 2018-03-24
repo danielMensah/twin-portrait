@@ -18,3 +18,20 @@ export function registerUser(userInfo) {
 
   }
 }
+
+export function searchDoppelganger(type, data) {
+
+  return (dispatch) => {
+    let request = ajax(ApiRoutes[type], 'POST', data);
+
+    request.then((response) => {
+      dispatch({
+        type: ActionTypes.USER.SEARCH_DOPPELGANGER,
+        payload: response
+      })
+    });
+
+    return request;
+
+  }
+}

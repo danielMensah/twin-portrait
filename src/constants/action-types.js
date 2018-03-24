@@ -10,7 +10,12 @@ export default {
   },
 
   USER: {
-    REGISTER_USER: 'register_user'
+    REGISTER_USER: 'register_user',
+    SEARCH_DOPPELGANGER: 'search_doppelganger'
+  },
+
+  RESULT: {
+    PORTRAIT_ONCLICK: 'portrait_onclick'
   },
 
   STATISTICS: {

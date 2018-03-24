@@ -1,0 +1,28 @@
+.results {
+    width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.similarity {
+    margin-top: -30px;
+    background-color: beige;
+}
+
+.img {
+    width:  200px;
+    height: 200px;
+    background: no-repeat 50% 50%;
+    background-size:     cover;
+    cursor: pointer;
+}

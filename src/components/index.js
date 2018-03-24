@@ -94,7 +94,7 @@ class App extends Component {
         </div>
         <RegistrationModal show={showRegistrationModal} onHide={this.closeRegistrationModal} />
         <PortraitInfoModal show={showInfoModal} onHide={this.closeInfoModal} portraitUrl={portraitUrl} portraitId={portraitId} />
-        <JoyrideTour/>
+        <JoyrideTour type="tourCompleted" stepType="portrait"/>
       </div>
     )
   }

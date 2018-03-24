@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Joyride from 'react-joyride';
 import { Steps } from './joyride-steps';
 import LocalStorage from '../../util/local-storage';
@@ -7,6 +8,11 @@ import LocalStorage from '../../util/local-storage';
 require("./styles.scss");
 
 class JoyrideTour extends Component {
+
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    stepType: PropTypes.string.isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -16,19 +22,20 @@ class JoyrideTour extends Component {
   }
 
   tourCompleted = () => {
-    LocalStorage.setItem('tourCompleted', true);
+    LocalStorage.setItem(this.props.type, true);
   };
 
   render() {
     const { startTourText } = this.state;
+    const { stepType } = this.props;
 
     return (
       <Joyride
         ref={(joyride) => this.joyride = joyride}
-        steps={Steps}
+        steps={Steps[stepType]}
         locale={{last: 'Start now', next: startTourText ? 'Start tour' : 'Next', skip: 'Skip'}}
         autoStart={true}
-        run={!LocalStorage.getItem('tourCompleted')} // or some other boolean for when you want to start it
+        run={!LocalStorage.getItem(this.props.type)} // or some other boolean for when you want to start it
         showStepsProgress={!startTourText}
         type="continuous"
         debug={false}

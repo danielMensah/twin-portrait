@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { AppBar, MenuItem, Menu } from 'material-ui';
 import styles from './styles.css';
-// import { Button } from 'react-bootstrap/lib';
-// import FontAwesome from 'react-fontawesome';
 
 class Header extends Component {
 
@@ -14,7 +12,7 @@ class Header extends Component {
 
   static propTypes = {
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string
+    subtitle: PropTypes.string,
   };
 
   constructor(props) {
@@ -23,14 +21,13 @@ class Header extends Component {
   }
 
   render() {
+    const { title, subtitle } = this.props;
     const navigationMenu = <Menu className={styles.menu}>
       <MenuItem primaryText="Home"/>
       <MenuItem primaryText="About"/>
       <MenuItem primaryText="Explore"/>
       <MenuItem primaryText="Help"/>
     </Menu>;
-
-    const { title, subtitle } = this.props;
 
     return (
       <div>
