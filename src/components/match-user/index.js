@@ -6,10 +6,6 @@ import Header from './header';
 
 class UserMatch extends Component {
 
-  componentDidMount() {
-    document.getElementById('root').firstChild.style.textAlign = 'center';
-  }
-
   render() {
     const headerOptions = {
       title: 'Describe yourself',
