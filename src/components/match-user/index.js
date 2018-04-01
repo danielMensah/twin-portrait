@@ -1,43 +1,21 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { AppBar, MuiThemeProvider, MenuItem, Menu } from 'material-ui';
-import styles from './styles.css';
+import { MuiThemeProvider } from 'material-ui';
 import Main from './main';
-// import { Button } from 'react-bootstrap/lib';
-// import FontAwesome from 'react-fontawesome';
+import Header from '../header';
 
 class UserMatch extends Component {
 
-  // static propTypes = {
-  // };
-
-  constructor(props) {
-    super(props);
-    this.state = { selectedIndex: 0 }
-  }
-
   render() {
-    const navigationMenu = <Menu className={styles.menu}>
-      <MenuItem primaryText="Home"/>
-      <MenuItem primaryText="About"/>
-      <MenuItem primaryText="Explore"/>
-      <MenuItem primaryText="Help"/>
-    </Menu>;
+    const headerOptions = {
+      title: 'Describe yourself',
+      subtitle: 'Order each landmark from the most applicable to you to the least'
+    };
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider styles={{textAlign: 'center'}}>
         <div>
-          <AppBar
-            className={styles.appBar}
-            showMenuIconButton={false}
-            title={<span className={styles.title}>Twin Portrait <span className={styles.subTitle}>Interactive Art</span></span>}
-            iconElementRight={navigationMenu}
-          />
-          <div className={styles.headerContainer}>
-            <h1 className={styles.header}>Find Doppelgänger</h1>
-            <div className={styles.subHeader}>Order each landmark from the most applicable to the least</div>
-          </div>
+          <Header {...headerOptions}/>
           <Main/>
         </div>
       </MuiThemeProvider>

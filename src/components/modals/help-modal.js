@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import styles from './registration-modal.css';
-// import { Modal } from 'react-bootstrap/lib';
 import { Dialog, FlatButton } from 'material-ui';
 import Body from './help-body/body';
 
@@ -37,14 +35,5 @@ class HelpModal extends Component {
     )
   }
 }
-
-{/*<Dialog bsSize="large" show={show} onHide={onHide}>*/}
-  {/*<Modal.Header closeButton>*/}
-    {/*<Modal.Title id="contained-modal-title-lg">How to choose {landmark} shape</Modal.Title>*/}
-  {/*</Modal.Header>*/}
-  {/*<Modal.Body className={styles.modalBody}>*/}
-    {/*<Body landmark={landmark}/>*/}
-  {/*</Modal.Body>*/}
-{/*</Dialog>*/}
 
 export default connect()(HelpModal);

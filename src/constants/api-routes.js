@@ -6,5 +6,8 @@ export default {
 
   REGISTER_USER: 'registerUser',
 
-  STATISTICS: 'statistics'
+  STATISTICS: 'statistics',
+
+  BASIC_SEARCH: 'api/basicSearch',
+  ADVANCED_SEARCH: 'api/advancedSearch'
 }

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './portrait-info-modal.css';
 import { Image } from 'react-bootstrap/lib';
-import { fetchPortraitInfo } from '../../../actions/portrait-actions';
-import loadingImg from '../../../images/loading2.gif';
-import Fab from '../../floating-button';
+import { fetchPortraitInfo } from '../../actions/portrait-actions';
+import loadingImg from '../../images/loading2.gif';
+import Fab from '../floating-button';
 import { Dialog, FlatButton } from 'material-ui';
 
 class PortraitInfoModal extends Component {
@@ -14,6 +14,7 @@ class PortraitInfoModal extends Component {
     super(prop);
     this.state = {
       loading: false,
+      currentId: false
     }
   }
 
@@ -25,16 +26,26 @@ class PortraitInfoModal extends Component {
     this.setState({ loading: false})
   };
 
-  componentWillMount() {
-    const { portraitId, fetchPortraitInfo } = this.props;
+  componentWillReceiveProps(prop) {
+    if (prop.id !== this.state.currentId) {
+      this.setState({currentId: prop.id}, () => {
+        this._fetchData();
+      })
+    }
+  }
+
+  _fetchData() {
+    const { id, fetchPortraitInfo } = this.props;
 
     this.startLoading();
-    fetchPortraitInfo({ id: portraitId }).then(() => this.stopLoading());
+    fetchPortraitInfo({ id }).then(() => {
+      this.stopLoading();
+    });
   }
 
   render() {
-    const { show, onHide, portraitInfo, portraitUrl, portraitId } = this.props;
-    const { title, creator, date_created, physical_dimensions, external_link, external_link_text } = portraitInfo;
+    const { show, onHide, infoList, url, id } = this.props;
+    const { title, creator, date_created, physical_dimensions, external_link, external_link_text } = infoList;
     const { loading } = this.state;
     const actions = [
       <FlatButton
@@ -55,9 +66,9 @@ class PortraitInfoModal extends Component {
           <div className={styles.detailsContainer}>
             <div>
               <div className={styles.more}>
-                <a href={portraitUrl} target="blank"><Fab size="2x" icon="external-link"/></a>
+                <a href={url} target="blank"><Fab size="2x" icon="external-link"/></a>
               </div>
-              <Image src={portraitUrl} responsive/>
+              <Image src={url} responsive/>
             </div>
             <div className={styles.details}>
               <div className={styles.subDetails}>
@@ -86,7 +97,7 @@ class PortraitInfoModal extends Component {
                 }
                 <div className={styles.externalLink}>
                   <label>Link: </label>
-                  <a target="blank" href={`https://www.google.com/culturalinstitute/beta/asset/${portraitId}`}>
+                  <a target="blank" href={`https://www.google.com/culturalinstitute/beta/asset/${id}`}>
                     Click here for more information
                   </a>
                 </div>
@@ -99,10 +110,10 @@ class PortraitInfoModal extends Component {
   }
 }
 
-const mapStateProps = ({portrait, portraitInfo}) => ({
-  portraitInfo: portraitInfo,
-  portraitUrl: portrait.portraitURL,
-  portraitId: portrait.id
+const mapStateProps = ({result, portraitInfo}) => ({
+  infoList: portraitInfo,
+  url: result.url,
+  id: result.id
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPortraitInfo }, dispatch);

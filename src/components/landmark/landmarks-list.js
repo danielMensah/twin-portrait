@@ -18,17 +18,17 @@ class LandmarksList extends Component {
     const { showHelpModal } = this.state;
     const arrayOfLandmarks = [
       {
-        text: 'Select Eyebrows Shape',
+        text: 'Order Eyebrows Shape',
         name: 'eyebrows',
         landmarks: EYEBROWS
       },
       {
-        text: 'Select Eyes Shape',
+        text: 'Order Eyes Shape',
         name: 'eye',
         landmarks: EYES
       },
       {
-        text: 'Select Nose Shape',
+        text: 'Order Nose Shape',
         name: 'nose',
         landmarks: NOSES
       }
