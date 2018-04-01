@@ -11,11 +11,11 @@ class LandmarksList extends Component {
 
   constructor(prop) {
     super(prop);
-    this.state = { showHelpModal: false, landmarkName: '' }
+    this.state = { showHelpModal: false, landmarkName: '', guide: false }
   }
 
   render() {
-    const { showHelpModal } = this.state;
+    const { showHelpModal, guide } = this.state;
     const arrayOfLandmarks = [
       {
         text: 'Order Eyebrows Shape',
@@ -34,11 +34,21 @@ class LandmarksList extends Component {
       }
     ];
 
+    const guideStyle = {
+      position: "fixed",
+      backgroundColor: "rgba(0, 0, 0, 0.67)",
+      padding: "15px",
+      bottom: "30px",
+      color: "white",
+      borderRadius: "17px",
+      visibility: guide ? 'visible' : 'hidden'
+    };
+
     return (
       <div id="landmark" className={styles.container}>
         {arrayOfLandmarks.map((landmark) => {
           return (
-            <div className={styles.landmarkSection} key={landmark.text}>
+            <div onMouseEnter={() => this.setState({ guide: true})} onMouseLeave={() => this.setState({ guide: false})} className={styles.landmarkSection} key={landmark.text}>
               <h2 className={styles.landmarkHeader}>
                 <span>{landmark.text}</span>
               </h2>
@@ -52,6 +62,7 @@ class LandmarksList extends Component {
             </div>
           )
         })}
+        <div style={guideStyle}>Drag and drop the items to order the landmark types</div>
       </div>
     )
   }

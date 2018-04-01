@@ -8,6 +8,7 @@ import Header from '../header';
 import {Image} from 'react-bootstrap';
 import PortraitInfoModal from './portrait-info-modal';
 import {resultInfo } from '../../actions/result-actions';
+import Satisfaction from '../satisfaction';
 
 class MatchResult extends Component {
 
@@ -45,6 +46,7 @@ class MatchResult extends Component {
         <div>
           <Header {...headerOptions}/>
           <RaisedButton {...backButtonOptions}/>
+          <Satisfaction/>
           <div className={styles.results}>
             {matchDataArr.length ? resultBody : emptyBody}
           </div>
