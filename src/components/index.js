@@ -16,6 +16,7 @@ import PortraitViewer from './portrait/portrait-viewer';
 import FacialHairGenderList from './landmark/facial-hair-gender-list';
 import FacialHairManager from '../util/managers/facial-hair-manager';
 import { forEach } from 'lodash';
+import Header from './header';
 
 const NUM_PORTRAITS = 3; //5 portraits: 5-2 = 3; This is display submit button when it's the last one.
 
@@ -68,6 +69,11 @@ class App extends Component {
     const { portraitUrl, portraitId } = this.props;
     const currentPage = page+1;
 
+    const headerOptions = {
+      title: 'Annotate Portrait',
+      subtitle: 'Order each landmark from the most applicable to the portrait to the least'
+    };
+
     if (isLoading) {
       return (
         <div className={styles.loadingContainer}>
@@ -76,8 +82,10 @@ class App extends Component {
       )
     }
 
+
     return (
       <div id="app-container" className={styles.appContainer}>
+        <Header {...headerOptions}/>
         <div className={styles.turnLandscape}>
           <Image className={styles.rotateLandscape} src={rotateLandscape} responsive/>
           <span>Rotate your device to landscape</span>

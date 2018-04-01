@@ -9,6 +9,7 @@
 
 .notApplicable {
     background-color: #F44336;
+    float: left;
 }
 
 .submit {
@@ -33,6 +34,10 @@
 .portraits, .helper img {
     z-index: 10;
     margin-right: 5%;
+}
+
+.portraits {
+    margin-top: 4%;
 }
 
 .pageTrack {

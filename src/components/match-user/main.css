@@ -20,5 +20,7 @@
 }
 
 .advanced {
-    margin-top: 50px;
+    margin-top: 30px;
+    border-top: 1px solid;
+    padding-top: 30px;
 }

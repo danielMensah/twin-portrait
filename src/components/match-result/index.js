@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { MuiThemeProvider, RaisedButton } from 'material-ui';
 import styles from './style.css';
-import Header from '../match-user/header';
+import Header from '../header';
 import {Image} from 'react-bootstrap';
 import PortraitInfoModal from './portrait-info-modal';
 import {resultInfo } from '../../actions/result-actions';

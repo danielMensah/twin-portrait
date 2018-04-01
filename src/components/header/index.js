@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 import { AppBar, MenuItem, Menu } from 'material-ui';
 import styles from './styles.css';
@@ -22,9 +23,11 @@ class Header extends Component {
 
   render() {
     const { title, subtitle } = this.props;
+    const { navigate } = this;
     const navigationMenu = <Menu className={styles.menu}>
-      <MenuItem primaryText="Home"/>
-      <MenuItem primaryText="About"/>
+      <MenuItem onClick={() => navigate('/')} primaryText="Home"/>
+      <MenuItem onClick={() => navigate('/match-portrait')} primaryText="Annotate Portrait"/>
+      <MenuItem onClick={() => navigate('/match-user')} primaryText="Find Doppelganger"/>
       <MenuItem primaryText="Explore"/>
       <MenuItem primaryText="Help"/>
     </Menu>;
@@ -43,6 +46,10 @@ class Header extends Component {
         </div>
       </div>
     )
+  }
+
+  navigate = (location) => {
+    browserHistory.push(location);
   }
 
 }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { MuiThemeProvider } from 'material-ui';
 import Main from './main';
-import Header from './header';
+import Header from '../header';
 
 class UserMatch extends Component {
 
