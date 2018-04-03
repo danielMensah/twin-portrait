@@ -37,6 +37,7 @@ class Header extends Component {
         <AppBar
           className={styles.appBar}
           showMenuIconButton={false}
+          onTitleClick={() => this.navigate('/')}
           title={<span className={styles.title}>Twin Portrait <span className={styles.subTitle}>Interactive Art</span></span>}
           iconElementRight={navigationMenu}
         />

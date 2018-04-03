@@ -94,7 +94,7 @@ class Main extends Component {
       this.props.searchDoppelganger('ADVANCED_SEARCH', dataToSend).then(() => {
         this.hideModal();
         browserHistory.push('/results')
-      })
+      }).catch(() => console.log('this is an error'))
     });
   };
 
@@ -113,9 +113,8 @@ class Main extends Component {
         this.hideModal();
         this.setState({ showPerfectResult: true });
         this.props.resultInfo(response[0].id, response[0].image_url).then(() => {
-          // this.setState({ showPerfectResult: true })
         })
-      })
+      }).catch(() => console.log('this is an error'))
     });
   }
 
