@@ -94,7 +94,7 @@ class RegistrationModal extends Component {
 
     return (
       <Dialog
-        title={header}
+        title="Submit Feedback"
         actions={actions}
         modal={false}
         open={show}
