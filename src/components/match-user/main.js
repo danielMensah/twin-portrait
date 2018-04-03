@@ -6,7 +6,7 @@ import { RaisedButton } from 'material-ui';
 import styles from './main.css';
 import Landmarks from '../landmark/landmarks-list';
 import FacialHairGenderList from '../landmark/facial-hair-gender-list';
-import SearchModel from '../modals/search-modal';
+import SearchModal from '../modals/search-modal';
 import { bindActionCreators } from 'redux';
 import { searchDoppelganger } from '../../actions/user-actions';
 import {resultInfo } from '../../actions/result-actions';
@@ -20,11 +20,11 @@ class Main extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { selectedIndex: 0, showModal: false, showPerfectResult: false }
+    this.state = { selectedIndex: 0, showModal: false, showPerfectResult: false, error: false }
   }
 
   render() {
-    const { showModal, showPerfectResult } = this.state;
+    const { showModal, showPerfectResult, error } = this.state;
 
     return (
       <div id="match-main" className={styles.main}>
@@ -52,7 +52,7 @@ class Main extends Component {
               onClick={() => this.search('ADVANCED_SEARCH')}/>
           </div>
         </div>
-        <SearchModel show={showModal} onHide={this.hideModal} />
+        <SearchModal show={showModal} onHide={this.hideModal} error={error} />
         <PortraitInfoModal show={showPerfectResult} onHide={this.resultModal}/>
       </div>
     )
@@ -94,7 +94,9 @@ class Main extends Component {
       this.props.searchDoppelganger('ADVANCED_SEARCH', dataToSend).then(() => {
         this.hideModal();
         browserHistory.push('/results')
-      }).catch(() => console.log('this is an error'))
+      }).catch(() => {
+        this.setState({ error: true })
+      })
     });
   };
 
@@ -114,7 +116,9 @@ class Main extends Component {
         this.setState({ showPerfectResult: true });
         this.props.resultInfo(response[0].id, response[0].image_url).then(() => {
         })
-      }).catch(() => console.log('this is an error'))
+      }).catch(() => {
+        this.setState({ error: true })
+      })
     });
   }
 
