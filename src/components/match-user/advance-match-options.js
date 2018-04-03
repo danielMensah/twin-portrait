@@ -29,8 +29,8 @@ class AdvanceMatchOptions extends Component {
           <div className={styles.facialHair}>
             <ControlLabel>Is your facial hair very important?</ControlLabel>
             <FormControl ref={facialHairRef} componentClass="select" placeholder="select">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
+              <option value={1}>Yes</option>
+              <option value={0}>No</option>
             </FormControl>
           </div>
         </FormGroup>
