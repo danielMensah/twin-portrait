@@ -40,7 +40,7 @@ class SearchModal extends Component {
     const dialogSettings = {
       modal: error,
       open: show,
-      onRequestClose: {onHide},
+      onRequestClose: error ? null : onHide,
       contentStyle,
       actions
     };
