@@ -46,7 +46,7 @@ class MatchResult extends Component {
         <div>
           <Header {...headerOptions}/>
           <RaisedButton {...backButtonOptions}/>
-          <Satisfaction/>
+          <Satisfaction />
           <div className={styles.results}>
             {matchDataArr.length ? resultBody : emptyBody}
           </div>

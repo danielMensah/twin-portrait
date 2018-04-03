@@ -30,6 +30,16 @@
 
 .detailsContainer {
     display: flex;
+    flex-direction: column;
+}
+
+.detailsContainer > div {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.extras {
+    display: flex;
 }
 
 .loading {

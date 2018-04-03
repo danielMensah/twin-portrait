@@ -94,7 +94,7 @@ class App extends Component {
           <PortraitViewer portraitUrl={portraitUrl} currentPage={currentPage} NUM_PORTRAITS={NUM_PORTRAITS}
                           updatePortrait={this.updatePortrait} notApplicable={this.notApplicable} openInfoModal={this.openInfoModal}
                           page={page}/>
-          {/*<Button onClick={this.openRegistrationModal}>Testing</Button>*/}
+          {/*<div onClick={this.openRegistrationModal}>Testing</div>*/}
           <div className={styles.landmarks}>
             <FacialHairGenderList genderRef={el => this.gender = el} facialHairRef={el => this.facialHair = el}/>
             <LandmarksList/>
