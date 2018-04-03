@@ -29,18 +29,17 @@ class SearchModal extends Component {
       <div style={{ color: '#bc0001', display: 'flex', flexDirection: 'column'}}><i style={{ fontSize: '50px' }} className="material-icons">warning</i> Oh snap!</div>
       : 'We are matching you with a portrait.....';
 
-    const actions = [
+    const actions = error ? [
       <FlatButton
         label="Close"
         primary={true}
         onClick={onHide}
       />
-    ];
+    ] : null;
 
     const dialogSettings = {
       modal: error,
       open: show,
-      onRequestClose: error ? null : onHide,
       contentStyle,
       actions
     };
