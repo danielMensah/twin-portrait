@@ -20,7 +20,6 @@ class LandingPage extends Component {
           <div className={styles.headerText}>
             <div className={styles.tptext}>Twin Portrait</div>
             <div className={styles.text1}>Find your Doppelgänger within 1000+ portraits</div>
-            <div className={styles.comingSoon}>WIN £20 AMAZON VOUCHER x2!</div>
             <Image className={styles.compare} src={Compare} rounded/>
           </div>
         </div>
@@ -28,7 +27,7 @@ class LandingPage extends Component {
           <ControlLabel className={styles.controlLabel}>What is Twin Portrait</ControlLabel>
           <p>
             Twin Portrait is a website created to incite people to learn more about Arts & Culture and to find their
-            Doppelgängers through portraits. This will help individuals to have a deeper understanding
+            Doppelgängers/look-alike through portraits. This will help individuals to have a deeper understanding
             regarding Arts & Culture and be encouraged to visit some of the best museums in the world.
           </p>
           <ControlLabel className={styles.controlLabel}>About me: Daniel Mensah</ControlLabel>
@@ -41,11 +40,9 @@ class LandingPage extends Component {
           <ControlLabel className={styles.controlLabel}>How it works</ControlLabel>
           <p>
             Twin Portrait isn't launched yet and it needs your help. Help to gather some data to create face matching system and
-            in return you can win a <b>£20 Amazon voucher</b> plus use Twin Portrait for free after it's launched!
-            There are 2 Amazon vouchers and at the end, there will be two winners. What do you have to do?
-            Few portraits will be displayed and you will need to order the facial features from the most applicable to the least.
-            Simple isn't it? At the end of it, you will automatically enter a competition to win £20 Amazon x2 receive a promo code that
-            will allow you to enter a competition to win a <b>£20 Amazon voucher! Start now and you will be taken for through the website.</b>
+            in return you will be able to use Twin Portrait for free after it's launched! What do you have to do?
+            Few portraits will be displayed and you will need to order the facial features from the most applicable to the portrait to the least.
+            Simple isn't it? At the end of it, a promo code that will allow you to use the application for free. <b>Start now!</b>
           </p>
           <div className={styles.buttonDiv}>
             <Button onClick={this.startNow} className={styles.startNow} bsSize="large">Start now</Button>
