@@ -13,6 +13,10 @@ class SearchModal extends Component {
     error: PropTypes.bool
   };
 
+  static defaultProps = {
+    error: false
+  };
+
   constructor(props) {
     super(props);
     this.state = { selectedIndex: 0 }

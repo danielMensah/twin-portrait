@@ -40,6 +40,7 @@ class Main extends Component {
           <h3 style={{fontWeight: 'lighter'}}>Find your Doppelganger!</h3>
           <RaisedButton
             label="Perfect Match"
+            primary={true}
             style={{marginTop: '50px'}}
             onClick={() => this.search('BASIC_SEARCH')}/>
           <div className={styles.advanced}>
@@ -65,8 +66,9 @@ class Main extends Component {
     const facialHairImportance = ReactDOM.findDOMNode(this.facialHairImportance).options[ReactDOM.findDOMNode(this.facialHairImportance).selectedIndex].value;
     const priority = ReactDOM.findDOMNode(this.feature).options[ReactDOM.findDOMNode(this.feature).selectedIndex].value;
     const facialHair = FacialHairManager(ReactDOM.findDOMNode(this.facialHair));
+    const hairObject = {beard: facialHair.beard.toString(), mustache: facialHair.mustache.toString()};
 
-    let dataToSend = { gender, ...facialHair, facialHairImportance: facialHairImportance , priority };
+    let dataToSend = { gender, ...hairObject, facialHairImportance: facialHairImportance , priority };
     dataToSend.landmarks = {};
 
     if (type === 'ADVANCED_SEARCH') {
@@ -94,8 +96,10 @@ class Main extends Component {
       this.props.searchDoppelganger('ADVANCED_SEARCH', dataToSend).then(() => {
         this.hideModal();
         browserHistory.push('/results')
-      }).catch(() => {
-        this.setState({ error: true })
+      }).catch((error) => {
+        if (error.message !== 'Cannot read property \'then\' of undefined') {
+          this.setState({ error: true })
+        }
       })
     });
   };
@@ -116,8 +120,10 @@ class Main extends Component {
         this.setState({ showPerfectResult: true });
         this.props.resultInfo(response[0].id, response[0].image_url).then(() => {
         })
-      }).catch(() => {
-        this.setState({ error: true })
+      }).catch((error) => {
+        if (error.message !== 'Cannot read property \'then\' of undefined') {
+          this.setState({ error: true })
+        }
       })
     });
   }

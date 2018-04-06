@@ -21,7 +21,7 @@ class Satisfaction extends Component {
     };
 
     return (
-      <div style={{marginTop: '30px'}}>
+      <div style={{marginTop: '15px'}}>
         <label>Are you satisfied with the result?</label>
         <div style={{justifyContent: 'center'}} className={styles.satisfactionButtons}>
           <div style={{marginRight: '50px', fontSize: '30px', cursor: 'pointer'}} onClick={() => this.openModal(0)}>👎</div>

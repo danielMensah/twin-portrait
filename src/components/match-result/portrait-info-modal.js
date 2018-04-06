@@ -65,7 +65,6 @@ class PortraitInfoModal extends Component {
               autoScrollBodyContent={true}>
         { loading ? <Image className={styles.loading} src={loadingImg}/> :
           <div className={styles.detailsContainer}>
-            <Satisfaction />
             <div className={styles.extras}>
               <div>
                 <div className={styles.more}>
@@ -107,6 +106,7 @@ class PortraitInfoModal extends Component {
                 </div>
               </div>
             </div>
+            <Satisfaction />
           </div>
         }
       </Dialog>
