@@ -1,7 +1,3 @@
-.container {
-    margin: 30px
-}
-
 .tablesContainer {
     display: flex;
     flex-direction: column;

@@ -12,11 +12,13 @@ class Statistics extends Component {
     userData: PropTypes.array.isRequired,
     portraitData: PropTypes.array.isRequired,
     numberOfUsers: PropTypes.number.isRequired,
-    numberOfCompletedPortraits: PropTypes.number.isRequired
+    numberOfCompletedPortraits: PropTypes.number.isRequired,
+    malePortraits: PropTypes.number.isRequired,
+    femalePortraits: PropTypes.number.isRequired
   };
 
   render() {
-    const { numberOfCompletedPortraits, numberOfUsers } = this.props;
+    const { numberOfCompletedPortraits, numberOfUsers, malePortraits, femalePortraits } = this.props;
     const data = this.getGraphData();
     const lineChartProps = {
       width: 600,
@@ -48,10 +50,11 @@ class Statistics extends Component {
         <div className={styles.extraStats}>
           <h3>Data analysis</h3>
           <p><b>Completed portraits:</b> {numberOfCompletedPortraits}/1100</p>
+          <p><b>Male-Female ratio:</b> {`${malePortraits}:${femalePortraits}`}</p>
           <p><b>Registered users:</b> {numberOfUsers}</p>
           <p><b>Average portrait completed per user:</b> { (numberOfCompletedPortraits/numberOfUsers).toFixed(2) }</p>
-          <p><b>Average daily portrait completed:</b> { (numberOfCompletedPortraits/data.length).toFixed(2) }</p>
-          <p><b>Average daily registered users:</b> { (numberOfUsers/data.length).toFixed(2) }</p>
+          {/*<p><b>Average daily portrait completed:</b> { (numberOfCompletedPortraits/data.length).toFixed(2) }</p>*/}
+          {/*<p><b>Average daily registered users:</b> { (numberOfUsers/data.length).toFixed(2) }</p>*/}
         </div>
       </div>
     )
@@ -70,8 +73,8 @@ class Statistics extends Component {
 
     dataArray.forEach((data) => {
       const date = moment(data[dateProp]).format('DD/MM/YYYY');
-      let obj = find(processedDataArray, { date: date });
-      let index = findIndex(processedDataArray, { date: date });
+      let obj = find(processedDataArray, { date });
+      let index = findIndex(processedDataArray, { date });
 
       if (!obj) {
         dataType === 'user' ? processedDataArray.push({ date: date, Users: 1, Portraits: 0 }) :

@@ -7,6 +7,8 @@ import styles from './admin-panel.css';
 import { fetchStatistics } from '../../actions/statistics-actions';
 import { Image } from 'react-bootstrap';
 import loadingImg from '../../images/loading2.gif';
+import Header from '../header';
+import { MuiThemeProvider } from 'material-ui';
 
 class AdminPanel extends Component {
 
@@ -14,9 +16,11 @@ class AdminPanel extends Component {
     super(prop);
     this.state = {
       portraitData: [],
-      completedPortraitsCount: null,
+      numberOfCompletedPortraits: null,
       userData: [],
-      registeredUsersCount: null,
+      numberOfUsers: null,
+      malePortraits: 0,
+      femalePortraits: 0,
       loading: true
     }
   }
@@ -25,27 +29,32 @@ class AdminPanel extends Component {
     this.props.fetchStatistics().then((r) => {
       this.setState({
         portraitData: r.completedLandmarks,
-        completedPortraitsCount: r.completedLandmarksCount,
+        numberOfCompletedPortraits: r.completedLandmarksCount,
         userData: r.registeredUsers,
-        registeredUsersCount: r.registeredUsersCount
+        numberOfUsers: r.registeredUsersCount,
+        malePortraits: r.malePortraits,
+        femalePortraits: r.femalePortraits
       }, () => this.setState({ loading: false }))
     });
 
   }
 
   render() {
-    const { userData, portraitData, completedPortraitsCount, registeredUsersCount, loading } = this.state;
+    const { userData, portraitData, loading } = this.state;
 
     if (loading) return <div className={styles.loadingContainer} ><Image src={loadingImg}/></div>;
 
     return (
-      <div className={styles.container}>
-        <Statistics numberOfCompletedPortraits={completedPortraitsCount} numberOfUsers={registeredUsersCount} userData={userData} portraitData={portraitData} />
-        <div className={styles.tablesContainer}>
-          <StatsTable type="user" data={userData} />
-          <StatsTable type="portrait" data={portraitData} />
+      <MuiThemeProvider>
+        <div className={styles.container}>
+          <Header title="Panel" subtitle="This page displays statistics about the website"/>
+          <Statistics {...this.state} />
+          <div className={styles.tablesContainer}>
+            <StatsTable type="user" data={userData} />
+            <StatsTable type="portrait" data={portraitData} />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 
